@@ -1,10 +1,8 @@
-<!-- 
-Cara menggunakan setelah clone dari git:
+## Cara menggunakan setelah clone dari git:
 1. composer install
 2. php artisan key:generate
 3. cp .env.example .env
 4. php artisan migrate 
--->
 
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
