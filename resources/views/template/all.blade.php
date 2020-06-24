@@ -45,10 +45,20 @@
             background-color: #e91e63;
         }
 
+        #content {
+            padding-bottom: 323px;
+        }
+
         footer {
             position: absolute;
             bottom: 0;
             width: 100%;
+            max-height: 323px;
+        }
+
+        body {
+            position: relative;
+            min-height: 100vh;
         }
     </style>
 </head>
@@ -85,12 +95,12 @@
             </div>
         </nav>
     </header>
-
-    @yield('konten')
-
-    <footer class="mt-auto">
+    <div id="content" class="mt-5">
+        @yield('konten')
+    </div>
+    <footer>
         <div class="container-fluid">
-            <div class="row border-top border-dark mt-auto">
+            <div class="row border-top border-dark">
                 <div class="col col-md-5 bg-primary-c text-light py-4">
                     <div class="ml-4">
                         <h1 class="display-2"><strong>certifett</strong></h1>
