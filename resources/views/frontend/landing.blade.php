@@ -85,7 +85,8 @@
             <p class="text-right">25k/10 orang</p>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                    <h3 class="d-flex"><img class="img-fluid" width="45" src="{{asset('icons/face-24px.png')}}" alt="">
+                    <h3 class="d-flex align-items-center"><img class="img-fluid mr-2" width="45"
+                            src="{{asset('icons/face-24px.png')}}" alt="">
                         <span id="demo"></span>
                         Peserta</h3>
                 </div>
