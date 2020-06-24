@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="{{asset("css/style-yusuf.css")}}">
 @endsection
 @section('konten')
-<main>
   <div id="content">
     <article class="text-center">
       <h1 id="judul2">
@@ -30,5 +29,4 @@
       <button type="button" class="btn btn-outline-dark masuk">Masuk</button>
     </article>
   </div>
-</main>
 @endsection

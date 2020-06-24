@@ -46,7 +46,7 @@
         }
 
         #content {
-            padding-bottom: 323px;
+            padding-bottom: 290px;
         }
 
         footer {
@@ -95,9 +95,11 @@
             </div>
         </nav>
     </header>
-    <div id="content" class="mt-5">
+    <!-- <main> -->
+      <div id="content" class="mt-5">
         @yield('konten')
-    </div>
+      </div>
+    <!-- </main> -->
     <footer>
         <div class="container-fluid">
             <div class="row border-top border-dark">
