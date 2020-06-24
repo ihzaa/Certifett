@@ -44,59 +44,63 @@
         .bg-danger-c {
             background-color: #e91e63;
         }
+
         footer {
-            padding: 0px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 
-<body>
-    <div class="container-fluid">
-        <header>
-            <!-- Fixed navbar -->
-            <nav
-                class="navbar navbar-expand-lg navbar-light bg-white fixed-top border-secondary border-bottom shadow-sm">
-                <a class="navbar-brand" href="#">Certifett</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navExpdand"
-                    aria-controls="navExpdand" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<body class="d-flex flex-column">
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top border-secondary border-bottom shadow-sm">
+            <a class="navbar-brand" href="#">Certifett</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navExpdand"
+                aria-controls="navExpdand" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse" id="navExpdand">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item mr-4">
-                            <a class="nav-link" href="#">What is it</a>
-                        </li>
-                        <li class="nav-item mr-4">
-                            <a class="nav-link" href="#">Get Startet</a>
-                        </li>
-                        <li class="nav-item mr-4">
-                            <a class="nav-link" href="#">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Developer Documentation</a>
-                        </li>
-                    </ul>
-                    <form class="form-inline my-2 my-md-0">
-                        <button type="button" class="btn btn-outline-dark mr-3 px-4">Daftar</button>
-                        <button type="button" class="btn btn-outline-dark ml-3 px-4">Masuk</button>
-                    </form>
-                </div>
-            </nav>
-        </header>
-        @yield('konten')
-        <footer class="border-top border-dark">
-            <div class="row ">
+            <div class="collapse navbar-collapse" id="navExpdand">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item mr-4">
+                        <a class="nav-link" href="#">What is it</a>
+                    </li>
+                    <li class="nav-item mr-4">
+                        <a class="nav-link" href="#">Get Startet</a>
+                    </li>
+                    <li class="nav-item mr-4">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Developer Documentation</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-md-0">
+                    <button type="button" class="btn btn-outline-dark mr-3 px-4">Daftar</button>
+                    <button type="button" class="btn btn-outline-dark ml-3 px-4">Masuk</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    @yield('konten')
+
+    <footer class="mt-auto">
+        <div class="container-fluid">
+            <div class="row border-top border-dark mt-auto">
                 <div class="col col-md-5 bg-primary-c text-light py-4">
                     <div class="ml-4">
-                        <h1>certifett</h1>
-                        <p>by proximity-labs</p>
-                        <p>All Amazing illustrations used on this website is taken from</p>
-                        <p>ada gambarr stories</p>
+                        <h1 class="display-2"><strong>certifett</strong></h1>
+                        <p class="text-center">by proximity-labs</p>
+                        <p class="mb-0">All Amazing illustrations used on this website is taken from</p>
+                        <img class="img-fluid" src="{{asset('images/Artboard-footer.png')}}" alt="" width="380">
                     </div>
                 </div>
-                <div class="col col-md-7 text-primary-c py-4">
-                    <div class="ml-4">
+                <div class="col col-md-7 text-primary-c pt-4 ">
+                    <div class="ml-4 mr-4 d-flex flex-column">
                         <ul class="list-inline">
                             <li class="list-inline-item mr-4">
                                 <a class="text-primary-c" href="#">How it works</a>
@@ -107,20 +111,26 @@
                             <li class="list-inline-item mr-4">
                                 <a class="text-primary-c" href="#">Pricing</a>
                             </li>
-                            <li class="list-inline-item">
+                            <li class="list-inline-item mr-4">
                                 <a class="text-primary-c" href="#">Developer Documentation</a>
                             </li>
                             <li class="list-inline-item">
                                 <a class="text-primary-c" href="#">Sitemap</a>
                             </li>
                         </ul>
-                        <h3>Contact Us</h3>
+                        <h3 class="mt-4">Contact Us</h3>
+                        <p class="mt-3"><img src="{{asset("icons/email-24px.png")}}" class="img-fluid mr-2" alt="">
+                            email@gmail.com
+                        </p>
+                        <p><img src="{{asset("icons/call-24px.png")}}" class="img-fluid mr-2" alt=""> 0123456789</p>
+                        <br>
+                        <p class="text-right mt-auto"><img src="{{asset("icons/copyright-24px.png")}}"
+                                class="img-fluid mr-2" alt="">2020 cerifett.</p>
                     </div>
                 </div>
             </div>
-        </footer>
-    </div>
-
+        </div>
+    </footer>
     @yield('JsTambahanBefore')
     <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
     <script src="{{asset('js/popper.min.js')}}"></script>
