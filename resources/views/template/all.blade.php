@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}">
     <link rel="stylesheet" href="{{asset("css/font-awesome-all.min.css")}}">
     {{-- css umum --}}
-    @yield(' CssTambahanAfter')
+    @yield('CssTambahanAfter')
     <style>
         .text-primary-c {
             color: #263238;
@@ -45,11 +45,8 @@
             background-color: #e91e63;
         }
 
-        #content {
-            padding-bottom: 290px;
-        }
 
-        footer {
+        /* footer {
             position: absolute;
             bottom: 0;
             width: 100%;
@@ -59,7 +56,7 @@
         body {
             position: relative;
             min-height: 100vh;
-        }
+        } */
     </style>
 </head>
 
@@ -96,14 +93,14 @@
         </nav>
     </header>
     <!-- <main> -->
-      <div id="content" class="mt-5">
+      <div id="content" class="mt-5 mb-2">
         @yield('konten')
       </div>
     <!-- </main> -->
     <footer>
         <div class="container-fluid">
             <div class="row border-top border-dark">
-                <div class="col col-md-5 bg-primary-c text-light py-4">
+                <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 bg-primary-c text-light py-4">
                     <div class="ml-4">
                         <h1 class="display-2"><strong>certifett</strong></h1>
                         <p class="text-center">by proximity-labs</p>
@@ -111,22 +108,22 @@
                         <img class="img-fluid" src="{{asset('images/Artboard-footer.png')}}" alt="" width="380">
                     </div>
                 </div>
-                <div class="col col-md-7 text-primary-c pt-4 ">
+                <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 text-primary-c pt-4 ">
                     <div class="ml-4 mr-4 d-flex flex-column">
                         <ul class="list-inline">
-                            <li class="list-inline-item mr-4">
+                            <li class="list-inline-item mr-4 d-xl-inline d-lg-inline d-md-block d-sm-block d-block">
                                 <a class="text-primary-c" href="#">How it works</a>
                             </li>
-                            <li class="list-inline-item mr-4">
+                            <li class="list-inline-item mr-4 d-xl-inline d-lg-inline d-md-block d-sm-block d-block">
                                 <a class="text-primary-c" href="#">Get Startet</a>
                             </li>
-                            <li class="list-inline-item mr-4">
+                            <li class="list-inline-item mr-4 d-xl-inline d-lg-inline d-md-block d-sm-block d-block">
                                 <a class="text-primary-c" href="#">Pricing</a>
                             </li>
-                            <li class="list-inline-item mr-4">
+                            <li class="list-inline-item mr-4 d-xl-inline d-lg-inline d-md-block d-sm-block d-block">
                                 <a class="text-primary-c" href="#">Developer Documentation</a>
                             </li>
-                            <li class="list-inline-item">
+                            <li class="list-inline-item d-xl-inline d-lg-inline d-md-block d-sm-block d-block">
                                 <a class="text-primary-c" href="#">Sitemap</a>
                             </li>
                         </ul>
