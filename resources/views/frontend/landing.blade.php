@@ -82,7 +82,7 @@
             <div class="slidecontainer">
                 <input id="slider" type="range" min="10" max="1000" step="10" value="100" style="width: 100%">
             </div>
-            <p class="text-right">25k/10 orang</p>
+            <p class="text-right">25K/10 orang</p>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                     <h3 class="d-flex align-items-center"><img class="img-fluid mr-2" width="45"

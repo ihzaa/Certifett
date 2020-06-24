@@ -13,6 +13,13 @@
     {{-- css umum --}}
     @yield('CssTambahanAfter')
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700;900&display=swap');
+
+        body {
+            font-family: "Roboto", sans-serif;
+            color: #263238;
+        }
+
         .text-primary-c {
             color: #263238;
         }
@@ -44,6 +51,7 @@
         .bg-danger-c {
             background-color: #e91e63;
         }
+
 
 
         /* footer {
@@ -93,9 +101,9 @@
         </nav>
     </header>
     <!-- <main> -->
-      <div id="content" class="mt-5 mb-2">
+    <div id="content" class="mt-5 mb-2">
         @yield('konten')
-      </div>
+    </div>
     <!-- </main> -->
     <footer>
         <div class="container-fluid">
