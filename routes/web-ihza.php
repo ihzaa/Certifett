@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/a', function () {
-    return view('template.all');
+    return view('frontend.contoh');
 });
