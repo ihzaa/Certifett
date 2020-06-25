@@ -8,7 +8,8 @@
 
 @section('konten')
 <div class="container">
-    <div class="row mt-5    ">
+    @extends('template.nav-landing')
+    <div class="row" id="WhatIsIt">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 my-auto">
             <h2>certifett.</h2>
             <h1>Certifett Factory</h1>
@@ -21,7 +22,7 @@
             <img class="img-fluid" src="{{asset('images/Manufacturing Process-pana.png')}}" alt="">
         </div>
     </div>
-    <div class="row">
+    <div class="row" id="GettingStarted">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 my-auto d-none d-sm-none d-md-none d-lg-block d-xl-block">
             <img class="img-fluid" src="{{asset('images/Setup Wizard-pana.png')}}" alt="">
         </div>
@@ -75,7 +76,7 @@
             <img class="img-fluid" src="{{asset('images/Setup Wizard-pana.png')}}" alt="">
         </div>
     </div>
-    <div class="row mt-5">
+    <div class="row mt-5" id="pricing">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 my-auto">
             <h1>Pricing Calculator</h1>
             <p>tarik slider dibawah untuk menghitung harga.</p>
@@ -126,6 +127,30 @@
             return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ".");
         }
     });
+    // Add scrollspy to <body>
+        $('body').scrollspy({target: ".navbar"});
 
+// Add smooth scrolling on all links inside the navbar
+$(".navbar-nav a").on('click', function(event) {
+
+// Make sure this.hash has a value before overriding default behavior
+if (this.hash !== "") {
+
+    // Prevent default anchor click behavior
+    event.preventDefault();
+
+    // Store hash
+    var hash = this.hash;
+
+    // Using jQuery's animate() method to add smooth page scroll
+    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+    $('html, body').animate({
+    scrollTop: $(hash).offset().top-80
+    }, 800, function(){
+    });
+
+} // End if
+
+});
 </script>
 @endsection

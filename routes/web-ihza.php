@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('frontend.landing');
-});
+})->name("landing-page");
 
 Route::get('/a', function () {
     return view('frontend.contoh');

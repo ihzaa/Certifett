@@ -12,96 +12,12 @@
     <link rel="stylesheet" href="{{asset("css/font-awesome-all.min.css")}}">
     {{-- css umum --}}
     @yield('CssTambahanAfter')
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700;900&display=swap');
-
-        body {
-            font-family: "Roboto", sans-serif;
-            color: #263238;
-        }
-
-        .text-primary-c {
-            color: #263238;
-        }
-
-        .text-secondary-c {
-            color: #26a69a;
-        }
-
-        .text-accent-c {
-            color: #64d8cb;
-        }
-
-        .text-danger-c {
-            color: #e91e63;
-        }
-
-        .bg-primary-c {
-            background-color: #263238;
-        }
-
-        .bg-secondary-c {
-            background-color: #26a69a;
-        }
-
-        .bg-accent-c {
-            background-color: #64d8cb;
-        }
-
-        .bg-danger-c {
-            background-color: #e91e63;
-        }
-
-
-
-        /* footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            max-height: 323px;
-        }
-
-        body {
-            position: relative;
-            min-height: 100vh;
-        } */
-    </style>
+    <link rel="stylesheet" href="{{asset('css/all.blade.css')}}">
 </head>
 
 <body class="d-flex flex-column">
-    <header>
-        <!-- Fixed navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top border-secondary border-bottom shadow-sm">
-            <a class="navbar-brand" href="#">Certifett</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navExpdand"
-                aria-controls="navExpdand" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navExpdand">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item mr-4">
-                        <a class="nav-link" href="#">What is it</a>
-                    </li>
-                    <li class="nav-item mr-4">
-                        <a class="nav-link" href="#">Get Startet</a>
-                    </li>
-                    <li class="nav-item mr-4">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Developer Documentation</a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-md-0">
-                    <button type="button" class="btn btn-outline-dark mr-3 px-4">Daftar</button>
-                    <button type="button" class="btn btn-outline-dark ml-3 px-4">Masuk</button>
-                </form>
-            </div>
-        </nav>
-    </header>
     <!-- <main> -->
-    <div id="content" class="mt-5 mb-2">
+    <div id="content" class="mb-2">
         @yield('konten')
     </div>
     <!-- </main> -->
