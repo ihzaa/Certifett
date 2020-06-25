@@ -6,8 +6,11 @@
 <link rel="stylesheet" href="{{asset('css/rangeslider.css')}}">
 @endsection
 
+@section('header')
+@include('template.components.nav-landing')
+@endsection
+
 @section('konten')
-@include('template.nav-landing')
 <div class="container">
 
     <div class="row" id="WhatIsIt">
@@ -102,7 +105,10 @@
         </div>
     </div>
 </div>
+@endsection
 
+@section('footer')
+@include('template.components.footer-common')
 @endsection
 
 @section('JsTambahanAfter')
