@@ -6,6 +6,6 @@ Route::get('admin', function () {
     return view('frontend.admin');
 });
 
-Route::get('pilihAkun', function () {
-  return view('frontend.pilihAkun');
-});
+Route::get('daftar', function () {
+  return view('frontend.daftar');
+})->name("registration-page");
