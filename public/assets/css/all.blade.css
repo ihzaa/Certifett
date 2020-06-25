@@ -3,8 +3,6 @@
 body {
     font-family: "Roboto", sans-serif;
     color: #263238;
-    position: relative;
-    padding-top: 57px;
 }
 
 .text-primary-c {
@@ -38,9 +36,6 @@ body {
 .bg-danger-c {
     background-color: #e91e63;
 }
-
-@media screen and (max-width :991px){
-    .container {
-        padding-top: 30px;
-    }
+#content{
+    padding-top: 57px;
 }

@@ -3,30 +3,30 @@ $('input[type="range"]').rangeslider({
 });
 $("body").attr("data-spy", "scroll");
 $("body").attr("data-target", ".navbar");
-$("body").attr("offset", "87");
+$("body").attr("offset", "57");
 
 $("#nav-landing a").on("click", function (event) {
-    // Make sure this.hash has a value before overriding default behavior
     if (this.hash !== "") {
-        // Prevent default anchor click behavior
         event.preventDefault();
-
-        // Store hash
+        $(this).blur();
+        $(".navbar-collapse").collapse("hide");
         var hash = this.hash;
-
-        // Using jQuery's animate() method to add smooth page scroll
-        // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-        $("html, body").animate(
-            {
-                scrollTop: $(hash).offset().top - 87,
-            },
-            400,
-            function () {
-                // Add hash (#) to URL when done scrolling (default click behavior)
-                // window.location.hash = hash;
-            }
-        );
-    } // End if
+        if ($(window).width() <= 991) {
+            $("html, body").animate(
+                {
+                    scrollTop: $(hash).offset().top - 80,
+                },
+                400
+            );
+        } else {
+            $("html, body").animate(
+                {
+                    scrollTop: $(hash).offset().top - 10,
+                },
+                400
+            );
+        }
+    }
 });
 
 $(document).ready(function () {

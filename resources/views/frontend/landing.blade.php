@@ -4,6 +4,7 @@
 
 @section('CssTambahanAfter')
 <link rel="stylesheet" href="{{asset('css/rangeslider.css')}}">
+<link rel="stylesheet" href="{{asset('css/landing.css')}}">
 @endsection
 
 @section('header')
