@@ -22,8 +22,8 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-md-0">
-                <button type="button" class="btn btn-outline-dark mr-3 px-4">Daftar</button>
-                <button type="button" class="btn btn-outline-dark ml-3 px-4">Masuk</button>
+                <a class="btn btn-outline-dark mr-3 px-4" href="{{route('registration-page')}}">Daftar</a>
+                <a class="btn btn-outline-dark ml-3 px-4">Masuk</a>
             </form>
         </div>
     </nav>
