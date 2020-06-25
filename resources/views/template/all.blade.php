@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{asset("css/font-awesome-all.min.css")}}">
     {{-- css umum --}}
     @yield('CssTambahanAfter')
+    <script src="{{asset('js/pace.min.js')}}"></script>
     <link rel="stylesheet" href="{{asset('css/all.blade.css')}}">
 </head>
 
@@ -25,6 +26,7 @@
     @yield('footer')
     @yield('JsTambahanBefore')
     <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
+
     <script src="{{asset('js/popper.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     @yield('JsTambahanAfter')
