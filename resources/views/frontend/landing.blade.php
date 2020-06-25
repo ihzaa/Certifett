@@ -11,8 +11,7 @@
 @endsection
 
 @section('konten')
-<div class="container">
-
+<div id="isi" class="container">
     <div class="row" id="WhatIsIt">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 my-auto">
             <h2>certifett.</h2>
