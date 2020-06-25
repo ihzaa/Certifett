@@ -1,6 +1,6 @@
 @extends('template.all')
 
-@section('JudulHalaman','Certiffet - Daftar')
+@section('JudulHalaman','Certiffet - Masuk')
 
 @section('CssTambahanAfter')
 <link rel="stylesheet" href="{{asset('css/style-yusuf.css')}}">
@@ -14,12 +14,10 @@
 <div class="container">
   <article class="text-center auth">
     <h1 id="judul2">
-      Daftar
+      Masuk
     </h1>
-    <form id="daftar">
+    <form id="login">
       <div class="form-group">
-        <input type="nama" class="form-control mx-auto" id="exampleInputNama" placeholder="Nama Lengkap">
-      </div>
       <div class="form-group">
         <input type="email" class="form-control mx-auto" id="exampleInputEmail" placeholder="Email">
       </div>
@@ -27,8 +25,8 @@
         <input type="password" class="form-control mx-auto" id="exampleInputPassword" placeholder="Password">
       </div>
       <img src='{{asset("images/Savings-pana.png")}}'>
-      <button type="button" class="btn-outline-dark btn-auth">Daftar</button>
-      <h4 id="text1">Sudah punya akun? <a href="{{route('login-page')}}"><span>masuk</span></a></h4>
+      <button type="button" class="btn-outline-dark btn-auth">Masuk</button>
+      <h4 id="text1">Belum punya akun? <a href="{{route('registration-page')}}"><span>daftar</span></a></h4>
     </form> 
     
   </article>

@@ -1,5 +1,4 @@
 .container{
-  position: relative;
   margin-bottom: 100px;
 }
 /* CSS halaman admin */
@@ -30,7 +29,7 @@
 
 /* akhir CSS halaman admin */
 
-/* CSS halaman Daftar */
+/* CSS halaman Daftar dan Login*/
 #judul2{
   margin-top: 110px;
   line-height: 60px;
@@ -44,17 +43,18 @@
   margin-top: 58px;
 }
 
-.reg img{
-  z-index: -1;
-  margin-top: 70px;
-  position: absolute;
+#login{
+  margin-top: 58px;
+}
+
+.auth img{
+  margin: 0 auto;
+  display: block;
   max-width: 45%;
   height: auto;
-  left: 27%;
 }
 
 .form-control{
-  z-index: 10;
   margin-bottom: 24px;
   border: 1px solid #707070;
   width: 40%;
@@ -73,10 +73,9 @@
   font-size: 20px;
   color: #707070;
 }
-.btn-daftar{
+.btn-auth{
   padding: 16px;
   width: 40%;
-  margin-top: 273px ;
   margin-bottom:24px;
   font-size: 26px;
   font-family: Roboto;
@@ -93,19 +92,28 @@
 
 #text1 span{
   color: #263238;
-  font-weight: 600;  
+  font-weight: 500;  
+}
+
+#text1 a{
+  text-decoration: none;
 }
 
 #text1 span:hover{
   cursor: pointer;
   font-weight: 900;
 }
-/* akhir CSS halaman daftar */
+/* akhir CSS halaman daftar dan login*/
 
 @media screen and (max-width: 990px) {
 
-  /* CSS halaman daftar */
+.container{
+  margin-bottom: 30px;
+}
+
+  /* CSS halaman daftar dan login */
 #judul2{
+  margin-top: 40px;
   font-size: 32px;
 }
 
@@ -113,11 +121,14 @@
   margin-top: 28px;
 }
 
+#login{
+  margin-top: 28px;
+}
+
 .form-control{
-  z-index: 10;
   margin-bottom: 24px;
   border: 1px solid #707070;
-  width: 60%;
+  width: 80%;
   border-radius: 16px;
   opacity: 1;
   padding: 16px;
@@ -128,11 +139,10 @@
   color: #707070;
 }
 
-.btn-daftar{
+.btn-auth{
   padding: 16px;
-  width: 60%;
-  margin-top: 180px ;
-  margin-bottom:24px;
+  width: 80%;
+  margin-bottom:16px;
   font-size: 20px;
   font-family: Roboto;
   letter-spacing: 0px;
@@ -142,18 +152,14 @@
   border-radius: 16px;
 }
 
-.reg img{
-  z-index: -1;
-  margin-top: 80px;
-  position: absolute;
-  max-width: 70%;
+.auth img{
+  max-width: 90%;
   height: auto;
-  left: 16%;
 }
 
 #text1{
   font-size: 16px;
 }
-/* akhir CSS halaman daftar */
+/* akhir CSS halaman daftar dan login*/
 
 }
