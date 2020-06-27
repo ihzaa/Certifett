@@ -186,8 +186,11 @@
   color: #707070;
 }
 
-#agencyHome img{
+.edit{
   margin-top: 13px;
+}
+
+#agencyHome img{
   width: 36px;
   display: inline;
   float: right;
@@ -298,19 +301,11 @@
 #acaraBaru{
   width: 100%;
   font-size: 26px;
-  font-weight: 700;
   margin-top: 20px;
-  box-shadow: 0px 3px 6px #00000029;
-  border: 2px solid #707070;
-  opacity: 1;
-  border-radius: 16px;
-  padding: 10px 64px;
 }
 
 .box{
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
 }
 
@@ -331,10 +326,6 @@
   color: #263238;
 }
 
-#agencyHome a{
-  text-decoration: none;
-}
-
 #agencyHome p{
   margin-top: -5px;
   font-size: 24px;
@@ -342,15 +333,6 @@
   letter-spacing: 0px;
   color: #707070;
 }
-
-#agencyHome img{
-  margin-top: 13px;
-  width: 36px;
-  display: inline;
-  float: right;
-  margin-left: 16px;
-}
-
 /* akhir CSS halaman agency home */
 
 }

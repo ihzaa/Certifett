@@ -14,6 +14,10 @@ Route::get('daftar', function () {
   return view('frontend.daftar');
 })->name("registration-page");
 
-Route::get('agencyHome', function () {
+Route::get('berandaAgensi', function () {
   return view('frontend.agencyHome');
 })->name("agencyHome-page");
+
+Route::get('buatAcara', function () {
+  return view('frontend.buatAcara');
+})->name("createEvent-page");
