@@ -21,3 +21,7 @@ Route::get('berandaAgensi', function () {
 Route::get('buatAcara', function () {
   return view('frontend.buatAcara');
 })->name("createEvent-page");
+
+Route::get('kelolaSertifikat', function () {
+  return view('frontend.kelolaSertifikat');
+})->name("manageCertificate-page");

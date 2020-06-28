@@ -199,6 +199,89 @@
 
 /* akhir CSS halaman agency home */
 
+/* CSS halaman kelola sertifikat*/
+
+#kelolaSertifikat{
+  padding: 50px 106px;
+  max-width: 100%;
+}
+
+#kelolaSertifikat .info h2{
+  display: inline-block;
+}
+
+#kelolaSertifikat .info p{
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+#kelolaSertifikat .tengah{
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+
+#kelolaSertifikat .info img{
+  display: inline-block;
+  width: 26px;
+  margin-top: -5px;
+}
+
+#kelolaSertifikat .info h5{
+  display: inline-block;
+  margin-left: 16px;
+}
+
+#kelolaSertifikat .search{
+  margin-top: 37px;
+  width: 100%;
+  border-radius: 16px;
+  padding: 10px 26px;
+  font-size: 20px;
+}
+
+#kelolaSertifikat input[type='text'] {
+  background-image: url(../icons/search-24px.svg);
+  background-position: 99% 7px;
+  background-repeat: no-repeat;
+}
+
+/* akhir CSS halaman kelola sertifikat*/
+
+/* CSS table */
+
+
+.tableHead{
+  border-top:3px solid #fff;
+}
+
+.tableHead > th:nth-child(1){
+border-radius:20px 0px 0px 16px;
+}
+
+.tableHead > th:nth-child(7){
+border-radius:0px 16px 16px 0px;
+}
+
+tbody{
+border-top:3px solid #fff;
+}
+
+.tableHead th{
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+td img{
+  margin-left: 10px;
+  width: 24px;
+  height: 24px;
+}
+
+
+/* akhir CSS table */
+
 @media screen and (max-width: 1200px) {
   #agencyHome .card:nth-of-type(4n+4){
     margin-right: 23px !important;
@@ -334,5 +417,15 @@
   color: #707070;
 }
 /* akhir CSS halaman agency home */
+
+/* CSS halaman kelola sertifikat*/
+
+#kelolaSertifikat{
+  padding: 30px 50px;
+  max-width: 100%;
+}
+
+
+/* akhir CSS halaman kelola sertifikat*/
 
 }
