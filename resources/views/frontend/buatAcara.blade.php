@@ -3,6 +3,7 @@
 @section('JudulHalaman','Certiffet - Create Event')
 
 @section('CssTambahanAfter')
+<link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/buat-acara.css')}}">
 @endsection
 
@@ -19,8 +20,8 @@
                 <div class="form-group">
                     <input type="text" class="form-control border-radius-c" id="NamaAcara" placeholder="Nama Acara">
                 </div>
-                <div class="form-group">
-                    <input type="text" class="form-control border-radius-c" id="tanggalAcara"
+                <div class="form-group date">
+                    <input type="text" class="form-control border-radius-c datepicker" id="tanggalAcara"
                         placeholder="Tanggal Acara">
                 </div>
                 <div class="form-group">
@@ -196,62 +197,6 @@ Karena telah mengikuti acara pelatihan JS 101 yang diselenggarakan oleh Team A">
 @endsection
 
 @section('JsTambahanAfter')
-<script src="{{asset('js/page/buat-acara.js')}}">
-</script>
-<script>
-    let box_khusus = `<div class="border border-radius-c p-2 mb-4" style="border-color: #495057;">
-                    <p class="text-normal">
-                        Properti Dengan Gambar
-                    </p>
-                    <p class="text-normal">
-                        Tambah properti khusus dengan gambar yang bisa dipakai untuk menambah hal-hal seperti pelaksana
-                        acara lengkap dengan nama dan tanda tangan. atau untuk kebutuhan teks dan gambar lainnya.
-                    </p>
-                    <div class="row">
-                        <div class="col-10 ml-auto mr-auto">
-                            <div class="form-group">
-                                <input type="text" class="form-control border-radius-c"
-                                    placeholder="Nama Properti*, contoh: Ketua Pelaksana" name="khusus_nama[]">
-                            </div>
-                            <div class="form-group">
-                                <div class="preview-zone hidden">
-                                    <div class="box box-solid">
-                                        <div class="box-header with-border">
-                                            <div><b>Preview</b></div>
-                                            <div class="box-tools pull-right">
-                                                <button type="button" class="btn btn-danger btn-sm remove-preview">
-                                                    <i class="fa fa-times"></i> Hapus
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div class="box-body"></div>
-                                    </div>
-                                </div>
-                                <div class="dropzone-wrapper border-radius-c">
-                                    <div class="dropzone-desc" style="width: 90%;">
-                                        <img src="{{asset('images/add_photo.svg')}}" alt="" height="56" width="56"
-                                            class="img-fluid" style="float: left">
-                                        <h5 class="text-normal">Gambar</h5>
-                                        <p class="text-normal" style="font-size: 12px;">Drag atau klik untuk menambahkan
-                                            (optional)</p>
-                                    </div>
-                                    <input type="file" name="khusus_gambar[]" class="dropzone">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control border-radius-c" name="khusus_properti[]" id="karena" rows="5" placeholder="Data Properti*,
-    contoh:
-
-    Yusuf Ahmad
-    NIK. 123 456 789"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>`;
-
-    $(document).on("click","#btn-tambah-properti",function(){
-        $("#properti-tambahan").append(box_khusus);
-    });
-
-</script>
+<script src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('js/page/buat-acara.js')}}"></script>
 @endsection

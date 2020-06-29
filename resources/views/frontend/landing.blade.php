@@ -19,9 +19,9 @@
             <p class="text-normal">Verifikasi sertifikat yang dibuat dengan certifett menggunakan ID sertifikat</p>
             <div class="input-group input-group-lg mb-3 text-hijau mt-4 pt-4">
                 <div class="input-group-prepend">
-                    <span class="input-group-text transparent text-hijau hash border-radius-c border-radius-tanpa-kanan" id="basic-addon1">#</span>
+                    <span class="input-group-text transparent text-hijau hash border-radius-c border-radius-tanpa-kanan border-hijau" id="basic-addon1">#</span>
                 </div>
-                <input type="text" class="form-control kolom-input-id hash border-radius-c border-radius-tanpa-kiri" aria-label="Username"
+                <input type="text" class="form-control kolom-input-id hash border-radius-c border-radius-tanpa-kiri border-hijau" aria-label="Username"
                     aria-describedby="basic-addon1">
             </div>
         </div>

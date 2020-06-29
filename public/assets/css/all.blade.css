@@ -26,11 +26,15 @@ body {
 }
 
 .text-hijau {
-    color: #26A69A !important;
+    color: #26a69a !important;
 }
 
 .judul {
     font-size: 80px !important;
+}
+
+.border-hijau {
+    border-color: #26a69a !important;
 }
 
 .border-radius-c {
@@ -73,4 +77,9 @@ body {
     z-index: 9999;
     background: url("/assets/images/loader/Preloader_9.gif") center no-repeat
         #fff;
+}
+
+
+.datepicker{
+    padding-left: 15px !important;
 }
