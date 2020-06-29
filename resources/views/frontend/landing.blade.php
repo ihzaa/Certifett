@@ -13,10 +13,23 @@
 
 @section('konten')
 <div id="isi" class="container">
+    <div class="row text-center margin-when-small mt-4">
+        <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8 ml-auto mr-auto ">
+            <h1 class="text-hijau font-weight-normal judul">Verifikasi Sertifikat</h1>
+            <p class="text-normal">Verifikasi sertifikat yang dibuat dengan certifett menggunakan ID sertifikat</p>
+            <div class="input-group input-group-lg mb-3 text-hijau mt-4 pt-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text transparent text-hijau hash border-radius-c border-radius-tanpa-kanan" id="basic-addon1">#</span>
+                </div>
+                <input type="text" class="form-control kolom-input-id hash border-radius-c border-radius-tanpa-kiri" aria-label="Username"
+                    aria-describedby="basic-addon1">
+            </div>
+        </div>
+    </div>
     <div class="row" id="WhatIsIt">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 my-auto">
-            <h2>certifett.</h2>
-            <h1>Certifett Factory</h1>
+            <h1>certifett.</h1>
+            <h1>Certificate Factory</h1>
             <p>certifett adalah layanan untuk mempermudah pembuatan & verikasi sertifikat. Layanan kami dapat digunakan
                 oleh sebuah instansi untuk membuat & menyebarkan sertifikat ke peserta acara dengan mudah. Sertifikat
                 yang dibuat melalui certifett dapat diverikasi ketika peserta membutuhkannya sehingga keasliannya

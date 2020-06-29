@@ -25,6 +25,14 @@ body {
     color: #707070;
 }
 
+.text-hijau {
+    color: #26A69A !important;
+}
+
+.judul {
+    font-size: 80px !important;
+}
+
 .border-radius-c {
     border-radius: 16px !important;
 }
