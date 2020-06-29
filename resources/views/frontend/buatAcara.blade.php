@@ -3,7 +3,7 @@
 @section('JudulHalaman','Certiffet - Create Event')
 
 @section('CssTambahanAfter')
-<link rel="stylesheet" href="{{asset('css/style-yusuf.css')}}">
+<link rel="stylesheet" href="{{asset('css/buat-acara.css')}}">
 @endsection
 
 @section('header')
@@ -11,19 +11,185 @@
 @endsection
 
 @section('konten')
-<div class="container">
-  <h1>Buat Acara</h1>
-  <form id="buatAcara">
-      <div class="form-group">
-        <input type="namaAcara" class="form-control" id="NamaAcara" placeholder="Nama Acara">
-      </div>
-      <div class="form-group">
-        <input type="tanggalAcara" class="form-control" id="tanggalAcara" placeholder="Tanggal Acara">
-      </div>
-      <div class="form-group">
-        <input type="jumlahPeserta" class="form-control" id="jumlahPeserta" placeholder="Jumlah Peserta">
-      </div>
-    </form>
-    <h1>Properti Sertifikat</h1>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+            <h1>Buat Acara</h1>
+            <form id="buatAcara">
+                <div class="form-group">
+                    <input type="text" class="form-control border-radius-c" id="NamaAcara" placeholder="Nama Acara">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control border-radius-c" id="tanggalAcara"
+                        placeholder="Tanggal Acara">
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-10 col-sm-10 col-md-11 col-xl-11 col-lg-11 pr-4">
+                            <input type="number" class="form-control border-radius-c" id="jumlahPeserta"
+                                placeholder="Jumlah Peserta">
+                        </div>
+                        <div class="col-2 col-sm-2 col-md-1 col-lg-1 col-xl-1 d-flex justify-content-end align-items-center">
+                            <p class="m-auto ml-auto text-normal">Orang</p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12">
+            <h1>Properti Sertifikat</h1>
+            <p class="text-normal">Properti Sertifikat yang akan terlihat ke peserta atau
+                publik.</p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <h5>Properti Umum</h5>
+            <p class="text-normal">Properti yang umumnya terdapat pada sebuah sertifikat.</p>
+            <div class="form-group">
+                <input type="text" class="form-control border-radius-c" id="NamaInstansi" placeholder="Nama Instansi*">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control border-radius-c" id="JenisAcara"
+                    placeholder="Jenis/Nama Sertifikat*, contoh: Sertifikat, Piagam Penghargaan">
+            </div>
+            <div class="form-group">
+                <div class="preview-zone hidden">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <div><b>Preview</b></div>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-danger btn-sm remove-preview">
+                                    <i class="fa fa-times"></i> Hapus Gambar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body"></div>
+                    </div>
+                </div>
+                <div class="dropzone-wrapper border-radius-c">
+                    <div class="dropzone-desc" style="width: 90%;">
+                        <img src="{{asset('images/add_photo.svg')}}" alt="" height="56" width="56" class="img-fluid"
+                            style="float: left">
+                        <h5 class="text-normal">Logo Instansi</h5>
+                        <p class="text-normal">Drag atau klik untuk menambahkan</p>
+                    </div>
+                    <input type="file" name="logo_instansi" class="dropzone">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="preview-zone hidden">
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <div><b>Preview</b></div>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-danger btn-sm remove-preview">
+                                    <i class="fa fa-times"></i> Hapus Gambar
+                                </button>
+                            </div>
+                        </div>
+                        <div class="box-body"></div>
+                    </div>
+                </div>
+                <div class="dropzone-wrapper border-radius-c">
+                    <div class="dropzone-desc" style="width: 90%;">
+                        <img src="{{asset('images/add_photo.svg')}}" alt="" height="56" width="56" class="img-fluid"
+                            style="float: left">
+                        <h5 class="text-normal">Logo Acara/Sertifikat</h5>
+                        <p class="text-normal">Drag atau klik untuk menambahkan</p>
+                    </div>
+                    <input type="file" name="logo_acara" class="dropzone">
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control border-radius-c" id="karena" rows="7" placeholder="Mendapatkan sertifikat karena…
+contoh:
+Karena telah mengikuti acara pelatihan JS 101 yang diselenggarakan oleh Team A"></textarea>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <div class="row">
+                <div class="col-10">
+                    <h5>Properti Khusus</h5>
+                </div>
+                <div class="col-2">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="switch_properti_khusus">
+                        <label class="custom-control-label" for="switch_properti_khusus"></label>
+                    </div>
+                </div>
+            </div>
+            <p class="text-normal">Properti yang dapat di atur sesuai kebutuhan sertifikat</p>
+            <div class="border border-radius-c p-2 mb-4" style="border-color: #495057;">
+                <p class="text-normal">
+                    Properti Dengan Gambar
+                </p>
+                <p class="text-normal">
+                    Tambah properti khusus dengan gambar yang bisa dipakai untuk menambah hal-hal seperti pelaksana
+                    acara lengkap dengan nama dan tanda tangan. atau untuk kebutuhan teks dan gambar lainnya.
+                </p>
+                <div class="row">
+                    <div class="col-10 ml-auto mr-auto">
+                        <div class="form-group">
+                            <input type="text" class="form-control border-radius-c"
+                                placeholder="Nama Properti*, contoh: Ketua Pelaksana">
+                        </div>
+                        <div class="form-group">
+                            <div class="preview-zone hidden">
+                                <div class="box box-solid">
+                                    <div class="box-header with-border">
+                                        <div><b>Preview</b></div>
+                                        <div class="box-tools pull-right">
+                                            <button type="button" class="btn btn-danger btn-sm remove-preview">
+                                                <i class="fa fa-times"></i> Hapus Gambar
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="box-body"></div>
+                                </div>
+                            </div>
+                            <div class="dropzone-wrapper border-radius-c">
+                                <div class="dropzone-desc" style="width: 90%;">
+                                    <img src="{{asset('images/add_photo.svg')}}" alt="" height="56" width="56"
+                                        class="img-fluid" style="float: left">
+                                    <h5 class="text-normal">Gambar</h5>
+                                    <p class="text-normal" style="font-size: 12px;">Drag atau klik untuk menambahkan (optional)</p>
+                                </div>
+                                <input type="file" name="logo_acara" class="dropzone">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control border-radius-c" id="karena" rows="5" placeholder="Data Properti*,
+contoh:
+
+Yusuf Ahmad
+NIK. 123 456 789"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-outline-secondary border-radius-c btn-block text-primary-c p-3"
+                style="border-color: #707070">
+                <h5>Tambah Properti Lain</h5>
+                <p class="mb-0">Tambah properti lain sesuai kebutuhan.</p>
+            </button>
+            <p class="text-normal mt-4">Perlu Bantuan? Hubungi kami <span
+                    class="text-primary-c font-weight-bold">certifett@gmail.com</span></p>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center mt-5">
+        <div class="col-6"><button type="button"
+                class="btn btn-outline-secondary btn-block font-weight-bold border-radius-c text-primary-c">
+                <p class=" mb-0">Lanjut</p>
+            </button></div>
+
+    </div>
 </div>
+@endsection
+
+@section('JsTambahanAfter')
+<script src="{{asset('js/page/buat-acara.js')}}">
+</script>
 @endsection

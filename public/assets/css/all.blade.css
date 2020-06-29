@@ -21,6 +21,14 @@ body {
     color: #e91e63;
 }
 
+.text-normal {
+    color: #707070;
+}
+
+.border-radius-c {
+    border-radius: 16px !important;
+}
+
 .bg-primary-c {
     background-color: #263238;
 }
