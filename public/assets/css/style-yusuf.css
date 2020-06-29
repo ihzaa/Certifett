@@ -243,6 +243,7 @@
 
 #kelolaSertifikat input[type='text'] {
   background-image: url(../icons/search-24px.svg);
+  background-size: 27px;
   background-position: 99% 7px;
   background-repeat: no-repeat;
 }
@@ -273,12 +274,31 @@ border-top:3px solid #fff;
   padding-bottom: 18px;
 }
 
-td img{
+td img,th img{
   margin-left: 10px;
   width: 24px;
   height: 24px;
 }
 
+
+
+.tableHead th {
+  position: sticky;
+  top: -2px;
+  z-index: 10;
+}
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 400px;
+  /* overflow-y: hidden; */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.my-custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
 /* akhir CSS table */
 
@@ -421,11 +441,27 @@ td img{
 /* CSS halaman kelola sertifikat*/
 
 #kelolaSertifikat{
-  padding: 30px 50px;
+  padding: 30px 40px;
   max-width: 100%;
 }
 
-
 /* akhir CSS halaman kelola sertifikat*/
+
+/* CSS table */
+
+.table th, .table td{
+  font-size: 12px;
+  padding: 10px 5px ;
+}
+
+th img, td img{
+  width: 16px;
+}
+
+.colHide{
+  display: none;
+}
+
+/* akhir CSS table */
 
 }

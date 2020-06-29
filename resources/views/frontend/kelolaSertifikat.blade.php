@@ -31,26 +31,29 @@
     <input type="text" class="form-control search" placeholder="Nama atau Email">
   </div>
 
-  <div class="table-responsive">
+  <div class="table-responsive my-custom-scrollbar" id="style-2">
   <table class="table">
   <thead class="thead-dark">
     <tr class="tableHead">
       <th scope="col">
         <label class="check">
-          <input type="checkbox" class="check_input">
-          <span class="check_indicator"></span>
+          <input type="checkbox" onchange="checkAll(this)" name="chk[]" class="check_input">
+          <span class="check_indicator" id="checkbox_header"></span>
         </label>
       </th>
       <th scope="col">ID Sertifikat</th>
       <th scope="col">Nama</th>
-      <th scope="col">Email</th>
-      <th scope="col">Tanggal Rilis</th>
-      <th scope="col">Berlaku Sampai</th>
-      <th scope="col"></th>
+      <th scope="col" class="colHide">Email</th>
+      <th scope="col" class="colHide">Tanggal Rilis</th>
+      <th scope="col" class="colHide">Berlaku Sampai</th>
+      <th scope="col">
+        <img src='{{asset("icons/create-24px.svg")}}'>
+        <img src='{{asset("icons/delete-24px.svg")}}'>
+      </th>
     </tr>
   </thead>
   <tbody>
-    <tr>
+  <tr>
       <th scope="row">
       <label class="check">
           <input type="checkbox" class="check_input">
@@ -59,9 +62,9 @@
       </th>
       <td>Mark</td>
       <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
-      <td>Otto</td>
+      <td class="colHide">@mdo</td>
+      <td class="colHide">Mark</td>
+      <td class="colHide">Otto</td>
       <td>
         <img src='{{asset("icons/create-24px.svg")}}'>
         <img src='{{asset("icons/delete-24px.svg")}}'>
@@ -74,11 +77,11 @@
           <span class="check_indicator"></span>
         </label>
       </th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td></td>
-      <td></td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td class="colHide">@mdo</td>
+      <td class="colHide">Mark</td>
+      <td class="colHide">Otto</td>
       <td>
         <img src='{{asset("icons/create-24px.svg")}}'>
         <img src='{{asset("icons/delete-24px.svg")}}'>
@@ -91,11 +94,113 @@
           <span class="check_indicator"></span>
         </label>
       </th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-      <td></td>
-      <td></td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td class="colHide">@mdo</td>
+      <td class="colHide">Mark</td>
+      <td class="colHide">Otto</td>
+      <td>
+        <img src='{{asset("icons/create-24px.svg")}}'>
+        <img src='{{asset("icons/delete-24px.svg")}}'>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+      <label class="check">
+          <input type="checkbox" class="check_input">
+          <span class="check_indicator"></span>
+        </label>
+      </th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td class="colHide">@mdo</td>
+      <td class="colHide">Mark</td>
+      <td class="colHide">Otto</td>
+      <td>
+        <img src='{{asset("icons/create-24px.svg")}}'>
+        <img src='{{asset("icons/delete-24px.svg")}}'>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+      <label class="check">
+          <input type="checkbox" class="check_input">
+          <span class="check_indicator"></span>
+        </label>
+      </th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td class="colHide">@mdo</td>
+      <td class="colHide">Mark</td>
+      <td class="colHide">Otto</td>
+      <td>
+        <img src='{{asset("icons/create-24px.svg")}}'>
+        <img src='{{asset("icons/delete-24px.svg")}}'>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+      <label class="check">
+          <input type="checkbox" class="check_input">
+          <span class="check_indicator"></span>
+        </label>
+      </th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td class="colHide">@mdo</td>
+      <td class="colHide">Mark</td>
+      <td class="colHide">Otto</td>
+      <td>
+        <img src='{{asset("icons/create-24px.svg")}}'>
+        <img src='{{asset("icons/delete-24px.svg")}}'>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+      <label class="check">
+          <input type="checkbox" class="check_input">
+          <span class="check_indicator"></span>
+        </label>
+      </th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td class="colHide">@mdo</td>
+      <td class="colHide">Mark</td>
+      <td class="colHide">Otto</td>
+      <td>
+        <img src='{{asset("icons/create-24px.svg")}}'>
+        <img src='{{asset("icons/delete-24px.svg")}}'>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+      <label class="check">
+          <input type="checkbox" class="check_input">
+          <span class="check_indicator"></span>
+        </label>
+      </th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td class="colHide">@mdo</td>
+      <td class="colHide">Mark</td>
+      <td class="colHide">Otto</td>
+      <td>
+        <img src='{{asset("icons/create-24px.svg")}}'>
+        <img src='{{asset("icons/delete-24px.svg")}}'>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">
+      <label class="check">
+          <input type="checkbox" class="check_input">
+          <span class="check_indicator"></span>
+        </label>
+      </th>
+      <td>Mark</td>
+      <td>Otto pedia nup pa</td>
+      <td class="colHide">@mdo</td>
+      <td class="colHide">Mark</td>
+      <td class="colHide">Otto</td>
       <td>
         <img src='{{asset("icons/create-24px.svg")}}'>
         <img src='{{asset("icons/delete-24px.svg")}}'>
@@ -105,4 +210,9 @@
   </table>
   </div>
 </div>
+@endsection
+
+@section('JsTambahanAfter')
+<script src="{{asset('js/page/checkbox.js')}}">
+</script>
 @endsection
