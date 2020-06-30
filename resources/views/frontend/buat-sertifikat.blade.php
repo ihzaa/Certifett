@@ -1,6 +1,6 @@
 @extends('template.all')
 
-@section('JudulHalaman','Certiffet - Create Certificate')
+@section('JudulHalaman','Certifett - Create Certificate')
 
 @section('CssTambahanAfter')
 <link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.min.css')}}">

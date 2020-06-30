@@ -22,8 +22,8 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-md-0">
-            <a class="btn btn-outline-dark mr-3 px-4" href="{{route('registration-page')}}">Daftar</a>
-            <a class="btn btn-outline-dark ml-3 px-4" href="{{route('login-page')}}">Masuk</a>
+            <a class="btn btn-outline-dark mr-3 px-4" href="{{route('register')}}">Daftar</a>
+            <a class="btn btn-outline-dark ml-3 px-4" href="{{route('login')}}">Masuk</a>
         </form>
     </div>
 </nav>

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+//Menggunakan Middleware auth
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/buat-sertifikat', function () {
+        return view('frontend.buat-sertifikat');
+    })->name('buat_sertifikat');
+    
+});
+
+
 Route::get('/', function () {
     return view('frontend.landing');
 })->name("landing-page");
-
-Route::get('/buat-sertifikat', function () {
-    return view('frontend.buat-sertifikat');
-});
