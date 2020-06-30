@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('password');
             $table->boolean('is_email_verified')->default(0);
+            $table->string('api_key');
             $table->timestamps();
         });
     }

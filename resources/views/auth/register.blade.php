@@ -38,4 +38,24 @@
 </div>
 @endsection
 @section('JsTambahanAfter')
+@if ($errors->any())
+<script>
+    let arr = new Array();
+    <?php foreach($errors->all() as $e){ ?>
+        arr.push('<?php echo $e; ?>');
+    <?php } ?>
+
+    let ul_el = document.createElement("UL");
+
+    arr.forEach(ar =>{
+        ul_el.innerHTML += '<li>'+ar+'</li>';
+    });
+
+    swal({
+        title: "Sorry...",
+        content: ul_el,
+    });
+</script>
+
+@endif
 @endsection

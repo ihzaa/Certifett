@@ -25,7 +25,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/buat-sertifikat', function () {
         return view('frontend.buat-sertifikat');
     })->name('buat_sertifikat');
-    
+
+    Route::get('/logout/yes', function () {
+        Auth::logout();
+        return redirect(route('landing-page'));
+    })->name('logout-c');
 });
 
 

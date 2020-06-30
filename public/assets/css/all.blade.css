@@ -79,7 +79,22 @@ body {
         #fff;
 }
 
-
-.datepicker{
+.datepicker {
     padding-left: 15px !important;
+}
+
+#user-info-sm {
+    display: none;
+}
+#user-info-lg {
+    display: block;
+}
+
+@media screen and (max-width: 991px) {
+    #user-info-sm {
+        display: block;
+    }
+    #user-info-lg {
+        display: none;
+    }
 }
