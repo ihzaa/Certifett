@@ -66,6 +66,9 @@ $(document).ready(function () {
         orientation: "bottom",
     });
 });
+
+let gbr = document.querySelector("#gbr_add_foto").getAttribute("src");
+
 let box_khusus = `<div class="border border-radius-c p-2 mb-4" style="border-color: #495057;">
                 <p class="text-normal">
                     Properti Dengan Gambar
@@ -96,7 +99,7 @@ let box_khusus = `<div class="border border-radius-c p-2 mb-4" style="border-col
                             </div>
                             <div class="dropzone-wrapper border-radius-c">
                                 <div class="dropzone-desc" style="width: 90%;">
-                                    <img src="{{asset('images/add_photo.svg')}}" alt="" height="56" width="56"
+                                    <img src="${gbr}" alt="" height="56" width="56"
                                         class="img-fluid" style="float: left">
                                     <h5 class="text-normal">Gambar</h5>
                                     <p class="text-normal" style="font-size: 12px;">Drag atau klik untuk menambahkan

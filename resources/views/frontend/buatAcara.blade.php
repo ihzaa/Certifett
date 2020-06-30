@@ -155,7 +155,7 @@ Karena telah mengikuti acara pelatihan JS 101 yang diselenggarakan oleh Team A">
                                 <div class="dropzone-wrapper border-radius-c">
                                     <div class="dropzone-desc" style="width: 90%;">
                                         <img src="{{asset('images/add_photo.svg')}}" alt="" height="56" width="56"
-                                            class="img-fluid" style="float: left">
+                                            class="img-fluid" style="float: left" id="gbr_add_foto">
                                         <h5 class="text-normal">Gambar</h5>
                                         <p class="text-normal" style="font-size: 12px;">Drag atau klik untuk menambahkan
                                             (optional)</p>
