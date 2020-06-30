@@ -202,7 +202,7 @@
 /* CSS halaman kelola sertifikat*/
 
 #kelolaSertifikat{
-  padding: 50px 106px;
+  padding: 90px 106px;
   max-width: 100%;
 }
 
@@ -249,6 +249,15 @@
 }
 
 /* akhir CSS halaman kelola sertifikat*/
+
+/* CSS kelola peserta */
+
+.kelolaPeserta img{
+  width: 43%;
+  height: 20%;
+}
+
+/* akhir CSS kelola peserta */
 
 /* CSS table */
 

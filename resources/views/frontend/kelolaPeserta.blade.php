@@ -1,6 +1,6 @@
 @extends('template.all')
 
-@section('JudulHalaman','Certiffet - Manage Certificate')
+@section('JudulHalaman','Certiffet - Manage Participants')
 
 @section('CssTambahanAfter')
 <link rel="stylesheet" href="{{asset('css/style-yusuf.css')}}">
@@ -13,20 +13,22 @@
 
 @section('konten')
 <div class="container" id="kelolaSertifikat">
-  <h2>Sertifikat</h2>
-  <div class="info">
-    <h2>10.567</h2>
-    <p>sertifikat dibuat</p>
+  <div class="d-flex kelolaPeserta">
+    <div>
+      <h2>Peserta</h2>
+      <p>Daftar peserta yang terdaftar dalam JS 101.Buat sertifikat dengan cara mencentang kotak disamping kiri nama dan tekan tombol buat di sudut kanan atas tabel. Sertifikat yang telah dibuat dapat diunduh oleh peserta melalui www.domain.com/certificate dan www.ourdomain.com/cerfiticate. Tekan baris dari tabel dibawah untuk melihat preview sertifikat.</p>
+      <div class="info tengah">
+        <img src='{{asset("icons/event-24px.svg")}}'>
+        <h5>JS 101</h5>
+      </div>
+      <div class="info">
+        <img src='{{asset("icons/schedule-24px.svg")}}'>
+        <h5>Jumat, 12 Januari 2020</h5>
+      </div>
+    </div>
+    <img class="img-fluid" src='{{asset("images/Online Review-pana@2x.png")}}'>
   </div>
-  <div class="info tengah">
-    <img src='{{asset("icons/event-24px.svg")}}'>
-    <h5>JS 101</h5>
-  </div>
-  <div class="info">
-    <img src='{{asset("icons/schedule-24px.svg")}}'>
-    <h5>Jumat, 12 Januari 2020</h5>
-  </div>
-
+  
   <div class="input-group mb-5">
     <input type="text" class="form-control search" placeholder="Nama atau Email">
   </div>

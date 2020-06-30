@@ -1,6 +1,6 @@
 @extends('template.all')
 
-@section('JudulHalaman','Certiffet - Manage Certificate')
+@section('JudulHalaman','Certiffet - My Certificates')
 
 @section('CssTambahanAfter')
 <link rel="stylesheet" href="{{asset('css/style-yusuf.css')}}">
@@ -13,19 +13,7 @@
 
 @section('konten')
 <div class="container" id="kelolaSertifikat">
-  <h2>Sertifikat</h2>
-  <div class="info">
-    <h2>10.567</h2>
-    <p>sertifikat dibuat</p>
-  </div>
-  <div class="info tengah">
-    <img src='{{asset("icons/event-24px.svg")}}'>
-    <h5>JS 101</h5>
-  </div>
-  <div class="info">
-    <img src='{{asset("icons/schedule-24px.svg")}}'>
-    <h5>Jumat, 12 Januari 2020</h5>
-  </div>
+  <h2>Sertifikat saya</h2>
 
   <div class="input-group mb-5">
     <input type="text" class="form-control search" placeholder="Nama atau Email">
@@ -48,7 +36,8 @@
       <th scope="col" class="colHide">Tanggal Rilis</th>
       <th scope="col" class="colHide">Berlaku Sampai</th>
       <th scope="col">
-        <img style="margin-left:48px" src='{{asset("icons/delete-24px.svg")}}'>
+        <img src='{{asset("icons/create-24px.svg")}}'>
+        <img src='{{asset("icons/delete-24px.svg")}}'>
       </th>
     </tr>
   </thead>
