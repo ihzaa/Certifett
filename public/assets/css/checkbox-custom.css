@@ -6,7 +6,7 @@
   cursor: pointer;
 }
 
-.check_input{
+input[type=checkbox]{
   opacity: 0;
 }
 
@@ -19,7 +19,7 @@
   border-radius: 2px;
 }
 
-.check_input:checked ~ .check_indicator{
+input[type=checkbox]:checked ~ .check_indicator{
   background-image: url(../icons/check_box-24px.svg);
   background-size: 130%;
   background-position: center;

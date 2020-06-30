@@ -31,13 +31,14 @@
     <input type="text" class="form-control search" placeholder="Nama atau Email">
   </div>
 
-  <div class="table-responsive my-custom-scrollbar" id="style-2">
+<form>
+<div class="table-responsive my-custom-scrollbar" id="style-2">
   <table class="table">
   <thead class="thead-dark">
     <tr class="tableHead">
       <th scope="col">
         <label class="check">
-          <input type="checkbox" onchange="checkAll(this)" name="chk[]" class="check_input">
+          <input type="checkbox" onchange="checkAll(this)" class="check_header" id="check_header">
           <span class="check_indicator" id="checkbox_header"></span>
         </label>
       </th>
@@ -56,7 +57,7 @@
   <tr>
       <th scope="row">
       <label class="check">
-          <input type="checkbox" class="check_input">
+          <input type="checkbox" name="chk" class="check_input">
           <span class="check_indicator"></span>
         </label>
       </th>
@@ -96,108 +97,6 @@
       </th>
       <td>Mark</td>
       <td>Otto</td>
-      <td class="colHide">@mdo</td>
-      <td class="colHide">Mark</td>
-      <td class="colHide">Otto</td>
-      <td>
-        <img src='{{asset("icons/create-24px.svg")}}'>
-        <img src='{{asset("icons/delete-24px.svg")}}'>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">
-      <label class="check">
-          <input type="checkbox" class="check_input">
-          <span class="check_indicator"></span>
-        </label>
-      </th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td class="colHide">@mdo</td>
-      <td class="colHide">Mark</td>
-      <td class="colHide">Otto</td>
-      <td>
-        <img src='{{asset("icons/create-24px.svg")}}'>
-        <img src='{{asset("icons/delete-24px.svg")}}'>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">
-      <label class="check">
-          <input type="checkbox" class="check_input">
-          <span class="check_indicator"></span>
-        </label>
-      </th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td class="colHide">@mdo</td>
-      <td class="colHide">Mark</td>
-      <td class="colHide">Otto</td>
-      <td>
-        <img src='{{asset("icons/create-24px.svg")}}'>
-        <img src='{{asset("icons/delete-24px.svg")}}'>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">
-      <label class="check">
-          <input type="checkbox" class="check_input">
-          <span class="check_indicator"></span>
-        </label>
-      </th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td class="colHide">@mdo</td>
-      <td class="colHide">Mark</td>
-      <td class="colHide">Otto</td>
-      <td>
-        <img src='{{asset("icons/create-24px.svg")}}'>
-        <img src='{{asset("icons/delete-24px.svg")}}'>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">
-      <label class="check">
-          <input type="checkbox" class="check_input">
-          <span class="check_indicator"></span>
-        </label>
-      </th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td class="colHide">@mdo</td>
-      <td class="colHide">Mark</td>
-      <td class="colHide">Otto</td>
-      <td>
-        <img src='{{asset("icons/create-24px.svg")}}'>
-        <img src='{{asset("icons/delete-24px.svg")}}'>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">
-      <label class="check">
-          <input type="checkbox" class="check_input">
-          <span class="check_indicator"></span>
-        </label>
-      </th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td class="colHide">@mdo</td>
-      <td class="colHide">Mark</td>
-      <td class="colHide">Otto</td>
-      <td>
-        <img src='{{asset("icons/create-24px.svg")}}'>
-        <img src='{{asset("icons/delete-24px.svg")}}'>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">
-      <label class="check">
-          <input type="checkbox" class="check_input">
-          <span class="check_indicator"></span>
-        </label>
-      </th>
-      <td>Mark</td>
-      <td>Otto pedia nup pa</td>
       <td class="colHide">@mdo</td>
       <td class="colHide">Mark</td>
       <td class="colHide">Otto</td>
@@ -209,6 +108,8 @@
     </tbody>
   </table>
   </div>
+</form>
+  
 </div>
 @endsection
 
