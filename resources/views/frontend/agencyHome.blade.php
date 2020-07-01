@@ -4,6 +4,7 @@
 
 @section('CssTambahanAfter')
 <link rel="stylesheet" href="{{asset('css/style-yusuf.css')}}">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
 @section('header')
@@ -35,7 +36,7 @@
             @foreach ($data["acara"] as $d)
             <div class="card" id="card-{{$d->id}}">
                 <h3>{{$d->name}}</h3>
-                <p>{{$d->date}}</p>
+                <p>{{\Carbon\Carbon::parse($d->date)->formatLocalized("%A, %d %B %Y") }}</p>
                 <a href="#">
                     <h3>{{$data["jml_peserta"][$i++]}}</h3>
                     <p>Peserta</p>
@@ -51,6 +52,7 @@
                 </div>
             </div>
             @endforeach
+
 
             {{-- <div class="card">
         <h3>JS 102</h3>
@@ -118,12 +120,21 @@
 </div> --}}
 </div>
 </articel>
+@if(!count($data["acara"]))
+<div class="row mt-5">
+    <div class="col-10 col-lg-8 col-md-8 col-sm-10 border border-radius-c d-flex ml-auto mr-auto">
+        <div class="text-center ml-auto mr-auto">
+            <p class="mt-3">Anda Belum Memiliki Acara</p>
+        </div>
+    </div>
+</div>
+@endif
 </div>
 @endsection
 
 @section('JsTambahanAfter')
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="{{asset('js/axios.min.js')}}"></script>
+<script src="{{asset('js/vue.min.js')}}"></script>
 <script>
     var app = new Vue({
         el: '#agencyHome',
@@ -146,6 +157,7 @@
                         $(".se-pre-con").fadeIn();
                         var dataform = new FormData();
                         dataform.append('id',id);
+                        dataform.append('_token',$('meta[name="csrf-token"]').attr('content'));
                         axios.post("{{route('hapus_acara')}}",dataform).then(resp => {
                             this.hapusCard(id);
                             $(".se-pre-con").fadeOut("slow");;

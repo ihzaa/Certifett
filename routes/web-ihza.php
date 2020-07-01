@@ -22,7 +22,7 @@ Auth::routes();
 //Menggunakan Middleware auth
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/edit-acara/{id}','EventController@TampilHalamanEditAcara')->name('tampil_edit_acara');
+
 
     Route::get('/buat-sertifikat', function () {
         return view('frontend.buat-sertifikat');
@@ -33,7 +33,10 @@ Route::middleware(['auth'])->group(function () {
         return redirect(route('landing-page'));
     })->name('logout-c');
 
-    Route::post('/buat-acara/tambah', 'EventController@tambah')->name('tambah_event');
+    Route::post('/acara/tambah', 'EventController@tambah')->name('tambah_event');
+    Route::post('/acara/hapus', 'EventController@HapusAcara')->name('hapus_acara');
+    Route::get('/acara/edit/{id}', 'EventController@TampilHalamanEditAcara')->name('tampil_edit_acara');
+    Route::post('/acara/edit/{id}/simpan', 'EventController@EditAcara')->name('edit_acara');
 });
 
 

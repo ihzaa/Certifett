@@ -54,8 +54,10 @@ $(".remove-preview").on("click", function () {
     var boxZone = $(this).parents(".preview-zone").find(".box-body");
     var previewZone = $(this).parents(".preview-zone");
     var dropzone = $(this).parents(".form-group").find(".dropzone");
+    $(this).parents(".preview-zone").find("input").val("");
     boxZone.empty();
     previewZone.addClass("hidden");
+
     reset(dropzone);
 });
 
