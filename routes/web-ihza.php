@@ -30,6 +30,8 @@ Route::middleware(['auth'])->group(function () {
         Auth::logout();
         return redirect(route('landing-page'));
     })->name('logout-c');
+
+    Route::post('/buat-acara/tambah', 'EventController@tambah')->name('tambah_event');
 });
 
 

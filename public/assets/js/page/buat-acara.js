@@ -34,7 +34,7 @@ function reset(e) {
     e.unwrap();
 }
 
-$(".dropzone").change(function () {
+$(document).on("change",".dropzone",function () {
     readFile(this);
 });
 
@@ -70,8 +70,11 @@ $(document).ready(function () {
 let gbr = document.querySelector("#gbr_add_foto").getAttribute("src");
 
 let box_khusus = `<div class="border border-radius-c p-2 mb-4" style="border-color: #495057;">
-                <p class="text-normal">
+                <p class="text-normal d-flex">
                     Properti Dengan Gambar
+                    <button type="button" class="ml-auto btn btn-danger btn-sm remove-preview btn-hapus-blok-khusus">
+                                <i class="fa fa-times"></i> Hapus
+                    </button>
                 </p>
                 <p class="text-normal">
                     Tambah properti khusus dengan gambar yang bisa dipakai untuk menambah hal-hal seperti pelaksana
@@ -120,5 +123,25 @@ NIK. 123 456 789"></textarea>
             </div>`;
 
 $(document).on("click", "#btn-tambah-properti", function () {
-    $("#properti-tambahan").append(box_khusus);
+    if ($("#switch_properti_khusus").is(":checked")) {
+        $("#properti-tambahan").append(box_khusus);
+    } else {
+        swal(
+            "Aktifkan Switch Disamping Properti Khusus Untuk Menambahkan",
+            "",
+            "error"
+        );
+    }
+});
+
+$("#switch_properti_khusus").on("click", function () {
+    if ($(this).is(":checked")) {
+        $("fieldset").removeAttr("disabled");
+    } else {
+        $("fieldset").attr("disabled", "");
+    }
+});
+
+$(document).on("click", ".btn-hapus-blok-khusus", function () {
+    $(this).parent().parent().remove();
 });

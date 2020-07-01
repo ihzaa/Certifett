@@ -19,5 +19,10 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'api_key' => Hash::make('1asdpassword')
         ]);
+        DB::table('receipts')->insert([
+            "amount" => "100",
+            "amount_paid" => "100",
+            "via" => 'tokped'
+        ]);
     }
 }

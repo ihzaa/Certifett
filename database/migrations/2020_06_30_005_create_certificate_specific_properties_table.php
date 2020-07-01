@@ -15,7 +15,7 @@ class CreateCertificateSpecificPropertiesTable extends Migration
     {
         Schema::create('certificate_specific_properties', function (Blueprint $table) {
             $table->id();
-            $table->string('ketupel');
+            $table->string('nama');
             $table->text('gambar')->nullable();
             $table->string('data');
             $table->unsignedBigInteger('certificate_id');
