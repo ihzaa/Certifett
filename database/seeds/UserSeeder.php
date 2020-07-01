@@ -19,6 +19,13 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'api_key' => Hash::make('1asdpassword')
         ]);
+        DB::table('users')->insert([
+            'name' => "yusuf",
+            'email' => 'yusuf@gmail.com',
+            'is_email_verified' => 1,
+            'password' => Hash::make('password'),
+            'api_key' => Hash::make('1asdpassword')
+        ]);
         DB::table('receipts')->insert([
             "amount" => "100",
             "amount_paid" => "100",

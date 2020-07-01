@@ -12,40 +12,47 @@
 
 @section('konten')
 <div class="container">
-  <div class="card" id="emailVerification">
-    <div class="d-flex flex-sm-row justify-content-between">
-      <div class="d-flex">
-        <img src='{{asset("icons/warning-24px.svg")}}'>
-        <p>Email belum diverifikasi.</p>
-      </div>
-      <div>
-        <p>Kirim Ulang</p>
-      </div>
+    @if(!$data["is_email_verify"])
+    <div class="card" id="emailVerification">
+        <div class="d-flex flex-sm-row justify-content-between">
+            <div class="d-flex">
+                <img src='{{asset("icons/warning-24px.svg")}}'>
+                <p>Email belum diverifikasi.</p>
+            </div>
+            <div>
+                <p>Kirim Ulang</p>
+            </div>
+        </div>
     </div>
-  </div>
-  <articel id="agencyHome">
-    <div class="d-flex justify-content-between box">
-      <h1>Acara</h1>
-      <button class="btn btn-outline-dark" id="acaraBaru">Acara Baru</button>
-    </div>
-    <div class="d-flex box">
-      <div class="card">
-        <h3>JS 101</h3>
-        <p>Jumat, 12 Januari 2020</p>
-        <a href="#">
-          <h3>12.256</h3>
-          <p>Peserta</p>
-        </a>
-        <a href="#">
-          <h3>10.567</h3>
-          <p>Sertifikat Dibuat</p>
-        </a>
-        <div class="edit">
-          <img src='{{asset("icons/delete-24px.svg")}}'>
-          <img src='{{asset("icons/create-24px.svg")}}'>
+    @endif
+    <articel id="agencyHome">
+        <div class="d-flex justify-content-between box">
+            <h1>Acara</h1>
+            <a class="btn btn-outline-dark" id="acaraBaru" href="{{route('createEvent-page')}}">Acara Baru</a>
         </div>
-      </div>
-      <div class="card">
+        <div class="d-flex box">
+            <?php $i=0; ?>
+            @foreach ($data["acara"] as $d)
+            <div class="card" id="card-{{$d->id}}">
+                <h3>{{$d->name}}</h3>
+                <p>{{$d->date}}</p>
+                <a href="#">
+                    <h3>{{$data["jml_peserta"][$i++]}}</h3>
+                    <p>Peserta</p>
+                </a>
+                <a href="#">
+                    <h3>10.567</h3>
+                    <p>Sertifikat Dibuat</p>
+                </a>
+                <div class="edit">
+                    <a href="" @click="hapusKah({{$d->id}})"><img src='{{asset("icons/delete-24px.svg")}}'></a>
+                    <a href="{{route('tampil_edit_acara',['id' => $d->id])}}"><img
+                            src='{{asset("icons/create-24px.svg")}}'></a>
+                </div>
+            </div>
+            @endforeach
+
+            {{-- <div class="card">
         <h3>JS 102</h3>
         <p>Jumat, 12 Januari 2020</p>
         <a href="#">
@@ -58,10 +65,10 @@
         </a>
         <div class="edit">
           <img src='{{asset("icons/delete-24px.svg")}}'>
-          <img src='{{asset("icons/create-24px.svg")}}'>
+            <img src='{{asset("icons/create-24px.svg")}}'>
         </div>
-      </div>
-      <div class="card">
+</div> --}}
+{{-- <div class="card">
         <h3>JS 102</h3>
         <p>Jumat, 12 Januari 2020</p>
         <a href="#">
@@ -74,42 +81,111 @@
         </a>
         <div class="edit">
           <img src='{{asset("icons/delete-24px.svg")}}'>
-          <img src='{{asset("icons/create-24px.svg")}}'>
-        </div>
-      </div>
-      <div class="card">
-        <h3>JS 102</h3>
-        <p>Jumat, 12 Januari 2020</p>
-        <a href="#">
-          <h3>0</h3>
-          <p>Peserta</p>
-        </a>
-        <a href="#">
-          <h3>0</h3>
-          <p>Sertifikat Dibuat</p>
-        </a>
-        <div class="edit">
-          <img src='{{asset("icons/delete-24px.svg")}}'>
-          <img src='{{asset("icons/create-24px.svg")}}'>
-        </div>
-      </div>
-      <div class="card">
-        <h3>JS 102</h3>
-        <p>Jumat, 12 Januari 2020</p>
-        <a href="#">
-          <h3>0</h3>
-          <p>Peserta</p>
-        </a>
-        <a href="#">
-          <h3>0</h3>
-          <p>Sertifikat Dibuat</p>
-        </a>
-        <div class="edit">
-          <img src='{{asset("icons/delete-24px.svg")}}'>
-          <img src='{{asset("icons/create-24px.svg")}}'>
-        </div>
-      </div>
-    </div>
-    </articel>
+<img src='{{asset("icons/create-24px.svg")}}'>
 </div>
+</div> --}}
+{{-- <div class="card">
+        <h3>JS 102</h3>
+        <p>Jumat, 12 Januari 2020</p>
+        <a href="#">
+          <h3>0</h3>
+          <p>Peserta</p>
+        </a>
+        <a href="#">
+          <h3>0</h3>
+          <p>Sertifikat Dibuat</p>
+        </a>
+        <div class="edit">
+          <img src='{{asset("icons/delete-24px.svg")}}'>
+<img src='{{asset("icons/create-24px.svg")}}'>
+</div>
+</div> --}}
+{{-- <div class="card">
+        <h3>JS 102</h3>
+        <p>Jumat, 12 Januari 2020</p>
+        <a href="#">
+          <h3>0</h3>
+          <p>Peserta</p>
+        </a>
+        <a href="#">
+          <h3>0</h3>
+          <p>Sertifikat Dibuat</p>
+        </a>
+        <div class="edit">
+          <img src='{{asset("icons/delete-24px.svg")}}'>
+<img src='{{asset("icons/create-24px.svg")}}'>
+</div>
+</div> --}}
+</div>
+</articel>
+</div>
+@endsection
+
+@section('JsTambahanAfter')
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var app = new Vue({
+        el: '#agencyHome',
+        data: {
+            id_hapus: "",
+        },
+        methods: {
+            hapusKah: function(id=0){
+
+                event.preventDefault();
+                swal({
+                    title: "Yakin menghapus acara?",
+                    text: "Data peserta dan sertifikat akan ikut dihapus!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $(".se-pre-con").fadeIn();
+                        var dataform = new FormData();
+                        dataform.append('id',id);
+                        axios.post("{{route('hapus_acara')}}",dataform).then(resp => {
+                            this.hapusCard(id);
+                            $(".se-pre-con").fadeOut("slow");;
+                            swal(resp.data.message, {
+                        icon: "success",
+                        });
+                        }).catch(err =>{
+                            $(".se-pre-con").fadeOut("slow");;
+                            alert('err ='+err);
+                        });
+                    }
+                });
+            },
+            hapusCard: function(id){
+                $("#card-"+id).remove();
+            }
+        }
+    });
+    $(document).on("click",".btn_hapus", function(){
+        swal({
+            title: "Yakin menghapus acara?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                swal("Poof! Your imaginary file has been deleted!", {
+                icon: "success",
+                });
+            } else {
+                swal("Your imaginary file is safe!");
+            }
+        });
+    });
+</script>
+@if(Session::get('message'))
+<script>
+    swal("Berhasil",'{{Session::get('message')}}' , "success");
+</script>
+@endif
 @endsection

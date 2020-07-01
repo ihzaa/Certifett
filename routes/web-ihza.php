@@ -22,6 +22,8 @@ Auth::routes();
 //Menggunakan Middleware auth
 Route::middleware(['auth'])->group(function () {
 
+    Route::get('/edit-acara/{id}','EventController@TampilHalamanEditAcara')->name('tampil_edit_acara');
+
     Route::get('/buat-sertifikat', function () {
         return view('frontend.buat-sertifikat');
     })->name('buat_sertifikat');

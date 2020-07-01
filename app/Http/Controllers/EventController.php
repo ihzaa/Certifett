@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\certificate;
 use App\Models\certificate_specific_property;
 use App\Models\event;
+use App\Models\participant_event_certificate;
+use App\User;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -66,27 +68,30 @@ class EventController extends Controller
         $sertifikat->logo_sertifikat = $logo_sertif;
         $sertifikat->save();
 
-        for ($i = 0; $i < count($request->khusus_nama); $i++) {
-            if (!isset($request->khusus_gambar[$i])) {
-                certificate_specific_property::create([
-                    "nama" => $request->khusus_nama[$i],
-                    "data" => $request->khusus_properti[$i],
-                    "certificate_id" => $sertifikat->id
-                ]);
-            } else {
-                $file = $request->file('khusus_gambar')[$i];
-                $nama_file =  $sertifikat->id . 'Properti_Khusus' . '.' . $file->getClientOriginalExtension();
-                $tujuan_upload = 'assets/images/Properti_Khusus/';
-                $khusus_gambar = 'images/Properti_Khusus/' . $nama_file;
-                $file->move($tujuan_upload, $nama_file);
-                certificate_specific_property::create([
-                    "nama" => $request->khusus_nama[$i],
-                    "data" => $request->khusus_properti[$i],
-                    "gambar" => $khusus_gambar,
-                    "certificate_id" => $sertifikat->id
-                ]);
+        if (isset($request->switch_properti_khusus)) {
+            for ($i = 0; $i < count($request->khusus_nama); $i++) {
+                if (!isset($request->khusus_gambar[$i])) {
+                    certificate_specific_property::create([
+                        "nama" => $request->khusus_nama[$i],
+                        "data" => $request->khusus_properti[$i],
+                        "certificate_id" => $sertifikat->id
+                    ]);
+                } else {
+                    $file = $request->file('khusus_gambar')[$i];
+                    $nama_file =  $sertifikat->id . 'Properti_Khusus' . '.' . $file->getClientOriginalExtension();
+                    $tujuan_upload = 'assets/images/Properti_Khusus/';
+                    $khusus_gambar = 'images/Properti_Khusus/' . $nama_file;
+                    $file->move($tujuan_upload, $nama_file);
+                    certificate_specific_property::create([
+                        "nama" => $request->khusus_nama[$i],
+                        "data" => $request->khusus_properti[$i],
+                        "gambar" => $khusus_gambar,
+                        "certificate_id" => $sertifikat->id
+                    ]);
+                }
             }
         }
+
 
         $data = event::create([
             "name" => $request->nama_acara,
@@ -98,5 +103,30 @@ class EventController extends Controller
         ]);
 
         return redirect(route('agencyHome-page'))->with('message', 'Berhasil Menambahkan Acara');
+    }
+
+    public function HapusAcara(Request $request)
+    {
+        event::whereId($request->id)->delete();
+        return response()->json(['message' => 'Acara berhasil dihapus']);
+    }
+
+    public function TampilAcara()
+    {
+        $data = array();
+        $data["is_email_verify"] = Auth::user()->is_email_verified;
+        $data["acara"] = User::whereId(Auth::id())->first()->event()->get();
+        $data["jml_peserta"] = array();
+
+        foreach ($data["acara"] as $d) {
+            array_push($data["jml_peserta"], participant_event_certificate::whereEvent_id($d->id)->count());
+        }
+
+        return view("frontend.agencyHome", compact("data"));
+    }
+
+    public function TampilHalamanEditAcara($id)
+    {
+        return event::find($id);
     }
 }
