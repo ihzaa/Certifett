@@ -12,7 +12,7 @@
 @endsection
 
 @section('konten')
-<div class="container" id="kelolaSertifikat">
+<div class="container kelola" id="kelolaSertifikat">
   <div class="d-flex kelolaPeserta">
     <div>
       <h2>Peserta</h2>
@@ -25,10 +25,30 @@
         <img src='{{asset("icons/schedule-24px.svg")}}'>
         <h5>Jumat, 12 Januari 2020</h5>
       </div>
+      <div class="d-flex kartu">
+        <div class="card">
+          <h5>Import from .csv</h5>
+          <p>Export data yang telah ada. Format yang diterima adalah csv. Gunakan ini jika anda telah memiliki data peserta misalnya dari google form.</p>
+          <button type="button" class="btn btn-outline-dark">Import Sekarang</button>
+        </div>
+        <div class="card">
+          <h5>Share link</h5>
+          <p>Share link ini agar peserta dapat Mendaftar secara mandiri.</p>
+          <div class="d-flex">
+            <p id="linkCertifet">www.domain.com/certification/e...</p>
+            <img src="{{asset('icons/content_copy-24px.svg')}}" onclick="copyToClipboard('linkCertifet')">
+          </div>
+        </div>
+      </div>
     </div>
-    <img class="img-fluid" src='{{asset("images/Online Review-pana@2x.png")}}'>
+    <img class="img-fluid" id="bgImage" src='{{asset("images/Online Review-pana@2x.png")}}'>
   </div>
   
+  <div class="d-flex justify-content-between jumlah">
+    <h3>10.567/ 20.000 <span>Peserta dicentang</span></h3>
+    <button type="button" class="btn btn-outline-dark" id="buatSertif">Buat Sertifikat</button>
+  </div>
+
   <div class="input-group mb-5">
     <input type="text" class="form-control search" placeholder="Nama atau Email">
   </div>
@@ -50,7 +70,7 @@
       <th scope="col" class="colHide">Tanggal Rilis</th>
       <th scope="col" class="colHide">Berlaku Sampai</th>
       <th scope="col">
-        <img style="margin-left:48px" src='{{asset("icons/delete-24px.svg")}}'>
+        <img style="margin-left:30%" src='{{asset("icons/delete-24px.svg")}}'>
       </th>
     </tr>
   </thead>
