@@ -8,9 +8,7 @@ Route::middleware(['auth'])->group(function(){
     return view('frontend.admin');
   });
 
-  Route::get('berandaAgensi', function () {
-    return view('frontend.agencyHome');
-  })->name("agencyHome-page");
+  Route::get('/home','EventController@TampilAcara')->name("agencyHome-page");
   
   Route::get('buatAcara', function () {
     return view('frontend.buatAcara');
