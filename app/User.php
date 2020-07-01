@@ -27,4 +27,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function event()
+    {
+        return $this->hasMany('App\Models\event','user_owner');
+    }
 }

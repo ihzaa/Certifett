@@ -24,8 +24,8 @@ class CreateParticipantEventCertificatesTable extends Migration
             $table->text('congrat_word')->nullable();
             $table->timestamps();
 
-            $table->foreign('certificate_id')->on('certificate')->references('id')->onDelete('cascade');
-            $table->foreign('event_id')->on('event')->references('id')->onDelete('cascade');
+            $table->foreign('certificate_id')->on('certificates')->references('id')->onDelete('cascade');
+            $table->foreign('event_id')->on('events')->references('id')->onDelete('cascade');
         });
     }
 

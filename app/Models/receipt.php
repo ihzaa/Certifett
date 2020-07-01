@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +10,6 @@ class receipt extends Model
 
     public function event()
     {
-        return $this->hasMany('App\Models\event');
+        return $this->hasOne('App\Models\event');
     }
 }

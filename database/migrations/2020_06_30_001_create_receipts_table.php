@@ -15,8 +15,8 @@ class CreateReceiptsTable extends Migration
     {
         Schema::create('receipts', function (Blueprint $table) {
             $table->id();
-            $table->integet('amount');
-            $table->integet('amount_paid');
+            $table->integer('amount');
+            $table->integer('amount_paid');
             $table->string('via');
             $table->timestamps();
         });

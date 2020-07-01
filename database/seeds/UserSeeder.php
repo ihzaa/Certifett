@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
             'name' => "ihza",
             'email' => 'ihza@gmail.com',
             'password' => Hash::make('password'),
+            'api_key' => Hash::make('1asdpassword')
         ]);
     }
 }
