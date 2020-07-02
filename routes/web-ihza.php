@@ -24,9 +24,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-    Route::get('/sertifikat/{id}/buat', function () {
-        return view('frontend.buat-sertifikat');
-    })->name('buat_sertifikat');
+    Route::post('/sertifikat/{id}/buat', 'ParticipantEventCertificateController@BuatSertifikatPeserta')->name('buat_sertifikat');
 
     Route::get('/logout/yes', function () {
         Auth::logout();
@@ -47,3 +45,7 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/', function () {
     return view('frontend.landing');
 })->name("landing-page");
+
+Route::get('/certification/{id}', function () {
+    return view('frontend.landing');
+})->name("form_pendaftaran_event");

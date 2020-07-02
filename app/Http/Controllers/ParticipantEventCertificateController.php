@@ -16,9 +16,12 @@ class ParticipantEventCertificateController extends Controller
         $data["acara"] = event::whereId($id)->where('user_owner', Auth::id())->first();
         $data["peserta"] = participant_event_certificate::whereEvent_id($data['acara']->id)->get();
         $data["jml_peserta"] = count($data["peserta"]);
-        $data["jml_dibuat"] = participant_event_certificate::whereEvent_id($data["acara"]->id)->whereNotNull('certificate_id',)->count();
 
-        // return $data;
         return view("frontend.kelolaPeserta", compact("data"));
+    }
+
+    public function BuatSertifikatPeserta(Request $request,$id)
+    {
+        return $request;
     }
 }

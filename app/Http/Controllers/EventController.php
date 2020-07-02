@@ -63,14 +63,14 @@ class EventController extends Controller
         ]);
 
         $sertifikat->id = $id;
+        $sertifikat->save();
         $file = $request->file('logo_instansi');
-        $nama_file =  $sertifikat->id . '_logo_instansi_' . '.' . $file->getClientOriginalExtension();
+        $nama_file =  $id . '_logo_instansi_' . '.' . $file->getClientOriginalExtension();
         $tujuan_upload = 'assets/images/Logo_Instansi/';
         $logo_instansi = 'images/Logo_Instansi/' . $nama_file;
         $file->move($tujuan_upload, $nama_file);
-
         $file = $request->file('logo_acara');
-        $nama_file =  $sertifikat->id . 'logo_acara' . '.' . $file->getClientOriginalExtension();
+        $nama_file =  $id . 'logo_acara' . '.' . $file->getClientOriginalExtension();
         $tujuan_upload = 'assets/images/Logo_Sertifikat/';
         $logo_sertif = 'images/Logo_Sertifikat/' . $nama_file;
         $file->move($tujuan_upload, $nama_file);
@@ -231,6 +231,9 @@ class EventController extends Controller
             $khusus = certificate_specific_property::where('certificate_id', $sertif->id)->get();
             $khusus_id = certificate_specific_property::where('certificate_id', $sertif->id)->pluck('id');
             $arr_id = $request->khusus_id;
+            if($arr_id == ""){
+                $arr_id = array();
+            }
             $i = 0;
             $diff = array_diff($khusus_id->toArray(), $arr_id);
 

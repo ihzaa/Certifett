@@ -40,8 +40,9 @@
                     <h5>Share link</h5>
                     <p>Share link ini agar peserta dapat Mendaftar secara mandiri.</p>
                     <div class="d-flex">
-                        <p id="linkCertifet">www.domain.com/certification/e...</p>
-                        <img src="{{asset('icons/content_copy-24px.svg')}}" onclick="copyToClipboard('linkCertifet')">
+                        <p id="linkCertifet">www.domain.com/certification/{{substr($data["acara"]->id,0,5)}}...</p>
+                        <img src="{{asset('icons/content_copy-24px.svg')}}"
+                            onclick="copyToClipboard('{{route('form_pendaftaran_event',['id'=>$data['acara']->id])}}')">
                     </div>
                 </div>
             </div>
@@ -50,18 +51,21 @@
     </div>
 
     <div class="d-flex justify-content-between jumlah">
-        <h3>{{$data["jml_dibuat"]}}/ {{$data["jml_peserta"]}} <span>Peserta dicentang</span></h3>
-        <a type="button" class="btn btn-outline-dark" id="buatSertif" href="{{route('buat_sertifikat',['id' => $data["acara"]->id])}}">Buat
-            Sertifikat</a>
+        <h3>
+            <div id="jml_dicentang" class="d-inline">0</div>/ {{$data["jml_peserta"]}} <span>Peserta dicentang</span>
+        </h3>
+        <button type="button" class="btn btn-outline-dark" id="buatSertif" href="">Buat
+            Sertifikat</button>
     </div>
 
     <div class="input-group mb-5">
-        <input type="text" class="form-control search" placeholder="Nama atau Email">
+        <input type="text" class="form-control search" onkeyup="search()" id="src_in" placeholder="Nama atau Email">
     </div>
 
-    <form>
+    <form id="form_centang" action="{{route('buat_sertifikat',['id' => $data["acara"]->id])}}" method="POST">
+        @csrf
         <div class="table-responsive my-custom-scrollbar" id="style-2">
-            <table class="table">
+            <table class="table" id="tabel_list">
                 <thead class="thead-dark">
                     <tr class="tableHead">
                         <th scope="col">
@@ -70,21 +74,35 @@
                                 <span class="check_indicator" id="checkbox_header"></span>
                             </label>
                         </th>
-                        <th scope="col">ID Sertifikat</th>
                         <th scope="col">Nama</th>
                         <th scope="col" class="colHide">Email</th>
-                        <th scope="col" class="colHide">Tanggal Rilis</th>
-                        <th scope="col" class="colHide">Berlaku Sampai</th>
                         <th scope="col">
                             <img style="margin-left:30%" src='{{asset("icons/delete-24px.svg")}}'>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($data["peserta"] as $d)
                     <tr>
                         <th scope="row">
                             <label class="check">
-                                <input type="checkbox" name="chk" class="check_input">
+                                <input type="checkbox" name="chk['{{$d->id}}']" class="check_input">
+                                <span class="check_indicator"></span>
+                            </label>
+                        </th>
+                        <td>{{$d->name}}</td>
+                        <td class="colHide">{{$d->email}}</td>
+                        <td>
+                            <a href=""><img src='{{asset("icons/create-24px.svg")}}'></a>
+                            <a href=""><img src='{{asset("icons/delete-24px.svg")}}'></a>
+                        </td>
+                    </tr>
+                    @endforeach
+
+                    {{-- <tr>
+                        <th scope="row">
+                            <label class="check">
+                                <input type="checkbox" class="check_input">
                                 <span class="check_indicator"></span>
                             </label>
                         </th>
@@ -95,8 +113,8 @@
                         <td class="colHide">Otto</td>
                         <td>
                             <img src='{{asset("icons/create-24px.svg")}}'>
-                            <img src='{{asset("icons/delete-24px.svg")}}'>
-                        </td>
+                    <img src='{{asset("icons/delete-24px.svg")}}'>
+                    </td>
                     </tr>
                     <tr>
                         <th scope="row">
@@ -114,24 +132,7 @@
                             <img src='{{asset("icons/create-24px.svg")}}'>
                             <img src='{{asset("icons/delete-24px.svg")}}'>
                         </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <label class="check">
-                                <input type="checkbox" class="check_input">
-                                <span class="check_indicator"></span>
-                            </label>
-                        </th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td class="colHide">@mdo</td>
-                        <td class="colHide">Mark</td>
-                        <td class="colHide">Otto</td>
-                        <td>
-                            <img src='{{asset("icons/create-24px.svg")}}'>
-                            <img src='{{asset("icons/delete-24px.svg")}}'>
-                        </td>
-                    </tr>
+                    </tr> --}}
                 </tbody>
             </table>
         </div>
@@ -141,6 +142,6 @@
 @endsection
 
 @section('JsTambahanAfter')
-<script src="{{asset('js/page/checkbox.js')}}">
+<script src="{{asset('js/page/kelola-peserta.js')}}">
 </script>
 @endsection

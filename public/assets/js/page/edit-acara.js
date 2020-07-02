@@ -69,7 +69,7 @@ $(document).ready(function () {
     });
 });
 
-let gbr = document.querySelector("#gbr_add_foto").getAttribute("src");
+let gbr = "/assets/images/add_photo.svg";
 
 let box_khusus = `<div class="border border-radius-c p-2 mb-4" style="border-color: #495057;">
                 <p class="text-normal d-flex">

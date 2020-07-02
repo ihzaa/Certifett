@@ -130,7 +130,7 @@ Karena telah mengikuti acara pelatihan JS 101 yang diselenggarakan oleh Team A">
                         <div class="custom-control custom-switch">
                             <input type="checkbox" class="custom-control-input" id="switch_properti_khusus"
                                 name="switch_properti_khusus" data-on="Enabled" data-off="Enabled"
-                                {{!empty($data['properti_khusus'])  ? "checked": ""}}>
+                                {{count($data['properti_khusus']) > 0  ? "checked": ""}}>
                             <label class="custom-control-label" for="switch_properti_khusus"></label>
                         </div>
                     </div>

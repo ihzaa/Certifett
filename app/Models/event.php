@@ -8,9 +8,12 @@ class event extends Model
 {
     protected $fillable = ['id', 'name', 'date', 'capacity', 'user_owner', 'receipt_id', 'certificate_id'];
 
+    protected $keyType = 'string';
+    public $incrementing = false;
+
     public function owner()
     {
-        return $this->belongsTo('App\User','user_owner');
+        return $this->belongsTo('App\User', 'user_owner');
     }
 
     public function receipt()
