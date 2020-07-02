@@ -86,11 +86,16 @@
                     <tr>
                         <th scope="row">
                             <label class="check">
-                                <input type="checkbox" name="chk[{{$d->id}}]" class="check_input">
+                                <input type="checkbox" name="chk[{{$d->id}}]"
+                                    class="{{$d->certificate_id != "" ? "sudah_dibuat" : "check_input"}}">
                                 <span class="check_indicator"></span>
                             </label>
                         </th>
-                        <td>{{$d->name}}</td>
+                        <td>
+                            @if($d->certificate_id != "")
+                            <img src="{{asset('icons/check_circle-24px.svg')}}">
+                            @endif
+                            {{$d->name}}</td>
                         <td class="colHide">{{$d->email}}</td>
                         <td>
                             <a href=""><img src='{{asset("icons/create-24px.svg")}}'></a>

@@ -23,8 +23,8 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-    Route::post('/sertifikat/{id}/buat', 'ParticipantEventCertificateController@BuatSertifikatPeserta')->name('buat_sertifikat');
-
+    Route::post('/sertifikat/{id}/konfigurasi', 'ParticipantEventCertificateController@BuatSertifikatPeserta')->name('buat_sertifikat');
+    Route::post('/sertifikat/{id_acara}/buat/{id_sertif}', 'ParticipantEventCertificateController@SertifPesertaFinal')->name('buat_sertifikat_fix');
     Route::get('/logout/yes', function () {
         Auth::logout();
         return redirect(route('landing-page'));

@@ -106,7 +106,7 @@ class EventController extends Controller
         do {
             $r2 = rand() + rand();
             $id = Auth::id() . $r2;
-        } while (!empty(certificate::find($id)));
+        } while (!empty(event::find($id)));
 
         $data = event::create([
             "id" => $id,

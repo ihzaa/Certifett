@@ -3,7 +3,10 @@ function checkAll(ele) {
     if (ele.checked) {
         $("#jml_dicentang").html($(".check_input").length);
         for (var i = 0; i < checkboxes.length; i++) {
-            if (checkboxes[i].type == "checkbox") {
+            if (
+                checkboxes[i].type == "checkbox" &&
+                !checkboxes[i].classList.contains("sudah_dibuat")
+            ) {
                 checkboxes[i].checked = true;
                 $("#checkbox_header")
                     .css("background-color", "")
@@ -43,6 +46,20 @@ $(".check_input").change(function () {
             "#ffffff";
         document.getElementById("check_header").checked = false;
     }
+});
+
+$(".sudah_dibuat").click(function () {
+    $(this).prop("checked", false);
+    let el_p = document.createElement("p");
+    let el_img = document.createElement("img");
+    el_img.setAttribute("src", "/assets/icons/check_circle-24px.svg");
+    el_p.innerHTML = "Sertifikat peserta dengan icon ";
+    el_p.append(el_img);
+    el_p.innerHTML += " telah dibuat.";
+    swal({
+        title: "Sertifikat telah dibuat.",
+        content: el_p,
+    });
 });
 
 function copyToClipboard(str) {
