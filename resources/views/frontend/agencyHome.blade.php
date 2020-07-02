@@ -202,4 +202,9 @@
     swal("Berhasil",'{{Session::get('message')}}' , "success");
 </script>
 @endif
+@if(Session::get('reg'))
+<script>
+    swal("{{Session::get('reg')}}",'{{Session::get('body')}}' , "success");
+</script>
+@endif
 @endsection

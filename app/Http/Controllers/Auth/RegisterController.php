@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -84,6 +85,8 @@ class RegisterController extends Controller
 
         $user->api_key = $user->id . $this->generateRandomString(10) . $user->password;
         $user->save();
+        Session::flash('reg', 'Registrasi Berhasil');
+        Session::flash('body', 'Email Verifikasi Dikirim ke Email Anda.');
         return $user;
     }
 }
