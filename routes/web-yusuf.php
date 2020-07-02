@@ -10,7 +10,7 @@ Route::middleware(['auth'])->group(function(){
 
   Route::get('/home','EventController@TampilAcara')->name("agencyHome-page");
   
-  Route::get('buatAcara', function () {
+  Route::get('/acara/buat', function () {
     return view('frontend.buatAcara');
   })->name("createEvent-page");
   
