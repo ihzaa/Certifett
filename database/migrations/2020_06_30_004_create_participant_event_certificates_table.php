@@ -14,11 +14,11 @@ class CreateParticipantEventCertificatesTable extends Migration
     public function up()
     {
         Schema::create('participant_event_certificates', function (Blueprint $table) {
-            $table->id();
+            $table->string('id')->primary();
             $table->string('name');
             $table->string('email');
-            $table->unsignedBigInteger('event_id');
-            $table->unsignedBigInteger('certificate_id')->nullable();
+            $table->string('event_id');
+            $table->string('certificate_id')->nullable();
             $table->dateTime('release_date')->nullable();
             $table->dateTime('valid_until')->nullable();
             $table->text('congrat_word')->nullable();

@@ -21,7 +21,7 @@
                 <p class="text-normal d-inline-block ml-3">Sertifikat akan dibuat</p>
             </span>
             <div class="form-group date mt-5">
-                <input type="text" class="form-control border-radius-c datepicker" placeholder="Tanggal Acara">
+                <input type="text" class="form-control border-radius-c datepicker" placeholder="Tanggal Rilis" required>
             </div>
             <div class="form-inline">
                 <input type="number" class="form-control mb-2 border-radius-c" id="inlineFormInputName2"

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class certificate extends Model
 {
-    protected $fillable = ['nama_instansi', 'jenis_sertifikat', 'logo_instansi', 'logo_sertifikat', 'alasan'];
+    protected $fillable = ['id', 'nama_instansi', 'jenis_sertifikat', 'logo_instansi', 'logo_sertifikat', 'alasan'];
 
     public function specific_properties()
     {
@@ -22,5 +22,4 @@ class certificate extends Model
     {
         return $this->hasMany('App\Models\participant_event_certificate');
     }
-
 }

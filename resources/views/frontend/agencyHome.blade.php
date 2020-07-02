@@ -34,23 +34,25 @@
         <div class="d-flex box">
             <?php $i=0; ?>
             @foreach ($data["acara"] as $d)
-            <div class="card" id="card-{{$d->id}}">
-                <h3>{{$d->name}}</h3>
-                <p>{{\Carbon\Carbon::parse($d->date)->formatLocalized("%A, %d %B %Y") }}</p>
-                <a href="#">
-                    <h3>{{$data["jml_peserta"][$i++]}}</h3>
+            <a href="{{route('peserta_acara',['id' => $d->id])}}">
+                <div class="card" id="card-{{$d->id}}">
+                    <h3>{{$d->name}}</h3>
+                    <p>{{\Carbon\Carbon::parse($d->date)->formatLocalized("%A, %d %B %Y") }}</p>
+                    {{-- <a href="#"> --}}
+                    <h3>{{$data["jml_peserta"][$i]}}</h3>
                     <p>Peserta</p>
-                </a>
-                <a href="#">
-                    <h3>10.567</h3>
+                    {{-- </a> --}}
+                    {{-- <a href="#"> --}}
+                    <h3>{{$data["jml_dibuat"][$i++]}}</h3>
                     <p>Sertifikat Dibuat</p>
-                </a>
-                <div class="edit">
-                    <a href="" @click="hapusKah({{$d->id}})"><img src='{{asset("icons/delete-24px.svg")}}'></a>
-                    <a href="{{route('tampil_edit_acara',['id' => $d->id])}}"><img
-                            src='{{asset("icons/create-24px.svg")}}'></a>
+                    {{-- </a> --}}
+                    <div class="edit">
+                        <a href="" @click="hapusKah({{$d->id}})"><img src='{{asset("icons/delete-24px.svg")}}'></a>
+                        <a href="{{route('tampil_edit_acara',['id' => $d->id])}}"><img
+                                src='{{asset("icons/create-24px.svg")}}'></a>
+                    </div>
                 </div>
-            </div>
+            </a>
             @endforeach
 
 

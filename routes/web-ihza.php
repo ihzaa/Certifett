@@ -24,7 +24,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-    Route::get('/buat-sertifikat', function () {
+    Route::get('/sertifikat/{id}/buat', function () {
         return view('frontend.buat-sertifikat');
     })->name('buat_sertifikat');
 
@@ -33,10 +33,14 @@ Route::middleware(['auth'])->group(function () {
         return redirect(route('landing-page'));
     })->name('logout-c');
 
+    //Route Acara start
     Route::post('/acara/tambah', 'EventController@tambah')->name('tambah_event');
     Route::post('/acara/hapus', 'EventController@HapusAcara')->name('hapus_acara');
     Route::get('/acara/edit/{id}', 'EventController@TampilHalamanEditAcara')->name('tampil_edit_acara');
     Route::post('/acara/edit/{id}/simpan', 'EventController@EditAcara')->name('edit_acara');
+    //Route Acara end
+
+    Route::get('/acara/{id}/peserta', 'ParticipantEventCertificateController@TampilPerAcara')->name('peserta_acara');
 });
 
 

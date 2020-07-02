@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class event extends Model
 {
-    protected $fillable = ['name', 'date', 'capacity', 'user_owner', 'receipt_id', 'certificate_id'];
+    protected $fillable = ['id', 'name', 'date', 'capacity', 'user_owner', 'receipt_id', 'certificate_id'];
 
     public function owner()
     {

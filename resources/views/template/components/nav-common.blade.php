@@ -21,8 +21,8 @@
                     <a class="nav-link" href="{{route('landing-page')}}">Developer Documentation</a>
                 </li>
                 @if(Auth::check())
-                <li class="nav-item mr-4">
-                    <a class="nav-link" href="{{route('agencyHome-page')}}">Acara Saya</a>
+                <li class="nav-item mr-4 {{request()->is('acara*') || request()->is('home*') ? "active":""}}">
+                    <a class="nav-link " href="{{route('agencyHome-page')}}">Acara Saya</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('manageCertificate-page')}}">Sertifikat Saya</a>

@@ -47,13 +47,22 @@ class EventController extends Controller
                 'karena' => ['required']
             ]);
         }
+
+        do {
+            $r2 = rand() + rand();
+            $id = Auth::id() . $r2;
+        } while (!empty(certificate::find($id)));
+
         $sertifikat = certificate::create([
+            "id" => $id,
             "nama_instansi" => $request->nama_instansi,
             "jenis_sertifikat" => $request->jenis_acara,
             "logo_instansi" => "a",
             "logo_sertifikat" => "a",
             "alasan" => $request->karena
         ]);
+
+        $sertifikat->id = $id;
         $file = $request->file('logo_instansi');
         $nama_file =  $sertifikat->id . '_logo_instansi_' . '.' . $file->getClientOriginalExtension();
         $tujuan_upload = 'assets/images/Logo_Instansi/';
@@ -94,8 +103,13 @@ class EventController extends Controller
             }
         }
 
+        do {
+            $r2 = rand() + rand();
+            $id = Auth::id() . $r2;
+        } while (!empty(certificate::find($id)));
 
         $data = event::create([
+            "id" => $id,
             "name" => $request->nama_acara,
             "date" => DateTime::createFromFormat('d/m/Y', $request->tanggal)->format('Y-m-d'),
             "capacity" => $request->jumlah,
@@ -103,6 +117,8 @@ class EventController extends Controller
             "receipt_id" => "1",
             "certificate_id" => $sertifikat->id
         ]);
+
+        $data->id = $id;
 
         return redirect(route('agencyHome-page'))->with('message', 'Berhasil Menambahkan Acara');
     }
@@ -128,9 +144,11 @@ class EventController extends Controller
         $data["is_email_verify"] = Auth::user()->is_email_verified;
         $data["acara"] = User::whereId(Auth::id())->first()->event()->get();
         $data["jml_peserta"] = array();
+        $data["jml_dibuat"] = array();
 
         foreach ($data["acara"] as $d) {
             array_push($data["jml_peserta"], participant_event_certificate::whereEvent_id($d->id)->count());
+            array_push($data["jml_dibuat"], participant_event_certificate::whereEvent_id($d->id)->whereNotNull('certificate_id',)->count());
         }
 
         return view("frontend.agencyHome", compact("data"));
