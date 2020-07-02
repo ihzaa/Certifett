@@ -86,7 +86,7 @@
                     <tr>
                         <th scope="row">
                             <label class="check">
-                                <input type="checkbox" name="chk['{{$d->id}}']" class="check_input">
+                                <input type="checkbox" name="chk[{{$d->id}}]" class="check_input">
                                 <span class="check_indicator"></span>
                             </label>
                         </th>

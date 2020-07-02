@@ -20,8 +20,12 @@ class ParticipantEventCertificateController extends Controller
         return view("frontend.kelolaPeserta", compact("data"));
     }
 
-    public function BuatSertifikatPeserta(Request $request,$id)
+    public function BuatSertifikatPeserta(Request $request, $id)
     {
-        return $request;
+        $arr_keys = array_keys($request->chk);
+        return $arr_keys;
+        return participant_event_certificate::whereIn('id',$arr_keys)->get();
+
+        return view('frontend.buat-sertifikat');
     }
 }
