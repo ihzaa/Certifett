@@ -24,8 +24,8 @@
                 <li class="nav-item mr-4 {{request()->is('acara*') || request()->is('home*') ? "active":""}}">
                     <a class="nav-link " href="{{route('agencyHome-page')}}">Acara Saya</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('manageCertificate-page')}}">Sertifikat Saya</a>
+                <li class="nav-item {{request()->is('sertifikat*') ? "active":""}}">
+                    <a class="nav-link" href="{{route('myCertificates-page')}}">Sertifikat Saya</a>
                 </li>
                 <div id="user-info-sm">
                     <li class="nav-item">

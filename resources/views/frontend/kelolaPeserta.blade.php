@@ -34,14 +34,14 @@
                     <h5>Import from .csv</h5>
                     <p>Export data yang telah ada. Format yang diterima adalah csv. Gunakan ini jika anda telah memiliki
                         data peserta misalnya dari google form.</p>
-                    <button type="button" class="btn btn-outline-dark">Import Sekarang</button>
+                    <button type="button" class="btn btn-outline-dark" id="btn-import">Import Sekarang</button>
                 </div>
                 <div class="card">
                     <h5>Share link</h5>
                     <p>Share link ini agar peserta dapat Mendaftar secara mandiri.</p>
                     <div class="d-flex">
                         <p id="linkCertifet">www.domain.com/certification/{{substr($data["acara"]->id,0,5)}}...</p>
-                        <img src="{{asset('icons/content_copy-24px.svg')}}"
+                        <img src="{{asset('icons/content_copy-24px.svg')}}" id="cpy_btn"
                             onclick="copyToClipboard('{{route('form_pendaftaran_event',['id'=>$data['acara']->id])}}')">
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                     </tr>
                     @endforeach
                     @if(count($data["peserta"]) == 0)
-                        {{-- INI KETERANGAN DATA KOSONG --}}
+                    {{-- INI KETERANGAN DATA KOSONG --}}
                     @endif
                 </tbody>
             </table>
@@ -115,6 +115,7 @@
 @endsection
 
 @section('JsTambahanAfter')
+<script src="{{asset('js/notify.min.js')}}"></script>
 <script src="{{asset('js/page/kelola-peserta.js')}}">
 </script>
 @endsection

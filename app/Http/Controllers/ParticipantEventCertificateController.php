@@ -61,7 +61,7 @@ class ParticipantEventCertificateController extends Controller
         // $acara = event::find($id_acara);
         // $sertif = certificate::find($id_sertif);
         // $data_peserta = participant_event_certificate::where('certificate_id', $id_sertif)->get(['id', 'name', 'email']);
-        //DISINI NANTI ADA METHOD KIRIM EMAIL KE SELURUH PESERTA
+        //DISINI NANTI ADA METHOD KIRIM EMAIL KE SELURUH PESERTA, itu diatas data yg dikirim
 
         return redirect(route('agencyHome-page'))->with('message', 'Peserta acara akan menerima email sertifikat.');
     }

@@ -20,15 +20,15 @@ Auth::routes();
 
 //Menggunakan Middleware auth
 Route::middleware(['auth'])->group(function () {
-
-
-
-    Route::post('/sertifikat/{id}/konfigurasi', 'ParticipantEventCertificateController@BuatSertifikatPeserta')->name('buat_sertifikat');
-    Route::post('/sertifikat/{id_acara}/buat/{id_sertif}', 'ParticipantEventCertificateController@SertifPesertaFinal')->name('buat_sertifikat_fix');
     Route::get('/logout/yes', function () {
         Auth::logout();
         return redirect(route('landing-page'));
     })->name('logout-c');
+
+
+    Route::post('/acara/{id}/konfigurasi', 'ParticipantEventCertificateController@BuatSertifikatPeserta')->name('buat_sertifikat');
+    Route::post('/acara/{id_acara}/buat/{id_sertif}', 'ParticipantEventCertificateController@SertifPesertaFinal')->name('buat_sertifikat_fix');
+
 
     //Route Acara start
     Route::post('/acara/tambah', 'EventController@tambah')->name('tambah_event');
@@ -38,6 +38,8 @@ Route::middleware(['auth'])->group(function () {
     //Route Acara end
 
     Route::get('/acara/{id}/peserta', 'ParticipantEventCertificateController@TampilPerAcara')->name('peserta_acara');
+
+    // Route::get('sertifikat/saya', 'CertificateController@TampilSertifSaya')->name("my-page");
 });
 
 
