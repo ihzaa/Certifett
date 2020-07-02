@@ -38,99 +38,29 @@
                 <div class="card" id="card-{{$d->id}}">
                     <h3>{{$d->name}}</h3>
                     <p>{{\Carbon\Carbon::parse($d->date)->formatLocalized("%A, %d %B %Y") }}</p>
-                    {{-- <a href="#"> --}}
                     <h3>{{$data["jml_peserta"][$i]}}</h3>
                     <p>Peserta</p>
-                    {{-- </a> --}}
-                    {{-- <a href="#"> --}}
                     <h3>{{$data["jml_dibuat"][$i++]}}</h3>
                     <p>Sertifikat Dibuat</p>
-                    {{-- </a> --}}
                     <div class="edit">
-                        <a href="" @click="hapusKah({{$d->id}})"><img src='{{asset("icons/delete-24px.svg")}}'></a>
+                        <a href="#" @click="hapusKah('{{$d->id}}')"><img src='{{asset("icons/delete-24px.svg")}}'></a>
                         <a href="{{route('tampil_edit_acara',['id' => $d->id])}}"><img
                                 src='{{asset("icons/create-24px.svg")}}'></a>
                     </div>
                 </div>
             </a>
             @endforeach
-
-
-            {{-- <div class="card">
-        <h3>JS 102</h3>
-        <p>Jumat, 12 Januari 2020</p>
-        <a href="#">
-          <h3>0</h3>
-          <p>Peserta</p>
-        </a>
-        <a href="#">
-          <h3>0</h3>
-          <p>Sertifikat Dibuat</p>
-        </a>
-        <div class="edit">
-          <img src='{{asset("icons/delete-24px.svg")}}'>
-            <img src='{{asset("icons/create-24px.svg")}}'>
         </div>
-</div> --}}
-{{-- <div class="card">
-        <h3>JS 102</h3>
-        <p>Jumat, 12 Januari 2020</p>
-        <a href="#">
-          <h3>0</h3>
-          <p>Peserta</p>
-        </a>
-        <a href="#">
-          <h3>0</h3>
-          <p>Sertifikat Dibuat</p>
-        </a>
-        <div class="edit">
-          <img src='{{asset("icons/delete-24px.svg")}}'>
-<img src='{{asset("icons/create-24px.svg")}}'>
-</div>
-</div> --}}
-{{-- <div class="card">
-        <h3>JS 102</h3>
-        <p>Jumat, 12 Januari 2020</p>
-        <a href="#">
-          <h3>0</h3>
-          <p>Peserta</p>
-        </a>
-        <a href="#">
-          <h3>0</h3>
-          <p>Sertifikat Dibuat</p>
-        </a>
-        <div class="edit">
-          <img src='{{asset("icons/delete-24px.svg")}}'>
-<img src='{{asset("icons/create-24px.svg")}}'>
-</div>
-</div> --}}
-{{-- <div class="card">
-        <h3>JS 102</h3>
-        <p>Jumat, 12 Januari 2020</p>
-        <a href="#">
-          <h3>0</h3>
-          <p>Peserta</p>
-        </a>
-        <a href="#">
-          <h3>0</h3>
-          <p>Sertifikat Dibuat</p>
-        </a>
-        <div class="edit">
-          <img src='{{asset("icons/delete-24px.svg")}}'>
-<img src='{{asset("icons/create-24px.svg")}}'>
-</div>
-</div> --}}
-</div>
-</articel>
-@if(!count($data["acara"]))
-<div class="row mt-5">
-    <div class="col-10 col-lg-8 col-md-8 col-sm-10 border border-radius-c d-flex ml-auto mr-auto">
-        <div class="text-center ml-auto mr-auto">
-            <p class="mt-3">Anda Belum Memiliki Acara</p>
+    </articel>
+    @if(!count($data["acara"]))
+    <div class="row mt-5">
+        <div class="col-10 col-lg-8 col-md-8 col-sm-10 border border-radius-c d-flex ml-auto mr-auto">
+            <div class="text-center ml-auto mr-auto">
+                <p class="mt-3">Anda Belum Memiliki Acara</p>
+            </div>
         </div>
     </div>
-</div>
-@endif
+    @endif
 </div>
 @endsection
 

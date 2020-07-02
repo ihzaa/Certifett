@@ -10,7 +10,7 @@ class certificate extends Model
 
     protected $keyType = 'string';
     public $incrementing = false;
-    
+
     public function specific_properties()
     {
         return $this->hasMany('App\Models\participant_event_certificate');

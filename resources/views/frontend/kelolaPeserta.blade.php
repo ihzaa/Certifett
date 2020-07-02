@@ -103,41 +103,9 @@
                         </td>
                     </tr>
                     @endforeach
-
-                    {{-- <tr>
-                        <th scope="row">
-                            <label class="check">
-                                <input type="checkbox" class="check_input">
-                                <span class="check_indicator"></span>
-                            </label>
-                        </th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td class="colHide">@mdo</td>
-                        <td class="colHide">Mark</td>
-                        <td class="colHide">Otto</td>
-                        <td>
-                            <img src='{{asset("icons/create-24px.svg")}}'>
-                    <img src='{{asset("icons/delete-24px.svg")}}'>
-                    </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <label class="check">
-                                <input type="checkbox" class="check_input">
-                                <span class="check_indicator"></span>
-                            </label>
-                        </th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td class="colHide">@mdo</td>
-                        <td class="colHide">Mark</td>
-                        <td class="colHide">Otto</td>
-                        <td>
-                            <img src='{{asset("icons/create-24px.svg")}}'>
-                            <img src='{{asset("icons/delete-24px.svg")}}'>
-                        </td>
-                    </tr> --}}
+                    @if(count($data["peserta"]) == 0)
+                        {{-- INI KETERANGAN DATA KOSONG --}}
+                    @endif
                 </tbody>
             </table>
         </div>

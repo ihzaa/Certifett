@@ -49,8 +49,7 @@ class EventController extends Controller
         }
 
         do {
-            $r2 = rand() + rand();
-            $id = Auth::id() . $r2;
+            $id = Auth::id() . "" . md5(uniqid());
         } while (!empty(certificate::find($id)));
 
         $sertifikat = certificate::create([
@@ -62,8 +61,6 @@ class EventController extends Controller
             "alasan" => $request->karena
         ]);
 
-        $sertifikat->id = $id;
-        $sertifikat->save();
         $file = $request->file('logo_instansi');
         $nama_file =  $id . '_logo_instansi_' . '.' . $file->getClientOriginalExtension();
         $tujuan_upload = 'assets/images/Logo_Instansi/';
@@ -104,8 +101,7 @@ class EventController extends Controller
         }
 
         do {
-            $r2 = rand() + rand();
-            $id = Auth::id() . $r2;
+            $id = Auth::id() . "" . md5(uniqid());
         } while (!empty(event::find($id)));
 
         $data = event::create([
@@ -117,8 +113,6 @@ class EventController extends Controller
             "receipt_id" => "1",
             "certificate_id" => $sertifikat->id
         ]);
-
-        $data->id = $id;
 
         return redirect(route('agencyHome-page'))->with('message', 'Berhasil Menambahkan Acara');
     }
@@ -151,6 +145,7 @@ class EventController extends Controller
             array_push($data["jml_dibuat"], participant_event_certificate::whereEvent_id($d->id)->whereNotNull('certificate_id',)->count());
         }
 
+        // return $data;
         return view("frontend.agencyHome", compact("data"));
     }
 
@@ -231,7 +226,7 @@ class EventController extends Controller
             $khusus = certificate_specific_property::where('certificate_id', $sertif->id)->get();
             $khusus_id = certificate_specific_property::where('certificate_id', $sertif->id)->pluck('id');
             $arr_id = $request->khusus_id;
-            if($arr_id == ""){
+            if ($arr_id == "") {
                 $arr_id = array();
             }
             $i = 0;
