@@ -6,6 +6,7 @@ use App\Mail\EmailVerification;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 use Mail;
 // use illuminate\Support\Facades\Mail;
 
@@ -44,5 +45,18 @@ class EmailController extends Controller
         } else {
             return redirect(route('landing-page'))->with('message', 'Email Sudah Pernah Diverifikasi!')->with('logo', 'warning')->with('title', 'Maaf');
         }
+    }
+
+    public function kirimUlang()
+    {
+        $data = [
+            'name' => Auth::user()->name,
+            'type' => 'verifikasi',
+            'api_key' => Auth::user()->api_key
+        ];
+
+        Mail::to(Auth::user()->email)->send(new EmailVerification($data));
+
+        return redirect(route('agencyHome-page'))->with('message', 'Email verifikasi telah dikirim ulang!')->with('logo', 'success')->with('title', 'Berhasil');
     }
 }

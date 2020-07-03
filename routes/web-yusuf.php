@@ -26,6 +26,8 @@ Route::middleware(['auth'])->group(function(){
 
 });
 
+Route::get('/kirimUlang', 'EmailController@kirimUlang')->name("kirimUlang");
+
 // Route::get('masuk', function () {
 //   return view('frontend.login');
 // })->name("login-page");

@@ -20,7 +20,7 @@
                 <p>Email belum diverifikasi.</p>
             </div>
             <div>
-                <p>Kirim Ulang</p>
+                <a style="text-decoration:none" href="{{route('kirimUlang')}}"><p>Kirim Ulang</p></a>
             </div>
         </div>
     </div>
