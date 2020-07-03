@@ -52,3 +52,5 @@ Route::get('/', function () {
 Route::get('/user/email/verification/{api_key}', 'EmailController@VerifyAccount')->name('verify_account');
 Route::get('/certification/{id}', 'ParticipantEventCertificateController@TampilHalamanDaftar')->name("form_pendaftaran_event");
 Route::post('/certification/{id}', 'ParticipantEventCertificateController@TambahPesertaLink')->name('peserta_daftar_link');
+
+Route::get('testting', 'EmailController@testing');
