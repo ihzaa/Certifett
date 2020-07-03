@@ -109,7 +109,7 @@
                     @if(count($data["peserta"]) == 0)
                     {{-- INI KETERANGAN DATA KOSONG --}}
                     <tr>
-                        <th colspan="4" class="text-center">Tidak ada data peserta</th>
+                        <th colspan="100%" class="text-center">Tidak ada data peserta</th>
                     </tr>
                     @endif
                 </tbody>

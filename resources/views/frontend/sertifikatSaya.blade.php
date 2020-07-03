@@ -64,6 +64,12 @@
                         </td>
                     </tr>
                     @endforeach
+                    @if(count($data["sertif"]) == 0)
+                    {{-- INI KETERANGAN DATA KOSONG --}}
+                    <tr>
+                        <th colspan="100%" class="text-center">Tidak ada data peserta</th>
+                    </tr>
+                    @endif
                 </tbody>
             </table>
         </div>

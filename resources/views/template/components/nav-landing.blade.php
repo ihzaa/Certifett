@@ -25,7 +25,7 @@
                 <a class="nav-link" href="{{route('agencyHome-page')}}">Acara Saya</a>
             </li>
             <li class="nav-item mr-4">
-                <a class="nav-link" href="{{route('manageCertificate-page')}}">Sertifikat Saya</a>
+                <a class="nav-link" href="{{route('myCertificates-page')}}">Sertifikat Saya</a>
             </li>
             <div id="user-info-sm">
                 <li class="nav-item">
