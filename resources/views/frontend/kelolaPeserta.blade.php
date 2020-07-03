@@ -53,7 +53,8 @@
 
     <div class="d-flex justify-content-between jumlah">
         <h3>
-            <div id="jml_dicentang" class="d-inline">0</div>/ {{$data["jml_peserta"]}} <span>Peserta dicentang</span>
+            <div id="jml_dicentang" class="d-inline">0</div>/ <div id="jml_psrt" class="d-inline">
+                {{$data["jml_peserta"]}}</div> <span>Peserta dicentang</span>
         </h3>
         <button type="button" class="btn btn-outline-dark" id="buatSertif" href="">Buat
             Sertifikat</button>
@@ -78,7 +79,7 @@
                         <th scope="col">Nama</th>
                         <th scope="col" class="colHide">Email</th>
                         <th scope="col">
-                            <img style="margin-left:30%" src='{{asset("icons/delete-24px.svg")}}'>
+                            <a href="#" id="btn-hps-all"><img src='{{asset("icons/delete-24px.svg")}}'></a>
                         </th>
                     </tr>
                 </thead>
@@ -87,8 +88,9 @@
                     <tr>
                         <th scope="row">
                             <label class="check">
-                                <input type="checkbox" name="chk[{{$d->id}}]"
-                                    class="{{$d->certificate_id != "" ? "sudah_dibuat" : "check_input"}}">
+                                <input type="checkbox" @if($d->certificate_id == "") name="chk[{{$d->id}}]" @else
+                                name="udh[{{$d->id}}]" @endif
+                                class="{{$d->certificate_id != "" ? "sudah_dibuat check_input" : "check_input blm_dibuat"}}">
                                 <span class="check_indicator"></span>
                             </label>
                         </th>
@@ -100,12 +102,15 @@
                         <td class="colHide">{{$d->email}}</td>
                         <td>
                             <a href=""><img src='{{asset("icons/create-24px.svg")}}'></a>
-                            <a href=""><img src='{{asset("icons/delete-24px.svg")}}'></a>
+                            <a href="#" class="btn-hps"><img src='{{asset("icons/delete-24px.svg")}}'></a>
                         </td>
                     </tr>
                     @endforeach
                     @if(count($data["peserta"]) == 0)
                     {{-- INI KETERANGAN DATA KOSONG --}}
+                    <tr>
+                        <th colspan="4" class="text-center">Tidak ada data peserta</th>
+                    </tr>
                     @endif
                 </tbody>
             </table>
@@ -155,7 +160,9 @@
 @section('JsTambahanAfter')
 <script>
     const path = {
-        ev : "{{route('tambah_peserta_csv',['id'=>$data['id']])}}"
+        ev : "{{route('tambah_peserta_csv',['id'=>$data['id']])}}",
+        ps : "{{route('hapus_peserta')}}",
+        psb : "{{route('hapus_peserta_banyak')}}"
     }
 </script>
 <script src="{{asset('js/notify.min.js')}}"></script>

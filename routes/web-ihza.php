@@ -38,7 +38,8 @@ Route::middleware(['auth'])->group(function () {
     //Route Acara end
 
     Route::get('/acara/{id}/peserta', 'ParticipantEventCertificateController@TampilPerAcara')->name('peserta_acara');
-
+    Route::post('/acara/hapus/peserta', 'ParticipantEventCertificateController@HapusPeserta')->name('hapus_peserta');
+    Route::post('/acara/hapus/peserta/banyak', 'ParticipantEventCertificateController@HapusPesertaBanyak')->name('hapus_peserta_banyak');
     // Route::get('sertifikat/saya', 'CertificateController@TampilSertifSaya')->name("my-page");
 
     Route::post('/acara/{id}/peserta/tambah/csv', 'ParticipantEventCertificateController@TambahPesertaCSV')->name('tambah_peserta_csv');

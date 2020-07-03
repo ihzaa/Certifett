@@ -4,8 +4,9 @@ function checkAll(ele) {
         $("#jml_dicentang").html($(".check_input").length);
         for (var i = 0; i < checkboxes.length; i++) {
             if (
-                checkboxes[i].type == "checkbox" &&
-                !checkboxes[i].classList.contains("sudah_dibuat")
+                checkboxes[i].type == "checkbox"
+                // &&
+                // !checkboxes[i].classList.contains("sudah_dibuat")
             ) {
                 checkboxes[i].checked = true;
                 $("#checkbox_header")
@@ -49,7 +50,6 @@ $(".check_input").change(function () {
 });
 
 $(".sudah_dibuat").click(function () {
-    $(this).prop("checked", false);
     let el_p = document.createElement("p");
     let el_img = document.createElement("img");
     el_img.setAttribute("src", "/assets/icons/check_circle-24px.svg");
@@ -110,6 +110,12 @@ function search() {
 $("#buatSertif").on("click", function () {
     if ($("#jml_dicentang").html() == 0) {
         swal("Maaf", "Tidak Peserta Yang Dipilih.", "error");
+    } else if ($(".blm_dibuat:checked").length == 0) {
+        swal(
+            "Maaf",
+            "Peserta Yang Dipilih Sudah Dibuatkan Sertifikat.",
+            "error"
+        );
     } else {
         $(".se-pre-con").fadeIn();
         $("#form_centang").submit();
@@ -191,5 +197,98 @@ $("#btn-up-csv").on("click", function () {
         swal("Kolom nama dan email tidak boleh sama", "", "error");
     } else {
         swal("Silahkan pilih kolom", "", "error");
+    }
+});
+
+$(".btn-hps").on("click", function () {
+    event.preventDefault();
+    swal({
+        title: "Yakin menghapus peserta?",
+        text: "Sertifikat peserta juga akan dihapus!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    }).then((willDelete) => {
+        if (willDelete) {
+            $(".se-pre-con").fadeIn();
+            let a = $(this).parents("tr").find("input").attr("name");
+            var id_p = a.substring(a.lastIndexOf("[") + 1, a.lastIndexOf("]"));
+            var dataform = new FormData();
+            dataform.append("id", id_p);
+            axios({
+                method: "post",
+                url: path.ps,
+                data: dataform,
+            })
+                .then((resp) => {
+                    if (resp.data.message === "ok") {
+                        $(".se-pre-con").fadeOut("slow");
+                        $(this).parents("tr").remove();
+                        swal("Peserta telah dihapus!", {
+                            icon: "success",
+                        });
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+    });
+});
+
+$("#btn-hps-all").on("click", function () {
+    event.preventDefault();
+    if ($("#jml_dicentang").html() == 0) {
+        swal("Maaf", "Tidak Peserta Yang Dipilih.", "error");
+    } else {
+        let jml_ctg = $("#jml_dicentang").html();
+        swal({
+            title: `Yakin menghapus ${jml_ctg} peserta yang dipilih?`,
+            text: "Sertifikat peserta juga akan dihapus!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                $(".se-pre-con").fadeIn();
+                let arr = $("input[type='checkbox']:checked");
+                let arr_id = Array();
+                console.log(arr);
+                let a = "";
+                for (let i = 0; i < arr.length; i++) {
+                    a = arr[i].getAttribute("name");
+                    if (a == null) {
+                        continue;
+                    }
+                    arr[i].closest("tr").remove();
+                    arr_id.push(
+                        a.substring(a.lastIndexOf("[") + 1, a.lastIndexOf("]"))
+                    );
+                }
+                var dataform = new FormData();
+                dataform.append("id", JSON.stringify(arr_id));
+                axios({
+                    method: "post",
+                    url: path.psb,
+                    data: dataform,
+                })
+                    .then((resp) => {
+                        if (resp.data.message === "ok") {
+                            $("#checkbox_header").css("background-color", "");
+                            $("#jml_dicentang").html(0);
+                            $("#jml_psrt").html(
+                                parseInt($("#jml_psrt").html()) - jml_ctg
+                            );
+                            $(".se-pre-con").fadeOut("slow");
+                            swal(`${jml_ctg} Peserta telah dihapus!`, {
+                                icon: "success",
+                            });
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
+            }
+        });
     }
 });

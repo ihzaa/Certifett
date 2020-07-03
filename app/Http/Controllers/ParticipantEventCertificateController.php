@@ -94,4 +94,17 @@ class ParticipantEventCertificateController extends Controller
         Session::flash('message', 'Berhasil Menambahkan Peserta Dengan File Csv');
         return response()->json(["message" => "ok"]);
     }
+
+    public function HapusPeserta(Request $request)
+    {
+        participant_event_certificate::whereId($request->id)->delete();
+        return response()->json(["message" => "ok"]);
+    }
+
+    public function HapusPesertaBanyak(Request $request)
+    {
+        $data = json_decode($request->id);
+        participant_event_certificate::whereIn('id', $data)->delete();
+        return response()->json(["message" => "ok"]);
+    }
 }
