@@ -60,7 +60,7 @@
       }
 
       p {
-        font-size: 16px;
+        font-size: 14px;
         color: black;
         margin: 30px auto;
         font-weight:500;
@@ -72,7 +72,7 @@
 
       footer {
         background-color: #fafafa;
-        margin-top: 50px;
+        margin-top: 30px;
         padding: 20px;
       }
       }
