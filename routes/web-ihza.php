@@ -40,6 +40,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/acara/{id}/peserta', 'ParticipantEventCertificateController@TampilPerAcara')->name('peserta_acara');
 
     // Route::get('sertifikat/saya', 'CertificateController@TampilSertifSaya')->name("my-page");
+
+    Route::post('/acara/{id}/peserta/tambah/csv', 'ParticipantEventCertificateController@TambahPesertaCSV')->name('tambah_peserta_csv');
 });
 
 

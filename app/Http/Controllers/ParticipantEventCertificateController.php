@@ -10,12 +10,14 @@ use DateInterval;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ParticipantEventCertificateController extends Controller
 {
     public function TampilPerAcara($id)
     {
         $data = array();
+        $data["id"] = $id;
         $data["acara"] = event::whereId($id)->where('user_owner', Auth::id())->first();
         $data["peserta"] = participant_event_certificate::whereEvent_id($data['acara']->id)->get();
         $data["jml_peserta"] = count($data["peserta"]);
@@ -64,5 +66,32 @@ class ParticipantEventCertificateController extends Controller
         //DISINI NANTI ADA METHOD KIRIM EMAIL KE SELURUH PESERTA, itu diatas data yg dikirim
 
         return redirect(route('agencyHome-page'))->with('message', 'Peserta acara akan menerima email sertifikat.');
+    }
+
+    public function TambahPesertaCSV($id, Request $request)
+    {
+        $data = json_decode($request->data);
+        $i = 0;
+        $len = count($data[0]);
+        foreach ($data as $d) {
+            if ($i == 0) {
+                $i++;
+                continue;
+            }
+            if ($len != count($d)) {
+                continue;
+            }
+            do {
+                $id_p = Auth::id() . "" . md5(uniqid());
+            } while (!empty(participant_event_certificate::find($id_p)));
+            participant_event_certificate::create([
+                "id" => $id_p,
+                "name" => $d[$request->col_nama],
+                "email" => $d[$request->col_email],
+                "event_id" => $id
+            ]);
+        }
+        Session::flash('message', 'Berhasil Menambahkan Peserta Dengan File Csv');
+        return response()->json(["message" => "ok"]);
     }
 }

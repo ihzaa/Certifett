@@ -34,7 +34,8 @@
                     <h5>Import from .csv</h5>
                     <p>Export data yang telah ada. Format yang diterima adalah csv. Gunakan ini jika anda telah memiliki
                         data peserta misalnya dari google form.</p>
-                    <button type="button" class="btn btn-outline-dark" id="btn-import">Import Sekarang</button>
+                    <button type="button" class="btn btn-outline-dark" id="btn-import" data-toggle="modal"
+                        data-target="#modal-csv">Import Sekarang</button>
                 </div>
                 <div class="card">
                     <h5>Share link</h5>
@@ -110,12 +111,61 @@
             </table>
         </div>
     </form>
+</div>
 
+<div id="modal-csv" class="modal fade " data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+    aria-labelledby="my-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="my-modal-title">Title</h5>
+                <button class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="input-csv"
+                            aria-describedby="inputGroupFileAddon01">
+                        <label class="custom-file-label" for="input-csv" id="input-csv-label">Choose file .csv</label>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary" id="btn-cek-kolom" disabled>Cek Kolom</button>
+                <div id="body_bawah_modal" style="display: none;">
+                    <hr>
+                    <h3>Pilih Kolom Nama:</h3>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" id="grb-nama"></div>
+                    <h3>Pilih Kolom Email:</h3>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" id="grb-email"></div>
+                </div>
+            </div>
+            <div class="modal-footer d-flex">
+                <button type="button" class=" ml-auto btn btn-primary" id="btn-up-csv"
+                    style="display: none;">Upload</button>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 
 @section('JsTambahanAfter')
+<script>
+    const path = {
+        ev : "{{route('tambah_peserta_csv',['id'=>$data['id']])}}"
+    }
+</script>
 <script src="{{asset('js/notify.min.js')}}"></script>
+<script src="{{asset('js/papaparse.min.js')}}"></script>
+<script src="{{asset('js/axios.min.js')}}"></script>
 <script src="{{asset('js/page/kelola-peserta.js')}}">
 </script>
+@if(Session::get('message'))
+<script>
+    swal("Berhasil",'{{Session::get('message')}}' , "success");
+</script>
+@endif
 @endsection

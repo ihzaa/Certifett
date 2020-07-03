@@ -77,10 +77,7 @@ function copyToClipboard(str) {
     document.execCommand("copy");
     // Remove temporary element
     document.body.removeChild(el);
-    $("#cpy_btn").notify(
-        "tautan dicopy","success",
-        { position:"bottom" }
-      );
+    $("#cpy_btn").notify("tautan dicopy", "success", { position: "bottom" });
 }
 
 function search() {
@@ -119,25 +116,80 @@ $("#buatSertif").on("click", function () {
     }
 });
 
-$("#btn-import").on("click", function () {
-    swal({
-        title: "Select image",
-        input: "file",
-        inputAttributes: {
-            accept: "image/*",
-            "aria-label": "Upload your profile picture",
+$("#input-csv").on("change", function () {
+    $("#input-csv-label").html($(this).val().substr(12));
+    if ($("#input-csv-label").html().split(".").pop() === "csv") {
+        $("#btn-cek-kolom").removeAttr("disabled");
+    } else {
+        $("#btn-cek-kolom").attr("disabled", "");
+    }
+});
+
+let data = [];
+$("#btn-cek-kolom").on("click", function () {
+    $("#body_bawah_modal").show();
+    $("#btn-up-csv").show();
+    Papa.parse(document.getElementById("input-csv").files[0], {
+        complete: function (results) {
+            data = results.data;
+            let nama = document.querySelector("#grb-nama");
+            let email = document.querySelector("#grb-email");
+            let i = 0;
+            data[0].forEach((el) => {
+                nama.innerHTML += `
+                <label class="btn btn-outline-dark">
+                    <input type="radio" name="options_nama" value="${i}" autocomplete="off" required> ${el}
+                </label>
+                `;
+                email.innerHTML += `
+                <label class="btn btn-outline-dark">
+                    <input type="radio" name="options_email" value="${i}" autocomplete="off" required> ${el}
+                </label>
+                `;
+                i++;
+            });
         },
     });
+});
 
-    //   if (file) {
-    //     const reader = new FileReader()
-    //     reader.onload = (e) => {
-    //       Swal.fire({
-    //         title: 'Your uploaded picture',
-    //         imageUrl: e.target.result,
-    //         imageAlt: 'The uploaded picture'
-    //       })
-    //     }
-    //     reader.readAsDataURL(file)
-    //   }
+$("#btn-up-csv").on("click", function () {
+    if (
+        $("input[name='options_nama']:checked").val() &&
+        $("input[name='options_email']:checked").val() &&
+        $("input[name='options_email']:checked").val() !=
+            $("input[name='options_nama']:checked").val()
+    ) {
+        $(".se-pre-con").fadeIn();
+        var dataform = new FormData();
+        dataform.append("data", JSON.stringify(data));
+        dataform.append("_token", $('meta[name="csrf-token"]').attr("content"));
+        dataform.append(
+            "col_nama",
+            $("input[name='options_nama']:checked").val()
+        );
+        dataform.append(
+            "col_email",
+            $("input[name='options_email']:checked").val()
+        );
+        axios({
+            method: "post",
+            url: path.ev,
+            data: dataform,
+        })
+            .then((resp) => {
+                if (resp.data.message === "ok") {
+                    location.reload();
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    } else if (
+        $("input[name='options_email']:checked").val() ==
+        $("input[name='options_nama']:checked").val()
+    ) {
+        swal("Kolom nama dan email tidak boleh sama", "", "error");
+    } else {
+        swal("Silahkan pilih kolom", "", "error");
+    }
 });

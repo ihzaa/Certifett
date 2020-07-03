@@ -4,7 +4,6 @@
 
 @section('CssTambahanAfter')
 <link rel="stylesheet" href="{{asset('css/style-yusuf.css')}}">
-<meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
 @section('header')
