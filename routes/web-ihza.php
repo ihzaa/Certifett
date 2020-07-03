@@ -28,7 +28,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/acara/{id}/konfigurasi', 'ParticipantEventCertificateController@BuatSertifikatPeserta')->name('buat_sertifikat');
     Route::post('/acara/{id_acara}/buat/{id_sertif}', 'ParticipantEventCertificateController@SertifPesertaFinal')->name('buat_sertifikat_fix');
-
+    Route::post('/acara/Edit/Peserta/{id}', 'ParticipantEventCertificateController@EditPeserta')->name('edit_peserta_acara');
 
     //Route Acara start
     Route::post('/acara/tambah', 'EventController@tambah')->name('tambah_event');

@@ -142,7 +142,7 @@ class EventController extends Controller
 
         foreach ($data["acara"] as $d) {
             array_push($data["jml_peserta"], participant_event_certificate::whereEvent_id($d->id)->count());
-            array_push($data["jml_dibuat"], participant_event_certificate::whereEvent_id($d->id)->whereNotNull('certificate_id',)->count());
+            array_push($data["jml_dibuat"], participant_event_certificate::whereEvent_id($d->id)->whereNotNull('release_date',)->count());
         }
 
         // return $data;

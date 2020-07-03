@@ -35,7 +35,7 @@ class ParticipantEventCertificateController extends Controller
         ]);
         $data['id_acara'] = $id;
         $data['id_sertif'] = $id_ser;
-        $data['jml_dibuat'] =  participant_event_certificate::where('event_id', $id)->count();
+        $data['jml_dibuat'] =  participant_event_certificate::where('certificate_id', $id_ser)->count();
         return view('frontend.buat-sertifikat', compact("data"));
     }
 
@@ -133,5 +133,14 @@ class ParticipantEventCertificateController extends Controller
         } else {
             return redirect(route('landing-page'))->with('message', 'Link salah atau acara sudah selesai!')->with('logo', 'warning')->with('title', 'Maaf');
         }
+    }
+
+    public function EditPeserta(Request $request)
+    {
+        participant_event_certificate::whereId($request->id)->update([
+            "name" => $request->nama,
+            "email" => $request->email
+        ]);
+        return back()->with('message', 'Data Peserta Berhasil Diubah.');
     }
 }

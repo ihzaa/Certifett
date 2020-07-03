@@ -292,3 +292,20 @@ $("#btn-hps-all").on("click", function () {
         });
     }
 });
+
+$(".btn-edit").on("click", function () {
+    event.preventDefault();
+    let id = $(this).parents("tr").find("input").attr("name");
+    $("#modal_edit form").attr(
+        "action",
+        "/acara/Edit/Peserta/" +
+            id.substring(id.lastIndexOf("[") + 1, id.lastIndexOf("]"))
+    );
+    $("#modal_edit #nama_edit").val(
+        $(this).parents("tr").find("#col_nama").html()
+    );
+    $("#modal_edit #email_edit").val(
+        $(this).parents("tr").find("#col_email").html()
+    );
+    $("#modal_edit").modal("show");
+});

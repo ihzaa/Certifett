@@ -25,7 +25,7 @@
                     <p class="text-normal d-inline-block ml-3">Sertifikat akan dibuat</p>
                 </span>
                 <div class="form-group date mt-5">
-                    <input type="text" class="form-control border-radius-c datepicker" name="tgl" placeholder="Tanggal Rilis"
+                    <input type="text" class="form-control border-radius-c datepicker" autocomplete="off" name="tgl" placeholder="Tanggal Rilis"
                         required>
                 </div>
                 <div class="form-inline">

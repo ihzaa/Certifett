@@ -88,20 +88,21 @@
                     <tr>
                         <th scope="row">
                             <label class="check">
-                                <input type="checkbox" @if($d->certificate_id == "") name="chk[{{$d->id}}]" @else
+                                <input type="checkbox" @if($d->release_date == "") name="chk[{{$d->id}}]" @else
                                 name="udh[{{$d->id}}]" @endif
-                                class="{{$d->certificate_id != "" ? "sudah_dibuat check_input" : "check_input blm_dibuat"}}">
+                                class="{{$d->release_date != "" ? "sudah_dibuat check_input" : "check_input blm_dibuat"}}">
                                 <span class="check_indicator"></span>
                             </label>
                         </th>
                         <td>
-                            @if($d->certificate_id != "")
+                            @if($d->release_date != "")
                             <img src="{{asset('icons/check_circle-24px.svg')}}">
                             @endif
-                            {{$d->name}}</td>
-                        <td class="colHide">{{$d->email}}</td>
+                            <span id="col_nama">{{$d->name}}</span>
+                            </td>
+                        <td class="colHide" id="col_email">{{$d->email}}</td>
                         <td>
-                            <a href=""><img src='{{asset("icons/create-24px.svg")}}'></a>
+                            <a href="#" class="btn-edit"><img src='{{asset("icons/create-24px.svg")}}'></a>
                             <a href="#" class="btn-hps"><img src='{{asset("icons/delete-24px.svg")}}'></a>
                         </td>
                     </tr>
@@ -116,6 +117,37 @@
             </table>
         </div>
     </form>
+    <div id="modal_edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="my-modal-title">Title</h5>
+                    <button class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">Nama</label>
+                            <input id="nama_edit" type="text" class="form-control border-radius-c border-hijau" name="nama" required
+                                style="width: 100% !important;">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input id="email_edit" type="email" class="form-control border-radius-c border-hijau" name="email"
+                                aria-describedby="emailHelp" required style="width: 100% !important;">
+                        </div>
+                    </div>
+                    <div class="modal-footer d-felx">
+                        <button type="submit" class=" ml-auto btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="modal-csv" class="modal fade " data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
@@ -155,6 +187,8 @@
         </div>
     </div>
 </div>
+
+
 @endsection
 
 @section('JsTambahanAfter')

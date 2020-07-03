@@ -25,7 +25,7 @@
                         name="nama_acara" placeholder="Nama Acara" required>
                 </div>
                 <div class="form-group date">
-                    <input type="text" class="form-control border-radius-c datepicker" name="tanggal"
+                    <input type="text" autocomplete="off" class="form-control border-radius-c datepicker" name="tanggal"
                         placeholder="Tanggal Acara" required value="{{$data['acara']->date}}">
                 </div>
                 <div class="form-group">
