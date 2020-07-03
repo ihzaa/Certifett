@@ -6,6 +6,7 @@ use App\Models\certificate;
 use App\Models\event;
 use App\Models\participant_event_certificate;
 use App\User;
+use Carbon\Carbon;
 use DateInterval;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
@@ -106,5 +107,31 @@ class ParticipantEventCertificateController extends Controller
         $data = json_decode($request->id);
         participant_event_certificate::whereIn('id', $data)->delete();
         return response()->json(["message" => "ok"]);
+    }
+
+    public function TambahPesertaLink($id, Request $request)
+    {
+        do {
+            $id_p = $id . "" . md5(uniqid());
+        } while (!empty(participant_event_certificate::find($id_p)));
+        participant_event_certificate::create([
+            "id" => $id_p,
+            "name" => $request->nama,
+            "email" => $request->email,
+            "event_id" => $id
+        ]);
+        return back()->with('message', 'Pendaftaran Anda Berhasil');
+    }
+
+    public function TampilHalamanDaftar($id)
+    {
+        $tmp = event::whereId($id)->where('date', '>', Carbon::today())->first();
+        if ($tmp != null) {
+            $data['id'] = $tmp->id;
+            $data['nama'] = $tmp->name;
+            return view('frontend.FormDaftarPeserta', compact("data"));
+        } else {
+            return redirect(route('landing-page'))->with('message', 'Link salah atau acara sudah selesai!')->with('logo', 'warning')->with('title', 'Maaf');
+        }
     }
 }
