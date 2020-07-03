@@ -26,7 +26,6 @@ Route::middleware(['auth'])->group(function(){
 
 });
 
-Route::get('/sendEmail', 'EmailController@sendEmail')->name("myCertificates-page");
 // Route::get('masuk', function () {
 //   return view('frontend.login');
 // })->name("login-page");

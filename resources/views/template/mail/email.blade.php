@@ -50,17 +50,17 @@
 
       header {
         background-color: #64D8CB;
-        padding: 20px 40px;
+        padding: 10px 10px;
         margin-bottom: 40px;
       }
 
       h1{
         color:black;
-        font-size:16px;
+        font-size:20px;
       }
 
       p {
-        font-size: 18px;
+        font-size: 16px;
         color: black;
         margin: 30px auto;
         font-weight:500;
