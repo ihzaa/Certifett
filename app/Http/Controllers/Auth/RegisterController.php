@@ -86,7 +86,7 @@ class RegisterController extends Controller
         $user->api_key = $user->id . "" . preg_replace('/[\W]/', '', $user->id . $this->generateRandomString(10) . $user->password);
         $user->save();
         $type = 'verifikasi';
-        app('App\Http\Controllers\EmailController')->VerificationEmail($data['name'], $data['email'], $type);
+        app('App\Http\Controllers\EmailController')->VerificationEmail($data['name'], $data['email'], $type, $user->api_key);
         Session::flash('reg', 'Registrasi Berhasil');
         Session::flash('body', 'Email Verifikasi Dikirim ke Email Anda.');
         return $user;

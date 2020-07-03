@@ -11,11 +11,12 @@ use Mail;
 
 class EmailController extends Controller
 {
-    public function VerificationEmail($name, $email, $type)
+    public function VerificationEmail($name, $email, $type, $api_key)
     {
         $data = [
             'name' => $name,
-            'type' => $type
+            'type' => $type,
+            'api_key' => $api_key
         ];
 
         Mail::to($email)->send(new EmailVerification($data));

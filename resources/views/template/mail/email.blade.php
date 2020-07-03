@@ -32,6 +32,11 @@
         font-weight: 800;
       }
 
+      a{
+        font-size:18px;
+        margin:0 auto !important;
+      }
+
       footer {
         background-color: #fafafa;
         margin-top: 50px;
@@ -70,6 +75,11 @@
         font-weight: 800;
       }
 
+      a{
+        font-size:14px;
+        margin:0 auto !important;
+      }
+
       footer {
         background-color: #fafafa;
         margin-top: 30px;
@@ -91,7 +101,9 @@
       @if($email_data['type'] == 'verifikasi')
       <p align="center">Selamat datang <span>{{ $email_data['name'] }}</span></p>
       <p align="center">Untuk mulai menggunakan website Certiffet tolong validasi email anda dengan menekan link berikut</p>
-      <a href=""><p align="center">Konfirmasi email anda</p></a>
+      <div style="text-align:center">
+        <a href="{{route('verify_account', $email_data['api_key'] )}}">Konfirmasi email anda disini</a>
+      </div>
       @else
       <p align="center">Selamat  <span>{{ $email_data['name'] }}</span></p>
       <p align="center">Anda mendapat sertifikat karena telah menyelesaikan event {{ $email_data['event'] }}.</p>
