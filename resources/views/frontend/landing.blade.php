@@ -125,6 +125,11 @@
 @endsection
 
 @section('JsTambahanAfter')
+@if(Session::get('message'))
+<script>
+    swal("Berhasil",'{{Session::get('message')}}' , "success");
+</script>
+@endif
 <script src="{{asset('js/rangeslider.js')}}"></script>
 <script src="{{asset('js/page/landing.js')}}"></script>
 @endsection
