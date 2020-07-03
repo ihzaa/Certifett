@@ -18,9 +18,7 @@ Route::middleware(['auth'])->group(function(){
     return view('frontend.kelolaSertifikat');
   })->name("manageCertificate-page");
 
-  Route::get('sertifikatSaya', function () {
-    return view('frontend.sertifikatSaya');
-  })->name("myCertificates-page");
+  Route::get('sertifikat/saya', 'CertificateController@TampilSertifSaya')->name("myCertificates-page");
 
   Route::get('kelolaPeserta', function () {
     return view('frontend.kelolaPeserta');
@@ -28,6 +26,7 @@ Route::middleware(['auth'])->group(function(){
 
 });
 
+Route::get('/sendEmail', 'EmailController@sendEmail')->name("myCertificates-page");
 // Route::get('masuk', function () {
 //   return view('frontend.login');
 // })->name("login-page");

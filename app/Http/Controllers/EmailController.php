@@ -2,17 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\EmailVerification;
+use App\Mail\EmailVerification;
 use Illuminate\Http\Request;
-use illuminate\Support\Facades\Mail;
+use Mail;
+// use illuminate\Support\Facades\Mail;
 
 class EmailController extends Controller
 {
-    public function sendMail(array $data){
+    public function VerificationEmail($name,$email,$type){
       $data = [
-        'name' => $data['name']
+        'name' => $name,
+        'type' => $type
       ];
 
-      Mail::to('yusufrnp@gmail.com')-send(new EmailVerification($data));
+      Mail::to($email)->send(new EmailVerification($data));
+    }
+
+    public function CertificateEmail($detail){
+      $data = [
+        'name' => $name,
+        'type' => $type
+      ];
+
+      foreach ($detail['email'] as $recipient) {
+        Mail::to($recipient)->send(new EmailVerification($data));
+      }
     }
 }

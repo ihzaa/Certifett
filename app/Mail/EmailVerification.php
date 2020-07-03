@@ -11,6 +11,7 @@ class EmailVerification extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $data;
     /**
      * Create a new message instance.
      *
@@ -18,7 +19,7 @@ class EmailVerification extends Mailable
      */
     public function __construct($data)
     {
-        $this->email_verification_data = $data;
+        $this->email_data = $data;
     }
 
     /**
@@ -28,6 +29,6 @@ class EmailVerification extends Mailable
      */
     public function build()
     {
-        return $this->from(['address' => 'dayat.syahseh@gmail.com', 'name' => 'Certiffet'])->subject('Selamat datang di Certifett!')->view('template.mail.email', ['email_data' => $this->email_verification_data]);
+        return $this->from(['address' => 'sertifikatonline0@gmail.com', 'name' => 'Certiffet'])->subject('Certifett!')->view('template.mail.email', ['email_data' => $this->email_data]);
     }
 }
