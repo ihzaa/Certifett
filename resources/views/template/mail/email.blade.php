@@ -73,7 +73,7 @@
       footer {
         background-color: #fafafa;
         margin-top: 30px;
-        padding: 20px;
+        padding: 15px;
       }
       }
     </style>
