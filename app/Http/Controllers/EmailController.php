@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\EmailVerification;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Mail;
 // use illuminate\Support\Facades\Mail;
 
@@ -38,9 +39,9 @@ class EmailController extends Controller
             User::where('api_key', $api_key)->update([
                 "is_email_verified" => 1
             ]);
-            return view('frontend.landing')->with('message', 'Verifikasi Email Berhasil!');
+            return redirect(route('landing-page'))->with('message', 'Verifikasi Email Berhasil!')->with('logo', 'success')->with('title', 'Berhasil');
         } else {
-            view('frontend.landing')->with('message', 'Email Sudah Pernah Diverifikasi!');
+            return redirect(route('landing-page'))->with('message', 'Email Sudah Pernah Diverifikasi!')->with('logo', 'warning')->with('title', 'Maaf');
         }
     }
 }

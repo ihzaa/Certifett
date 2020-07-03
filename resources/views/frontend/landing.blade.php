@@ -19,10 +19,13 @@
             <p class="text-normal">Verifikasi sertifikat yang dibuat dengan certifett menggunakan ID sertifikat</p>
             <div class="input-group input-group-lg mb-3 text-hijau mt-4 pt-4">
                 <div class="input-group-prepend">
-                    <span class="input-group-text transparent text-hijau hash border-radius-c border-radius-tanpa-kanan border-hijau" id="basic-addon1">#</span>
+                    <span
+                        class="input-group-text transparent text-hijau hash border-radius-c border-radius-tanpa-kanan border-hijau"
+                        id="basic-addon1">#</span>
                 </div>
-                <input type="text" class="form-control kolom-input-id hash border-radius-c border-radius-tanpa-kiri border-hijau" aria-label="Username"
-                    aria-describedby="basic-addon1">
+                <input type="text"
+                    class="form-control kolom-input-id hash border-radius-c border-radius-tanpa-kiri border-hijau"
+                    aria-label="Username" aria-describedby="basic-addon1">
             </div>
         </div>
     </div>
@@ -125,11 +128,11 @@
 @endsection
 
 @section('JsTambahanAfter')
-@if(Session::get('message'))
-<script>
-    swal("Berhasil",'{{Session::get('message')}}' , "success");
-</script>
-@endif
 <script src="{{asset('js/rangeslider.js')}}"></script>
 <script src="{{asset('js/page/landing.js')}}"></script>
+@if(Session::get('message'))
+<script>
+    swal("{{Session::get('title')}}",'{{Session::get('message')}}' , "{{Session::get('logo')}}");
+</script>
+@endif
 @endsection

@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/', function () {
     return view('frontend.landing');
 })->name("landing-page");
-
+Route::get('/user/email/verification/{api_key}', 'EmailController@VerifyAccount')->name('verify_account');
 Route::get('/certification/{id}', function () {
     return view('frontend.landing');
 })->name("form_pendaftaran_event");
