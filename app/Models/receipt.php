@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class receipt extends Model
 {
-    protected $fillable = ['id', 'amount', 'amount_paid', 'via'];
+    protected $fillable = ['amount', 'amount_paid', 'via'];
 
     public function event()
     {

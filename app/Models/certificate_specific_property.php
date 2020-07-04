@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class certificate_specific_property extends Model
 {
-    protected $fillable = ['id', 'nama', 'gambar', 'data', 'certificate_id'];
+    protected $fillable = ['nama', 'gambar', 'data', 'certificate_id'];
 
     public function certificate()
     {

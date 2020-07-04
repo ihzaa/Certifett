@@ -35,6 +35,11 @@
 @endsection
 
 @section('JsTambahanAfter')
+<script>
+    $("#login").on("submit",function(){
+        $(".se-pre-con").fadeIn();
+    });
+</script>
 @if(Session::get('error'))
 <script>
     swal("Email/Password Salah", "Silahkan Coba Lagi!", "error");

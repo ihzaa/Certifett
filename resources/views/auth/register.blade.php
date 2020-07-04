@@ -38,6 +38,11 @@
 </div>
 @endsection
 @section('JsTambahanAfter')
+<script>
+    $("#daftar").on("submit",function(){
+        $(".se-pre-con").fadeIn();
+    });
+</script>
 @if ($errors->any())
 <script>
     let arr = new Array();

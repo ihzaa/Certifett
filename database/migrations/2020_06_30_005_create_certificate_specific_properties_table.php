@@ -18,7 +18,7 @@ class CreateCertificateSpecificPropertiesTable extends Migration
             $table->string('nama');
             $table->text('gambar')->nullable();
             $table->string('data');
-            $table->string('certificate_id');
+            $table->unsignedBigInteger('certificate_id');
             $table->timestamps();
             $table->foreign('certificate_id')->on('certificates')->references('id')->onDelete('cascade');
         });

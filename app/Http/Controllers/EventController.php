@@ -48,12 +48,7 @@ class EventController extends Controller
             ]);
         }
 
-        do {
-            $id = Auth::id() . "" . md5(uniqid());
-        } while (!empty(certificate::find($id)));
-
         $sertifikat = certificate::create([
-            "id" => $id,
             "nama_instansi" => $request->nama_instansi,
             "jenis_sertifikat" => $request->jenis_acara,
             "logo_instansi" => "a",
@@ -62,12 +57,12 @@ class EventController extends Controller
         ]);
 
         $file = $request->file('logo_instansi');
-        $nama_file =  $id . '_logo_instansi_' . '.' . $file->getClientOriginalExtension();
+        $nama_file =  $sertifikat->id . '_logo_instansi_' . '.' . $file->getClientOriginalExtension();
         $tujuan_upload = 'assets/images/Logo_Instansi/';
         $logo_instansi = 'images/Logo_Instansi/' . $nama_file;
         $file->move($tujuan_upload, $nama_file);
         $file = $request->file('logo_acara');
-        $nama_file =  $id . 'logo_acara' . '.' . $file->getClientOriginalExtension();
+        $nama_file =  $sertifikat->id . 'logo_acara' . '.' . $file->getClientOriginalExtension();
         $tujuan_upload = 'assets/images/Logo_Sertifikat/';
         $logo_sertif = 'images/Logo_Sertifikat/' . $nama_file;
         $file->move($tujuan_upload, $nama_file);
@@ -100,12 +95,7 @@ class EventController extends Controller
             }
         }
 
-        do {
-            $id = Auth::id() . "" . md5(uniqid());
-        } while (!empty(event::find($id)));
-
         $data = event::create([
-            "id" => $id,
             "name" => $request->nama_acara,
             "date" => DateTime::createFromFormat('d/m/Y', $request->tanggal)->format('Y-m-d'),
             "capacity" => $request->jumlah,

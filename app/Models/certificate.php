@@ -6,10 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class certificate extends Model
 {
-    protected $fillable = ['id', 'nama_instansi', 'jenis_sertifikat', 'logo_instansi', 'logo_sertifikat', 'alasan'];
-
-    protected $keyType = 'string';
-    public $incrementing = false;
+    protected $fillable = ['nama_instansi', 'jenis_sertifikat', 'logo_instansi', 'logo_sertifikat', 'alasan'];
 
     public function specific_properties()
     {

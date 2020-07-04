@@ -28,6 +28,7 @@ class CertificateController extends Controller
     public function LihatSertif($id)
     {
         $data['peserta'] = participant_event_certificate::whereId($id)->where('is_send', 1)->where('valid_until', '>=', Carbon::today())->first();
+
         if ($data['peserta'] == "") {
             $data['peserta'] = participant_event_certificate::whereId($id)->where('is_send', 1)->where('valid_until', null)->first();
         }

@@ -83,7 +83,7 @@ class RegisterController extends Controller
             'api_key' => "1"
         ]);
 
-        $user->api_key = $user->id . "" . preg_replace('/[\W]/', '', $user->id . $this->generateRandomString(10) . $user->password);
+        $user->api_key = $user->id . "" . preg_replace('/[\W]/', '', md5($user->id));
         $user->save();
         $type = 'verifikasi';
         app('App\Http\Controllers\EmailController')->VerificationEmail($data['name'], $data['email'], $type, $user->api_key);

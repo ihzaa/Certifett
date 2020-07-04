@@ -74,6 +74,8 @@ class ParticipantEventCertificateController extends Controller
         $data = json_decode($request->data);
         $i = 0;
         $len = count($data[0]);
+        $cnt = participant_event_certificate::where('event_id', $id)->count();
+        $cnt++;
         foreach ($data as $d) {
             if ($i == 0) {
                 $i++;
@@ -82,9 +84,25 @@ class ParticipantEventCertificateController extends Controller
             if ($len != count($d)) {
                 continue;
             }
-            do {
-                $id_p = Auth::id() . "" . md5(uniqid());
-            } while (!empty(participant_event_certificate::find($id_p)));
+            $id_p = "";
+            if (strlen($id) > 3) {
+                $id_p .= $id;
+            } else {
+                $tmp = $id;
+                while (strlen($tmp) < 3) {
+                    $tmp = "0" . $tmp;
+                }
+                $id_p .= $tmp;
+            }
+            if (strlen($cnt) > 4) {
+                $id_p .= $cnt++;
+            } else {
+                $tmp = $cnt++;
+                while (strlen($tmp) < 4) {
+                    $tmp = "0" . $tmp;
+                }
+                $id_p .= $tmp;
+            }
             participant_event_certificate::create([
                 "id" => $id_p,
                 "name" => $d[$request->col_nama],
@@ -111,9 +129,52 @@ class ParticipantEventCertificateController extends Controller
 
     public function TambahPesertaLink($id, Request $request)
     {
-        do {
-            $id_p = $id . "" . md5(uniqid());
-        } while (!empty(participant_event_certificate::find($id_p)));
+        // $evnt = event::find($id);
+        // $sert = $evnt->certificate()->first();
+        $id_p = "";
+        // if (strlen($sert->nama_instansi) > 2) {
+        //     $id_p .= strtoupper(substr($sert->nama_instansi, 0, 1));
+        // } else {
+        //     $id_p .= strtoupper($sert->nama_instansi);
+        // }
+        // if (strlen($evnt->user_owner) > 3) {
+        //     $id_p .= $evnt->user_owner;
+        // } else {
+        //     $tmp = $evnt->user_owner;
+        //     while (strlen($tmp) < 3) {
+        //         $tmp = "0" . $tmp;
+        //     }
+        //     $id_p .= $tmp;
+        // }
+        if (strlen($id) > 3) {
+            $id_p .= $id;
+        } else {
+            $tmp = $id;
+            while (strlen($tmp) < 3) {
+                $tmp = "0" . $tmp;
+            }
+            $id_p .= $tmp;
+        }
+        // if (strlen($sert->id) > 4) {
+        //     $id_p .= $sert->id;
+        // } else {
+        //     $tmp = $sert->id;
+        //     while (strlen($tmp) < 4) {
+        //         $tmp = "0" . $tmp;
+        //     }
+        //     $id_p .= $tmp;
+        // }
+        $cnt = participant_event_certificate::where('event_id', $id)->count();
+        $cnt++;
+        if (strlen($cnt) > 4) {
+            $id_p .= $cnt;
+        } else {
+            $tmp = $cnt;
+            while (strlen($tmp) < 4) {
+                $tmp = "0" . $tmp;
+            }
+            $id_p .= $tmp;
+        }
         participant_event_certificate::create([
             "id" => $id_p,
             "name" => $request->nama,
