@@ -5,6 +5,11 @@
 @section('CssTambahanAfter')
 <link rel="stylesheet" href="{{asset('css/style-yusuf.css')}}">
 <link rel="stylesheet" href="{{asset('css/checkbox-custom.css')}}">
+<style>
+    tbody tr {
+        cursor: pointer;
+    }
+</style>
 @endsection
 
 @section('header')
@@ -24,45 +29,48 @@
             <table class="table" id="tabel_list">
                 <thead class="thead-dark">
                     <tr class="tableHead">
-                        <th scope="col">
+                        {{-- <th scope="col">
                             <label class="check">
                                 <input type="checkbox" onchange="checkAll(this)" class="check_header" id="check_header">
                                 <span class="check_indicator" id="checkbox_header"></span>
                             </label>
-                        </th>
+                        </th> --}}
                         <th scope="col">ID Sertifikat</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col" class="colHide">Email</th>
+                        <th scope="col">Nama Acara</th>
+                        {{-- <th scope="col" class="colHide">Email</th> --}}
                         <th scope="col" class="colHide">Tanggal Rilis</th>
                         <th scope="col" class="colHide">Berlaku Sampai</th>
-                        <th scope="col">
+                        {{-- <th scope="col">
                             <img src='{{asset("icons/create-24px.svg")}}'>
-                            <img src='{{asset("icons/delete-24px.svg")}}'>
-                        </th>
+                        <img src='{{asset("icons/delete-24px.svg")}}'>
+                        </th> --}}
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($data["sertif"] as $d)
-                    <tr>
-                        <th scope="row">
+
+                    <tr onclick="liat('{{$d->id}}')">
+                        {{-- <th scope="row">
                             <label class="check">
                                 <input type="checkbox" name="chk" class="check_input">
                                 <span class="check_indicator"></span>
                             </label>
-                        </th>
+                        </th> --}}
                         <td>{{$d->id}}</td>
                         <td>{{$d->name}}</td>
-                        <td class="colHide">{{$d->email}}</td>
-                        <td class="colHide">{{\Carbon\Carbon::parse($d->release_date)->formatLocalized("%A, %d %B %Y")}}
+                        {{-- <td class="colHide">{{$d->email}}</td> --}}
+                        <td class="colHide">
+                            {{\Carbon\Carbon::parse($d->release_date)->formatLocalized("%A, %d %B %Y")}}
                         </td>
                         <td class="colHide">
                             {{$d->valid_until == ""? "Selamanya":\Carbon\Carbon::parse($d->valid_until)->formatLocalized("%A, %d %B %Y")}}
                         </td>
-                        <td>
+                        {{-- <td>
                             <img src='{{asset("icons/create-24px.svg")}}'>
-                            <img src='{{asset("icons/delete-24px.svg")}}'>
-                        </td>
+                        <img src='{{asset("icons/delete-24px.svg")}}'>
+                        </td> --}}
                     </tr>
+
                     @endforeach
                     @if(count($data["sertif"]) == 0)
                     {{-- INI KETERANGAN DATA KOSONG --}}
@@ -80,5 +88,10 @@
 
 @section('JsTambahanAfter')
 <script src="{{asset('js/page/sertifikat_saya.js')}}">
+</script>
+<script>
+    function liat(id){
+        window.open("/certificate/"+id);
+    }
 </script>
 @endsection
