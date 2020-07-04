@@ -13,7 +13,7 @@ class certificate extends Model
 
     public function specific_properties()
     {
-        return $this->hasMany('App\Models\participant_event_certificate');
+        return $this->hasMany('App\Models\certificate_specific_property');
     }
 
     public function event()
