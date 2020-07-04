@@ -25,7 +25,7 @@
     </div>
     <div class="m-auto" id="sertifikat"
         style="width:1100px; height:fit-content; padding:25px; text-align:center; border: 1px solid #787878;background-color: white;">
-        <p class="text-hijau" style="margin-left:-750px">#{{ $data['sertif']->id }}</p>
+        <p class="text-hijau" style="margin-left:-750px">#{{ $data['peserta']->id }}</p>
         <div style="text-align:center;">
             <div class="d-flex justify-content-center" style="height:60px">
                 <img src="{{asset($data['sertif']->logo_sertifikat)}}" height="60">

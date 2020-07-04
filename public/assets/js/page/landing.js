@@ -45,3 +45,7 @@ $(document).ready(function () {
         return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ".");
     }
 });
+
+$("#form_id").on("submit", function () {
+    $(this).attr("action", "/certificate/" + $("#idSertifikat").val());
+});
