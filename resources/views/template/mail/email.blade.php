@@ -113,7 +113,7 @@
         <a href="">
             <p align="center">ID SERTIFIKAT : #{{ $email_data['idpeserta'] }}</p>
         </a>
-        <p align="center">Anda dapat mengunduh sertifikat di website kami.</p>
+        <p align="center">Anda dapat mengunduh sertifikat di {{ route('landing-page') }}.</p>
         @endif
     </main>
 </body>

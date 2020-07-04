@@ -241,7 +241,7 @@
   font-size: 20px;
 }
 
-#kelolaSertifikat input[type='text'] {
+#kelolaSertifikat .search {
   background-image: url(../icons/search-24px.svg);
   background-size: 27px;
   background-position: 99% 7px;
@@ -339,7 +339,7 @@
 border-radius:20px 0px 0px 16px;
 }
 
-.tableHead > th:nth-child(7){
+.tableHead > th:nth-child(4){
 border-radius:0px 16px 16px 0px;
 }
 

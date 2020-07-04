@@ -17,16 +17,16 @@
         <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-8 ml-auto mr-auto ">
             <h1 class="text-hijau font-weight-normal judul">Verifikasi Sertifikat</h1>
             <p class="text-normal">Verifikasi sertifikat yang dibuat dengan certifett menggunakan ID sertifikat</p>
-            <div class="input-group input-group-lg mb-3 text-hijau mt-4 pt-4">
-                <div class="input-group-prepend">
-                    <span
-                        class="input-group-text transparent text-hijau hash border-radius-c border-radius-tanpa-kanan border-hijau"
-                        id="basic-addon1">#</span>
-                </div>
-                <input type="text"
-                    class="form-control kolom-input-id hash border-radius-c border-radius-tanpa-kiri border-hijau"
-                    aria-label="Username" aria-describedby="basic-addon1">
-            </div>
+              <div class="input-group input-group-lg mb-3 text-hijau mt-4 pt-4">
+                  <div class="input-group-prepend">
+                      <span
+                          class="input-group-text transparent text-hijau hash border-radius-c border-radius-tanpa-kanan border-hijau"
+                          id="basic-addon1">#</span>
+                  </div>
+                  <input id="idSertifikat" type="text"
+                      class="form-control kolom-input-id hash border-radius-c border-radius-tanpa-kiri border-hijau"
+                      aria-label="Username" aria-describedby="basic-addon1">
+              </div>
         </div>
     </div>
     <div class="row" id="WhatIsIt">
@@ -134,5 +134,6 @@
 <script>
     swal("{{Session::get('title')}}",'{{Session::get('message')}}' , "{{Session::get('logo')}}");
 </script>
+
 @endif
 @endsection

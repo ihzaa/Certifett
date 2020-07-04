@@ -122,7 +122,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="my-modal-title">Title</h5>
+                    <h5 class="modal-title" id="my-modal-title">Edit data</h5>
                     <button class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -142,7 +142,7 @@
                         </div>
                     </div>
                     <div class="modal-footer d-felx">
-                        <button type="submit" class=" ml-auto btn btn-primary">Simpan</button>
+                        <button type="submit" class=" ml-auto btn btn-dark">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -155,7 +155,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="my-modal-title">Title</h5>
+                <h5 class="modal-title" id="my-modal-title">Pilih file</h5>
                 <button class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -171,7 +171,7 @@
                         <label class="custom-file-label" for="input-csv" id="input-csv-label">Choose file .csv</label>
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary" id="btn-cek-kolom" disabled>Cek Kolom</button>
+                <button type="button" class="btn btn-dark" id="btn-cek-kolom" disabled>Cek Kolom</button>
                 <div id="body_bawah_modal" style="display: none;">
                     <hr>
                     <h3>Pilih Kolom Nama:</h3>
@@ -181,7 +181,7 @@
                 </div>
             </div>
             <div class="modal-footer d-flex">
-                <button type="button" class=" ml-auto btn btn-primary" id="btn-up-csv"
+                <button type="button" class=" ml-auto btn btn-dark" id="btn-up-csv"
                     style="display: none;">Upload</button>
             </div>
         </div>
@@ -208,5 +208,6 @@
 <script>
     swal("Berhasil",'{{Session::get('message')}}' , "success");
 </script>
+
 @endif
 @endsection

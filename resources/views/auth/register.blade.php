@@ -31,7 +31,7 @@
                     placeholder="Password">
             </div>
             <img src='{{asset("images/Savings-pana.png")}}'>
-            <button type="submit" class="btn-outline-dark btn-auth">Daftar</button>
+            <button type="submit" class="btn btn-outline-dark btn-auth">Daftar</button>
             <h4 id="text1">Sudah punya akun? <a href="{{route('login')}}"><span>masuk</span></a></h4>
         </form>
     </article>

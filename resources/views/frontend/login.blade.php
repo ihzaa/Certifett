@@ -25,7 +25,7 @@
                     <input type="password" name="password" class="form-control mx-auto" placeholder="Password">
                 </div>
                 <img src='{{asset("images/Savings-pana.png")}}'>
-                <button type="button" class="btn-outline-dark btn-auth">Masuk</button>
+                <button type="button" class="btn btn-outline-dark btn-auth">Masuk</button>
                 <h4 id="text1">Belum punya akun? <a href="{{route('registration-page')}}"><span>daftar</span></a></h4>
         </form>
 
