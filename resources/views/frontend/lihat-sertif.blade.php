@@ -5,14 +5,20 @@
 @section('CssTambahanAfter')
 
 @endsection
-
+  <style>
+  @media screen and (max-width: 800px) {
+    .header h1{
+      font-size:18px;
+    }
+  }
+  </style>
 @section('header')
 @include('template.components.nav-common')
 @endsection
 
 @section('konten')
 <div class="container mt-4">
-  <div class="d-flex justify-content-between" style="margin-bottom:20px">
+  <div class="d-flex justify-content-between header" style="margin-bottom:20px">
     <h1>Sertifikat Terverifikasi</h1>
     <button class="btn btn-outline-dark"><i class="fa fa-download" aria-hidden="true"> Download Sertifikat</i></button>
   </div>
