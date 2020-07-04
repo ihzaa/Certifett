@@ -1,6 +1,6 @@
 @extends('template.all')
 
-@section('JudulHalaman','Certiffet - Manage Certificate')
+@section('JudulHalaman','Manage Certificate')
 
 @section('CssTambahanAfter')
 <link rel="stylesheet" href="{{asset('css/style-yusuf.css')}}">
@@ -108,7 +108,7 @@
   </table>
   </div>
 </form>
-  
+
 </div>
 @endsection
 

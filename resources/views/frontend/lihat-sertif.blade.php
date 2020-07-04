@@ -1,6 +1,6 @@
 @extends('template.all')
 
-@section('JudulHalaman','Certiffet - Sertifikat')
+@section('JudulHalaman','Sertifikat')
 
 @section('CssTambahanAfter')
 
