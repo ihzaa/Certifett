@@ -5,6 +5,11 @@
 @section('CssTambahanAfter')
 <link rel="stylesheet" href="{{asset('css/style-yusuf.css')}}">
 <link rel="stylesheet" href="{{asset('css/checkbox-custom.css')}}">
+<style>
+    tbody tr {
+        cursor: pointer;
+    }
+</style>
 @endsection
 
 @section('header')
@@ -85,7 +90,7 @@
                 </thead>
                 <tbody>
                     @foreach ($data["peserta"] as $d)
-                    <tr>
+                    <tr onclick="previewSertif('{{$d->name}}','{{$d->id}}')">
                         <th scope="row">
                             <label class="check">
                                 <input type="checkbox" @if($d->release_date == "") name="chk[{{$d->id}}]" @else
@@ -99,7 +104,7 @@
                             <img src="{{asset('icons/check_circle-24px.svg')}}">
                             @endif
                             <span id="col_nama">{{$d->name}}</span>
-                            </td>
+                        </td>
                         <td class="colHide" id="col_email">{{$d->email}}</td>
                         <td>
                             <a href="#" class="btn-edit"><img src='{{asset("icons/create-24px.svg")}}'></a>
@@ -132,13 +137,13 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="">Nama</label>
-                            <input id="nama_edit" type="text" class="form-control border-radius-c border-hijau" name="nama" required
-                                style="width: 100% !important;">
+                            <input id="nama_edit" type="text" class="form-control border-radius-c border-hijau"
+                                name="nama" required style="width: 100% !important;">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
-                            <input id="email_edit" type="email" class="form-control border-radius-c border-hijau" name="email"
-                                aria-describedby="emailHelp" required style="width: 100% !important;">
+                            <input id="email_edit" type="email" class="form-control border-radius-c border-hijau"
+                                name="email" aria-describedby="emailHelp" required style="width: 100% !important;">
                         </div>
                     </div>
                     <div class="modal-footer d-felx">
@@ -183,6 +188,58 @@
             <div class="modal-footer d-flex">
                 <button type="button" class=" ml-auto btn btn-dark" id="btn-up-csv"
                     style="display: none;">Upload</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-preview" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="m-auto" id="sertifikat"
+                    style="width:1100px; height:fit-content; padding:25px; text-align:center; border: 1px solid #787878;background-color: white;">
+                    <p class="text-hijau" style="margin-left:-965px" id="id_peserta_prev"></p>
+                    <div style="text-align:center;">
+                        <div class="d-flex justify-content-center" style="height:60px">
+                            <img src="{{asset($data['sertif']->logo_sertifikat)}}" height="60">
+                            <div
+                                style="font-size:60px; font-weight:400;text-decoration-line: underline; line-height:60px; margin-top:-7px;margin-left:20px;color: #263238;text-transform: uppercase;">
+                                {{$data['sertif']->jenis_sertifikat}}</div>
+                        </div>
+
+                        <br><br>
+
+                        <div class="d-flex justify-content-center">
+                            <img src="{{asset($data['sertif']->logo_instansi)}}" height="70">
+                            <div style="text-align:left; margin-left:15px">
+                                <h5 class="text-hijau"> INSTANSI</h5>
+                                <h5>{{$data['sertif']->nama_instansi}}</h5>
+                            </div>
+                        </div>
+                        <br>
+                        <h5 class="text-hijau">Diberikan Kepada</h5>
+                        <br>
+                        <h1 style="text-transform: uppercase;" id="nama_peserta_modal"></h1>
+                        <br>
+                        <h5 style="font-weight:400">{{$data['sertif']->alasan}}</h5>
+
+                        <div class="d-flex justify-content-around" style="margin-top:30px;">
+                            @foreach ($data['khusus'] as $d)
+                            <div>
+                                <h6 class="text-hijau" style="text-transform: uppercase;">{{ $d->nama }}</h6>
+                                @if ($d->gambar != null)
+                                <img src="{{asset($d->gambar)}}" height="100">
+                                <h6 style="text-transform: uppercase;">{{ $d->data }}</h6>
+                                @else
+                                <h6 style="text-transform: uppercase;margin-top: 100px;">{{ $d->data }}</h6>
+                                @endif
+
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

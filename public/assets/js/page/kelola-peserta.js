@@ -309,3 +309,9 @@ $(".btn-edit").on("click", function () {
     );
     $("#modal_edit").modal("show");
 });
+
+function previewSertif(nama,id){
+    $("#id_peserta_prev").html("#"+id);
+    $("#nama_peserta_modal").html(nama);
+    $("#modal-preview").modal("show");
+}

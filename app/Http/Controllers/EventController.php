@@ -141,7 +141,10 @@ class EventController extends Controller
 
     public function TampilHalamanEditAcara($id)
     {
-        $data['acara'] = event::find($id);
+        $data['acara'] = event::whereId($id)->where('user_owner', Auth::id())->first();
+        if ($data["acara"] == "") {
+            return redirect(route('agencyHome-page'));
+        }
         $data['acara']->date = DateTime::createFromFormat('Y-m-d H:i:s', $data['acara']->date)->format('d/m/Y');
         $data['sertifikat'] = $data['acara']->certificate()->first();
         $data['properti_khusus'] = certificate_specific_property::where('certificate_id', $data['sertifikat']->id)->get();

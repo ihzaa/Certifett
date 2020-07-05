@@ -25,7 +25,7 @@
     </div>
     <div class="m-auto" id="sertifikat"
         style="width:1100px; height:fit-content; padding:25px; text-align:center; border: 1px solid #787878;background-color: white;">
-        <p class="text-hijau" style="margin-left:-750px">#{{ $data['peserta']->id }}</p>
+        <p class="text-hijau" style="margin-left:-965px">#{{ $data['peserta']->id }}</p>
         <div style="text-align:center;">
             <div class="d-flex justify-content-center" style="height:60px">
                 <img src="{{asset($data['sertif']->logo_sertifikat)}}" height="60">
@@ -54,8 +54,12 @@
                 @foreach ($data['sertif_khusus'] as $d)
                 <div>
                     <h6 class="text-hijau" style="text-transform: uppercase;">{{ $d->nama }}</h6>
+                    @if ($d->gambar != null)
                     <img src="{{asset($d->gambar)}}" height="100">
                     <h6 style="text-transform: uppercase;">{{ $d->data }}</h6>
+                    @else
+                    <h6 style="text-transform: uppercase;margin-top: 100px;">{{ $d->data }}</h6>
+                    @endif
                 </div>
                 @endforeach
             </div>

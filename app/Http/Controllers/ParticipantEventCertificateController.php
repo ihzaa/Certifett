@@ -20,8 +20,14 @@ class ParticipantEventCertificateController extends Controller
         $data = array();
         $data["id"] = $id;
         $data["acara"] = event::whereId($id)->where('user_owner', Auth::id())->first();
+        if ($data["acara"] == "") {
+            return redirect(route('agencyHome-page'));
+        }
+        $data["sertif"] = $data["acara"]->certificate()->first();
+        $data["khusus"] = $data["sertif"]->specific_properties()->get();
         $data["peserta"] = participant_event_certificate::whereEvent_id($data['acara']->id)->get();
         $data["jml_peserta"] = count($data["peserta"]);
+        // return $data;
 
         return view("frontend.kelolaPeserta", compact("data"));
     }
