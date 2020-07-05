@@ -187,7 +187,10 @@ class EventController extends Controller
             ]);
         }
 
-        $acara = event::find($id);
+        $acara = event::whereId($id)->where('user_owner', Auth::id())->first();
+        if ($acara == "") {
+            return redirect(route('agencyHome-page'));
+        }
         $acara->name = $request->nama_acara;
         $acara->date = DateTime::createFromFormat('d/m/Y', $request->tanggal)->format('Y-m-d');
         $acara->capacity = $request->jumlah;
