@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700;900&display=swap");
+
+body {
+    font-family: "Roboto", sans-serif;
+    color: #263238;
+}
+
+.text-primary-c {
+    color: #263238;
+}
+
+.text-secondary-c {
+    color: #26a69a;
+}
+
+.text-accent-c {
+    color: #64d8cb;
+}
+
+.text-danger-c {
+    color: #e91e63;
+}
+
+.text-normal {
+    color: #707070;
+}
+
+.text-hijau {
+    color: #26a69a !important;
+}
+
+.judul {
+    font-size: 80px !important;
+}
+
+.border-hijau {
+    border-color: #26a69a !important;
+}
+
+.border-radius-c {
+    border-radius: 16px !important;
+}
+
+.bg-primary-c {
+    background-color: #263238;
+}
+
+.bg-secondary-c {
+    background-color: #26a69a;
+}
+
+.bg-accent-c {
+    background-color: #64d8cb;
+}
+
+.bg-danger-c {
+    background-color: #e91e63;
+}
+#content {
+    padding-top: 57px;
+}
+.no-js #loader {
+    display: none;
+}
+.js #loader {
+    display: block;
+    position: absolute;
+    left: 100px;
+    top: 0;
+}
+.se-pre-con {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url("/assets/images/loader/Preloader_9.gif") center no-repeat
+        #fff;
+}
+
+.datepicker {
+    padding-left: 15px !important;
+}
+
+#user-info-sm {
+    display: none;
+}
+#user-info-lg {
+    display: block;
+}
+
+@media screen and (max-width: 991px) {
+    #user-info-sm {
+        display: block;
+    }
+    #user-info-lg {
+        display: none;
+    }
+}

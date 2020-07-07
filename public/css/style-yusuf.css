@@ -1,0 +1,630 @@
+.container{
+  margin-bottom: 100px;
+}
+/* CSS halaman admin */
+#judul{
+  margin-top: 130px;
+  margin-left: 106px;
+  line-height: 60px;
+  text-align: left;
+  font-size: 46px;
+  font-family: Roboto,sans-serif;
+  letter-spacing: 0px;
+  color: #263238;
+  opacity: 1;
+}
+
+#penjelasan{
+  margin-top: 16px;
+  margin-left: 106px;
+  line-height: 26px;
+  width: 937px;
+  text-align: left;
+  font-size: 20px;
+  font-family: Roboto,sans-serif;
+  letter-spacing: 0px;
+  color: #707070;
+  opacity: 1;
+}
+
+/* akhir CSS halaman admin */
+
+/* CSS halaman Daftar dan Login*/
+#judul2{
+  margin-top: 110px;
+  line-height: 60px;
+  font-size: 46px;
+  letter-spacing: 0px;
+  color: #263238;
+  opacity: 1;
+}
+
+#daftar{
+  margin-top: 58px;
+}
+
+#login{
+  margin-top: 58px;
+}
+
+.auth img{
+  margin: 0 auto;
+  display: block;
+  max-width: 45%;
+  height: auto;
+}
+
+.form-control{
+  margin-bottom: 24px;
+  border: 1px solid #707070;
+  width: 40%;
+  border-radius: 16px;
+  opacity: 1;
+  padding: 16px;
+}
+
+.form-control:focus {
+  border: 1px solid #707070;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(38, 50, 56, 0.075), 0 0 8px rgba(38, 50, 56, 0.6);
+          box-shadow: inset 0 1px 1px rgba(38, 50, 56, 0.075), 0 0 8px rgba(38, 50, 56, 0.6);
+}
+.form-group input{
+  font-size: 20px;
+  color: #707070;
+}
+.btn-auth{
+  padding: 16px;
+  width: 40%;
+  margin-bottom:24px;
+  font-size: 26px;
+  font-family: Roboto;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+  border:2px solid #707070;
+  border-radius: 16px;
+}
+
+#text1{
+  color: #707070;
+}
+
+#text1 span{
+  color: #263238;
+  font-weight: 500;  
+}
+
+#text1 a{
+  text-decoration: none;
+}
+
+#text1 span:hover{
+  cursor: pointer;
+  font-weight: 900;
+}
+/* akhir CSS halaman daftar dan login*/
+
+/* CSS halaman agency home */
+#emailVerification{
+  top: 138px;
+  width: 100%;
+  min-height: 71px;
+  padding: 0px 36px;
+  box-shadow: 0px 3px 6px #00000029;
+  border: 2px solid #707070;
+  border-radius: 16px;
+  display: block;
+}
+
+#emailVerification img{
+  margin-right: 36px;
+}
+
+#emailVerification p{
+  margin-top: 15px;
+  line-height: 34px;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  color: #263238;
+  vertical-align: middle;
+}
+
+#agencyHome h1{
+  margin-top: 190px;
+  font-size: 46px;
+}
+
+#acaraBaru{
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 190px;
+  box-shadow: 0px 3px 6px #00000029;
+  border: 2px solid #707070;
+  opacity: 1;
+  border-radius: 16px;
+  padding: 10px 64px;
+}
+
+.box{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#agencyHome .card:nth-of-type(4n+4){
+  margin-right: 0 !important;
+}
+
+#agencyHome .card{
+  margin-top: 36px;
+  margin-right: 23px;
+  width: 260px;
+  height: fit-content;
+  padding: 24px;
+  box-shadow: 0px 3px 6px #00000029;
+  border: 2px solid #707070;
+  border-radius: 16px;
+}
+
+#agencyHome h3{
+  font-size: 24px;
+  letter-spacing: 0px;
+  color: #263238;
+}
+
+#agencyHome a{
+  text-decoration: none;
+}
+
+#agencyHome p{
+  margin-top: -5px;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: 0px;
+  color: #707070;
+}
+
+.edit{
+  margin-top: 13px;
+}
+
+#agencyHome img{
+  width: 36px;
+  display: inline;
+  float: right;
+  margin-left: 16px;
+}
+
+/* akhir CSS halaman agency home */
+
+/* CSS halaman kelola sertifikat*/
+
+#kelolaSertifikat{
+  padding: 90px 106px;
+  max-width: 100%;
+}
+
+#kelolaSertifikat .info h2{
+  display: inline-block;
+}
+
+#kelolaSertifikat .info p{
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+#kelolaSertifikat .tengah{
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+
+#kelolaSertifikat .info img{
+  display: inline-block;
+  width: 26px;
+  margin-top: -5px;
+}
+
+#kelolaSertifikat .info h5{
+  display: inline-block;
+  margin-left: 16px;
+}
+
+#kelolaSertifikat .search{
+  margin-top: 37px;
+  width: 100%;
+  border-radius: 16px;
+  padding: 10px 26px;
+  font-size: 20px;
+}
+
+#kelolaSertifikat .search {
+  background-image: url(../icons/search-24px.svg);
+  background-size: 27px;
+  background-position: 99% 7px;
+  background-repeat: no-repeat;
+}
+
+/* akhir CSS halaman kelola sertifikat*/
+
+/* CSS kelola peserta */
+
+.kelolaPeserta img{
+  width: 37%;
+  height: 20%;
+}
+
+.kelolaPeserta p{
+  color: #707070;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.kelolaPeserta .card{
+  margin-top: 25px;
+  margin-right: 24px;
+  padding: 34px 24px;
+  width: 370px;
+  height: fit-content;
+  box-shadow: 0px 3px 6px #00000029;
+  border: 2px solid #707070;
+  border-radius: 16px;
+}
+
+.kelolaPeserta .card p{
+  margin-top: 24px;
+  margin-bottom: 20px;
+}
+
+#linkCertifet{
+  line-height: 0;
+  font-size: 16px;
+  display: inline-block;
+}
+
+.kelolaPeserta .card img{
+  margin-top: 14px;
+  margin-left: 15px;
+  width: 22px;
+  display: inline-block;
+  height: 22px;
+  cursor: pointer;
+}
+
+.kelolaPeserta button{
+  padding: 14px 0;
+  border: 2px solid #707070;
+  border-radius: 16px;
+  letter-spacing: 0px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#buatSertif{
+  padding: 14px 87px;
+  border: 2px solid #707070;
+  border-radius: 16px;
+  letter-spacing: 0px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.kelola .jumlah{
+  margin-top: 34px;
+  margin-bottom: -10px;
+}
+
+.kelola .jumlah h3{
+  margin-top: 10px;
+  color: #263238;
+}
+
+.kelola .jumlah h3 span{
+  font-size: 16px;
+}
+
+/* akhir CSS kelola peserta */
+
+/* CSS table */
+
+
+.tableHead{
+  border-top:3px solid #fff;
+}
+
+.tableHead > th:nth-child(1){
+border-radius:20px 0px 0px 16px;
+}
+
+.tableHead > th:nth-child(4){
+border-radius:0px 16px 16px 0px;
+}
+
+tbody{
+border-top:3px solid #fff;
+}
+
+.tableHead th{
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+td img,th img{
+  margin-left: 10px;
+  width: 24px;
+  height: 24px;
+}
+
+
+
+.tableHead th {
+  position: sticky;
+  top: -2px;
+  z-index: 10;
+}
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 400px;
+  /* overflow-y: hidden; */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.my-custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* akhir CSS table */
+
+@media screen and (max-width: 1200px) {
+  #agencyHome .card:nth-of-type(4n+4){
+    margin-right: 23px !important;
+  }
+}
+
+@media screen and (max-width: 990px) {
+
+.container{
+  margin-bottom: 30px;
+}
+
+  /* CSS halaman daftar dan login */
+#judul2{
+  margin-top: 40px;
+  font-size: 32px;
+}
+
+#daftar{
+  margin-top: 28px;
+}
+
+#login{
+  margin-top: 28px;
+}
+
+.form-control{
+  margin-bottom: 24px;
+  border: 1px solid #707070;
+  width: 80%;
+  border-radius: 16px;
+  opacity: 1;
+  padding: 16px;
+}
+
+.form-group input{
+  font-size: 14px;
+  color: #707070;
+}
+
+.btn-auth{
+  padding: 16px;
+  width: 80%;
+  margin-bottom:16px;
+  font-size: 20px;
+  font-family: Roboto;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+  border:2px solid #707070;
+  border-radius: 16px;
+}
+
+.auth img{
+  max-width: 90%;
+  height: auto;
+}
+
+#text1{
+  font-size: 16px;
+}
+/* akhir CSS halaman daftar dan login*/
+
+/* CSS halaman agency home */
+#emailVerification{
+  top: 60px;
+  width: 100%;
+  height: fit-content;
+  padding: 0px 36px;
+  box-shadow: 0px 3px 6px #00000029;
+  border: 2px solid #707070;
+  border-radius: 16px;
+  display: block;
+}
+
+#emailVerification img{
+  margin-right: 20px;
+}
+
+
+#emailVerification p{
+  margin-top: 19px;
+  line-height: 18px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  color: #263238;
+  vertical-align: middle;
+}
+
+#agencyHome{
+  text-align: center;
+}
+
+#agencyHome h1{
+  width: 100%;
+  font-size: 46px;
+  margin-top: 80px;
+}
+
+#acaraBaru{
+  width: 100%;
+  font-size: 26px;
+  margin-top: 20px;
+}
+
+.box{
+  width: 100%;
+  flex-direction: column;
+}
+
+#agencyHome .card{
+  text-align: left;
+  margin-top: 36px;
+  width: 100%;
+  height: fit-content;
+  padding: 24px;
+  box-shadow: 0px 3px 6px #00000029;
+  border: 2px solid #707070;
+  border-radius: 16px;
+}
+
+#agencyHome h3{
+  font-size: 34px;
+  letter-spacing: 0px;
+  color: #263238;
+}
+
+#agencyHome p{
+  margin-top: -5px;
+  font-size: 24px;
+  line-height: 26px;
+  letter-spacing: 0px;
+  color: #707070;
+}
+/* akhir CSS halaman agency home */
+
+/* CSS halaman kelola sertifikat*/
+
+#kelolaSertifikat{
+  padding: 30px 40px;
+  max-width: 100%;
+}
+
+/* akhir CSS halaman kelola sertifikat*/
+
+/* CSS table */
+
+.table th, .table td{
+  font-size: 12px;
+  padding: 10px 5px ;
+}
+
+th img, td img{
+  width: 16px;
+}
+
+.colHide{
+  display: none;
+}
+
+/* akhir CSS table */
+
+/* CSS kelola peserta */
+
+.kelolaPeserta .kartu{
+  flex-direction: column;
+}
+
+.kelolaPeserta img{
+  display: none;
+}
+
+.kelolaPeserta p{
+  color: #707070;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.kelolaPeserta .card{
+  margin-top: 25px;
+  margin-right: 24px;
+  padding: 34px 24px;
+  width: 100%;
+  height: fit-content;
+  box-shadow: 0px 3px 6px #00000029;
+  border: 2px solid #707070;
+  border-radius: 16px;
+}
+
+.kelolaPeserta .card p{
+  margin-top: 24px;
+  margin-bottom: 20px;
+}
+
+#linkCertifet{
+  line-height: 0;
+  font-size: 16px;
+  display: inline-block;
+}
+
+.kelolaPeserta .card img{
+  margin-top: 14px;
+  margin-left: 15px;
+  width: 22px;
+  display: inline-block;
+  height: 22px;
+  cursor: pointer;
+}
+
+.kelolaPeserta button{
+  padding: 14px 0;
+  border: 2px solid #707070;
+  border-radius: 16px;
+  letter-spacing: 0px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.kelola .jumlah{
+  flex-direction: column;
+}
+
+#buatSertif{
+  margin-top: 20px;
+  padding: 14px 20px;
+  width: 100%;
+  border: 2px solid #707070;
+  border-radius: 16px;
+  letter-spacing: 0px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.kelola .jumlah h3{
+  width: 100%;
+  margin-top: 10px;
+  font-size: 26px;
+  color: #263238;
+}
+
+.kelola .jumlah h3 span{
+  font-size: 16px;
+}
+
+/* akhir CSS kelola peserta */
+
+}

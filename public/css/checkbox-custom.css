@@ -1,0 +1,30 @@
+.check{
+  display: inline-flex;
+  align-items: center;
+  height: 16px;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+input[type=checkbox]{
+  opacity: 0;
+}
+
+.check_indicator{
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  background-color: #ffffff;
+  border: 1px solid #707070;
+  border-radius: 2px;
+}
+
+input[type=checkbox]:checked ~ .check_indicator{
+  background-image: url(../icons/check_box-24px.svg);
+  background-size: 130%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  transform: scale(1,1);
+  transition: all .3s ease;
+}
