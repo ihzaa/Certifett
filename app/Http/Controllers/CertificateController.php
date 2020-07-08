@@ -15,7 +15,7 @@ class CertificateController extends Controller
     {
         $data = array();
         $usr = Auth::user();
-        $data['sertif'] = participant_event_certificate::whereEmail($usr->email)->whereNotNull('release_date')->get();
+        $data['sertif'] = participant_event_certificate::whereEmail($usr->email)->whereNotNull('release_date')->where('is_send', '1')->get();
         $event = event::pluck('name', 'id');
         for ($i = 0; $i < count($data['sertif']); $i++) {
             $data['sertif'][$i]->name = $event[$data['sertif'][$i]->event_id];
