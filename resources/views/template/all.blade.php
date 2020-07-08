@@ -12,7 +12,7 @@
     @yield('CssTambahanBefore')
     {{-- css umum --}}
     <link rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}">
-    <link rel="stylesheet" href="{{asset("css/font-awesome-all.min.css")}}">
+    <link rel="stylesheet" href="{{asset("css/fontawesome.min.css")}}">
     {{-- css umum --}}
     @yield('CssTambahanAfter')
     {{-- <script src="{{asset('js/pace.min.js')}}"></script> --}}

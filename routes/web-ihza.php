@@ -55,3 +55,5 @@ Route::post('/certification/{id}', 'ParticipantEventCertificateController@Tambah
 
 Route::get('/certificate/{id}', 'CertificateController@LihatSertif')->name('lihat_sertif');
 Route::get('testting', 'EmailController@testing');
+Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');

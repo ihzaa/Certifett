@@ -4,6 +4,7 @@
 
 @section('CssTambahanAfter')
 <link rel="stylesheet" href="{{asset('css/style-yusuf.css')}}">
+<link rel="stylesheet" href="{{asset('css/brands.css')}}">
 @endsection
 
 @section('header')
@@ -27,7 +28,25 @@
                 </div>
                 <img src='{{asset("images/Savings-pana.png")}}'>
                 <button type="submit" class="btn btn-outline-dark btn-auth">Masuk</button>
+                <div class="form-group row">
+                    <div class="col-10 col-sm-10 col-md-4 col-xl-4 col-lg-4 m-auto">
+                        <h5>Atau Masuk Dengan:</h5>
+                        {{-- <a href="{{ url('/auth/google') }}" class="btn btn-github"><i class="fa fa-github"></i>
+                        Google</a>
+                        <a href="{{ url('/auth/twitter') }}" class="btn btn-twitter"><i class="fa fa-twitter"></i>
+                            Twitter</a> --}}
+
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-10 col-sm-10 col-md-4 col-xl-4 col-lg-4 m-auto">
+                        <a href="{{ url('/auth/facebook') }}" class="btn btn-facebook text-light" style="background-color: #4267B2"><i class="fab fa-facebook"
+                                aria-hidden="true"></i>
+                            Facebook</a>
+                    </div>
+                </div>
                 <h4 id="text1">Belum punya akun? <a href="{{route('register')}}"><span>daftar</span></a></h4>
+
         </form>
 
     </article>
