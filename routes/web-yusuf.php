@@ -24,6 +24,10 @@ Route::middleware(['auth'])->group(function(){
     return view('frontend.kelolaPeserta');
   })->name("manageParticipant-page");
 
+  Route::get('/kelolaAkun', function () {
+    return view('frontend.kelolaAkun');
+  })->name("manageAkun-page");
+
 });
 
 Route::get('/kirimUlang', 'EmailController@kirimUlang')->name("kirimUlang");
