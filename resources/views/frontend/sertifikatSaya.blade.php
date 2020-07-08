@@ -5,11 +5,6 @@
 @section('CssTambahanAfter')
 <link rel="stylesheet" href="{{asset('css/style-yusuf.css')}}">
 <link rel="stylesheet" href="{{asset('css/checkbox-custom.css')}}">
-<style>
-    tbody tr {
-        cursor: pointer;
-    }
-</style>
 @endsection
 
 @section('header')
@@ -17,7 +12,25 @@
 @endsection
 
 @section('konten')
+@if(!$data["is_email_verify"])
+<div class="container">
+    <div class="card" id="emailVerification">
+        <div class="d-flex flex-sm-row justify-content-between">
+            <div class="d-flex">
+                <img src='{{asset("icons/warning-24px.svg")}}'>
+                <p>Email belum diverifikasi.</p>
+            </div>
+            <div>
+                <a style="text-decoration:none" href="{{route('kirimUlang')}}">
+                    <p>Kirim Ulang</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 <div class="container" id="kelolaSertifikat">
+
     <h2>Sertifikat saya</h2>
 
     <div class="input-group mb-5">
@@ -47,37 +60,33 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @if(!$data["is_email_verify"])
+                    <tr>
+                        <th colspan="100%" class="text-center">Verifikasi Email Untuk Melihat Sertifikat.</th>
+                    </tr>
+                    @else
                     @foreach ($data["sertif"] as $d)
 
-                    <tr onclick="liat('{{$d->id}}')">
-                        {{-- <th scope="row">
-                            <label class="check">
-                                <input type="checkbox" name="chk" class="check_input">
-                                <span class="check_indicator"></span>
-                            </label>
-                        </th> --}}
+                    <tr onclick="liat('{{$d->id}}')" class="clickable">
                         <td>#{{$d->id}}</td>
                         <td>{{$d->name}}</td>
-                        {{-- <td class="colHide">{{$d->email}}</td> --}}
                         <td class="colHide">
                             {{\Carbon\Carbon::parse($d->release_date)->formatLocalized("%A, %d %B %Y")}}
                         </td>
                         <td class="colHide">
                             {{$d->valid_until == ""? "Selamanya":\Carbon\Carbon::parse($d->valid_until)->formatLocalized("%A, %d %B %Y")}}
                         </td>
-                        {{-- <td>
-                            <img src='{{asset("icons/create-24px.svg")}}'>
-                        <img src='{{asset("icons/delete-24px.svg")}}'>
-                        </td> --}}
                     </tr>
-
                     @endforeach
-                    @if(count($data["sertif"]) == 0)
-                    {{-- INI KETERANGAN DATA KOSONG --}}
-                    <tr>
-                        <th colspan="100%" class="text-center">Tidak ada data peserta</th>
-                    </tr>
+                        @if(count($data["sertif"]) == 0 && $data["is_email_verify"] != "")
+                        {{-- INI KETERANGAN DATA KOSONG --}}
+                        <tr>
+                            <th colspan="100%" class="text-center">Anda belum memiliki sertifikat</th>
+                        </tr>
+                        @endif
                     @endif
+
+
                 </tbody>
             </table>
         </div>

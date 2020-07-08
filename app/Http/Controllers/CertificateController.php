@@ -15,6 +15,10 @@ class CertificateController extends Controller
     {
         $data = array();
         $usr = Auth::user();
+        $data["is_email_verify"] = $usr->is_email_verified;
+        if ($data["is_email_verify"] == 0) {
+            return view('frontend.sertifikatSaya', compact("data"));
+        }
         $data['sertif'] = participant_event_certificate::whereEmail($usr->email)->whereNotNull('release_date')->where('is_send', '1')->get();
         $event = event::pluck('name', 'id');
         for ($i = 0; $i < count($data['sertif']); $i++) {

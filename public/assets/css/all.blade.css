@@ -98,3 +98,7 @@ body {
         display: none;
     }
 }
+
+.clickable {
+    cursor: pointer;
+}
