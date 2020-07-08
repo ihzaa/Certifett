@@ -103,7 +103,7 @@
                         <td class="colHide clickable" id="col_email"
                             onclick="previewSertif('{{$d->name}}','{{$d->id}}')">
                             {{$d->email}}</td>
-                        <td onclick="previewSertif('{{$d->name}}','{{$d->id}}')" class="clickable">
+                        <td>
                             <a href="#" class="btn-edit"><img src='{{asset("icons/create-24px.svg")}}'></a>
                             <a href="#" class="btn-hps"><img src='{{asset("icons/delete-24px.svg")}}'></a>
                         </td>
