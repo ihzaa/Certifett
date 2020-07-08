@@ -5,11 +5,6 @@
 @section('CssTambahanAfter')
 <link rel="stylesheet" href="{{asset('css/style-yusuf.css')}}">
 <link rel="stylesheet" href="{{asset('css/checkbox-custom.css')}}">
-<style>
-    tbody tr {
-        cursor: pointer;
-    }
-</style>
 @endsection
 
 @section('header')
@@ -90,7 +85,7 @@
                 </thead>
                 <tbody>
                     @foreach ($data["peserta"] as $d)
-                    <tr onclick="previewSertif('{{$d->name}}','{{$d->id}}')">
+                    <tr>
                         <th scope="row">
                             <label class="check">
                                 <input type="checkbox" @if($d->release_date == "") name="chk[{{$d->id}}]" @else
@@ -99,14 +94,16 @@
                                 <span class="check_indicator"></span>
                             </label>
                         </th>
-                        <td>
+                        <td onclick="previewSertif('{{$d->name}}','{{$d->id}}')" class="clickable">
                             @if($d->release_date != "")
                             <img src="{{asset('icons/check_circle-24px.svg')}}">
                             @endif
                             <span id="col_nama">{{$d->name}}</span>
                         </td>
-                        <td class="colHide" id="col_email">{{$d->email}}</td>
-                        <td>
+                        <td class="colHide clickable" id="col_email"
+                            onclick="previewSertif('{{$d->name}}','{{$d->id}}')">
+                            {{$d->email}}</td>
+                        <td onclick="previewSertif('{{$d->name}}','{{$d->id}}')" class="clickable">
                             <a href="#" class="btn-edit"><img src='{{asset("icons/create-24px.svg")}}'></a>
                             <a href="#" class="btn-hps"><img src='{{asset("icons/delete-24px.svg")}}'></a>
                         </td>
