@@ -70,5 +70,5 @@
 
 @section('JsTambahanAfter')
 <script src="{{asset('js/dom-to-image.min.js')}}"></script>
-<script src="{{asset('js/pages/lihat-sertif.js')}}></script>
+<script src="{{asset('js/page/lihat-sertif.js')}}"></script>
 @endsection
