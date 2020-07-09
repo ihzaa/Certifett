@@ -29,6 +29,9 @@ class AuthController extends Controller
         $user = Socialite::driver($provider)->user();
         $authUser = $this->findOrCreateUser($user, $provider);
         Auth::login($authUser, true);
+        if ($authUser->password == "") {
+            return redirect(route('manageAccount-page'))->with('modal_open', true);
+        }
         return redirect('/');
     }
 
@@ -49,7 +52,6 @@ class AuthController extends Controller
             $data = User::create([
                 'name'     => $user->name,
                 'email'    => !empty($user->email) ? $user->email : '',
-                'password' => Hash::make('password'),
                 'api_key' => "1"
             ]);
             $data->api_key = $user->id . "" . preg_replace('/[\W]/', '', md5($user->id));

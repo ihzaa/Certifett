@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('sertifikat/saya', 'CertificateController@TampilSertifSaya')->name("my-page");
 
     Route::post('/acara/{id}/peserta/tambah/csv', 'ParticipantEventCertificateController@TambahPesertaCSV')->name('tambah_peserta_csv');
+    Route::post('/user/firstpassword/config/store','AccountController@FirstPasswordConfig')->name('config_first_pass');
 });
 
 
