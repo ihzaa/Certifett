@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
@@ -40,16 +41,19 @@ class AuthController extends Controller
      */
     public function findOrCreateUser($user, $provider)
     {
-        $authUser = User::where('provider_id', $user->id)->first();
+        // $authUser = User::where('provider_id', $user->id)->first();
+        $authUser = User::where('email', $user->email)->first();
         if ($authUser) {
             return $authUser;
         } else {
             $data = User::create([
                 'name'     => $user->name,
                 'email'    => !empty($user->email) ? $user->email : '',
-                'provider' => $provider,
-                'provider_id' => $user->id
+                'password' => Hash::make('password'),
+                'api_key' => "1"
             ]);
+            $data->api_key = $user->id . "" . preg_replace('/[\W]/', '', md5($user->id));
+            $data->save();
             return $data;
         }
     }
