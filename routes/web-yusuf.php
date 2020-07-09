@@ -24,9 +24,9 @@ Route::middleware(['auth'])->group(function(){
     return view('frontend.kelolaPeserta');
   })->name("manageParticipant-page");
 
-  Route::get('/kelolaAkun', function () {
-    return view('frontend.kelolaAkun');
-  })->name("manageAkun-page");
+  Route::get('/kelolaAkun', 'AccountController@tampil')->name("manageAccount-page");
+
+  Route::post('/edit', 'AccountController@update')->name("editAccount");
 
 });
 

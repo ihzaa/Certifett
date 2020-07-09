@@ -7,9 +7,9 @@
     .container {
         width: 50%
     }
-
+    
     .card {
-        margin-top: 100px;
+        margin-top: 40px;
         padding: 30px;
         box-shadow: 1px 3px 6px #00000029;
     }
@@ -74,28 +74,37 @@
     <div class="card border-radius-c">
 
         <div class="header">
-            <h3>Kelola Akun</h3>
+          <h3>Kelola Akun</h3>
         </div>
         <div class="dropdown-divider mb-5"></div>
-        <form action="" method="POST">
+        <form action="{{ route('editAccount') }}" method="POST">
             @csrf
+            <input type="text" class="form-control border-radius-c border-hijau" name="id" readonly hidden value="{{ $data->id }}">
+
             <div class="mb-4">
-                <div class="form-group">
-                    <input type="text" class="form-control border-radius-c border-hijau" name="nama" placeholder="Nama"
-                        required>
-                </div>
+              <div class="form-group">
+            <input type="text" class="form-control border-radius-c border-hijau" name="nama" placeholder="Nama" required value="{{ $data->name }}">
+              </div>
             </div>
 
             <div class="mb-4">
                 <div class="form-group">
                     <input type="email" class="form-control border-radius-c border-hijau" name="email"
-                        placeholder="Email" aria-describedby="emailHelp" readonly>
+                        placeholder="Email" value="{{ $data->email }}" readonly>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="form-group">
+                    <input type="text" class="form-control border-radius-c border-hijau" name="apiKey"
+                        placeholder="apiKey" value="{{ $data->api_key }}" readonly>
+                    <small class="form-text text-muted">Ini adalah API key akun anda.</small>
                 </div>
             </div>
 
             <div class="mb-4">
               <div class="input-group pass">
-                <input type="password" class="form-control border-hijau" placeholder="Password" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input type="password" class="form-control border-hijau" placeholder="Password" aria-label="Recipient's username" name="pass" aria-describedby="button-addon2" required>
                 <div class="input-group-append">
                   <button class="btn btn-outline-secondary border-hijau" type="button"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
                 </div>
@@ -104,13 +113,13 @@
 
             <div class="mb-4">
               <div class="input-group newPass">
-                <input type="password" class="form-control border-hijau" placeholder="Password baru" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input type="password" class="form-control border-hijau" placeholder="Password baru" aria-label="Recipient's username" name="newPass" minlength="8" aria-describedby="button-addon2">
                 <div class="input-group-append">
                   <button class="btn btn-outline-secondary border-hijau" type="button"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
                 </div>
                
               </div>
-              <small id="emailHelp" class="form-text text-muted">Hanya diisi ketika ingin mengganti password saja.</small>
+              <small id="newPassword" class="form-text text-muted">Hanya diisi ketika ingin mengganti password saja.</small>
             </div>
 
             <div class="dropdown-divider mt-5"></div>
@@ -130,7 +139,7 @@
 
 @if (Session::get('message'))
 <script>
-    swal("Pendaftaran Berhasil.","","success");
+    swal("{{ Session::get('message') }}","","{{ Session::get('icon') }}");
 </script>
 @endif
 @endsection

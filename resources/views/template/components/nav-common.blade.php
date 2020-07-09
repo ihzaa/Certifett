@@ -29,7 +29,7 @@
                 </li>
                 <div id="user-info-sm">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Akun Saya</a>
+                        <a class="nav-link" href="{{route('manageAccount-page')}}">Akun Saya</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('logout')}}">Logout</a>
@@ -44,7 +44,7 @@
                         {{Auth::user()->name}}
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <a class="dropdown-item" href="#">Akun Saya</a>
+                        <a class="dropdown-item" href="{{route('manageAccount-page')}}">Akun Saya</a>
                         <a class="dropdown-item" href="{{route('logout-c')}}">Logout</a>
                     </div>
                 </div>
