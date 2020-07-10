@@ -149,3 +149,106 @@ $(document).on("click", ".btn-hapus-blok-khusus", function () {
 $("#buatAcara").on("submit", function () {
     $(".se-pre-con").fadeIn();
 });
+
+$("#btn_prev").on("click", function () {
+    // if ($("#switch_properti_khusus").is(":checked")) {
+    //     console.log($("input[name^='khusus_nama']").val());
+    // }
+    if (
+        $("input[name=logo_instansi]").val() != "" &&
+        $("input[name=logo_acara]").val() != "" &&
+        $("input[name=jenis_acara]").val() != "" &&
+        $("input[name=nama_instansi]").val() != "" &&
+        $("textarea[name=karena]").val() != ""
+    ) {
+        $("#footnya").html("");
+        if ($("#switch_properti_khusus").is(":checked")) {
+            let khusus_nama = $("input[name^='khusus_nama']");
+            let khusus_data = $("textarea[name^='khusus_properti']");
+            let khusus_gambar = $("input[name^='khusus_gambar']");
+            let i = 0;
+            for (i = 0; i < khusus_nama.length; i++) {
+                if (khusus_nama[i].value == "" || khusus_data[i].value == "") {
+                    swal(
+                        "Isi Seluruh Data Sertifikat Yang Wajib Diisi Sebelum Melihat Preview!",
+                        "",
+                        "error"
+                    );
+                    return;
+                }
+                if (khusus_gambar[i].value != "") {
+                    console.log(
+                        $(khusus_gambar[i])
+                            .parent()
+                            .parent()
+                            .find(".preview-zone")
+                            .find("img")
+                            .attr("src")
+                    );
+
+                    $("#footnya").html(
+                        $("#footnya").html() +
+                            `
+                    <div>
+                        <h6 class="text-hijau" style="text-transform: uppercase;">${
+                            khusus_nama[i].value
+                        }</h6>
+                        <img src="${$(khusus_gambar[i])
+                            .parent()
+                            .parent()
+                            .find(".preview-zone")
+                            .find("img")
+                            .attr("src")}" height="100">
+                        <h6 style="text-transform: uppercase;">${
+                            khusus_data[i].value
+                        }</h6>
+                    </div>`
+                    );
+                } else {
+                    $("#footnya").html(
+                        $("#footnya").html() +
+                            `
+                    <div>
+                        <h6 class="text-hijau" style="text-transform: uppercase;">${khusus_nama[i].value}</h6>
+                        <h6 style="text-transform: uppercase;margin-top: 100px;">${khusus_data[i].value}</h6>
+                    </div>`
+                    );
+                }
+            }
+        }
+        $("#modal-preview #img-sertif").attr(
+            "src",
+            $("input[name=logo_acara]")
+                .parent()
+                .parent()
+                .find(".preview-zone")
+                .find("img")
+                .attr("src")
+        );
+        $("#modal-preview #img-instansi").attr(
+            "src",
+            $("input[name=logo_instansi]")
+                .parent()
+                .parent()
+                .find(".preview-zone")
+                .find("img")
+                .attr("src")
+        );
+        $("#modal-preview #jenis_sertif_modal").html(
+            $("input[name=jenis_acara]").val()
+        );
+        $("#modal-preview #nama_instansi_modal").html(
+            $("input[name=nama_instansi]").val()
+        );
+        $("#modal-preview #alasan_modal").html(
+            $("textarea[name=karena]").val()
+        );
+        $("#modal-preview").modal("show");
+    } else {
+        swal(
+            "Isi Seluruh Data Sertifikat Yang Wajib Diisi Sebelum Melihat Preview!",
+            "",
+            "error"
+        );
+    }
+});

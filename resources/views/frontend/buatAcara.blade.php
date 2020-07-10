@@ -198,13 +198,62 @@ Karena telah mengikuti acara pelatihan JS 101 yang diselenggarakan oleh Team A">
             </div>
         </div>
         <div class="row d-flex justify-content-center mt-5">
+            <div class="col-6">
+                <button id="btn_prev" type="button"
+                    class="btn btn-outline-secondary font-weight-bold btn-block border-radius-c text-primary-c">
+                    <p class=" mb-0">Preview Sertifikat</p>
+                </button>
+            </div>
+
+        </div>
+        <div class="row d-flex justify-content-center mt-3">
             <div class="col-6"><button type="submit"
                     class="btn btn-outline-secondary btn-block font-weight-bold border-radius-c text-primary-c">
                     <p class=" mb-0">Lanjut</p>
                 </button></div>
-
         </div>
     </form>
+</div>
+
+<div id="modal-preview" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="m-auto" id="sertifikat"
+                    style="width:1100px; height:fit-content; padding:25px; text-align:center; border: 1px solid #787878;background-color: white;">
+                    <p class="text-hijau" style="margin-left:-965px" id="id_peserta_prev"></p>
+                    <div style="text-align:center;">
+                        <div class="d-flex justify-content-center" style="height:60px">
+                            <img src="" height="60" id="img-sertif">
+                            <div id="jenis_sertif_modal"
+                                style="font-size:60px; font-weight:400;text-decoration-line: underline; line-height:60px; margin-top:-7px;margin-left:20px;color: #263238;text-transform: uppercase;">
+                            </div>
+                        </div>
+
+                        <br><br>
+
+                        <div class="d-flex justify-content-center">
+                            <img src="" height="70" id="img-instansi">
+                            <div style="text-align:left; margin-left:15px">
+                                <h5 class="text-hijau"> INSTANSI</h5>
+                                <h5 id="nama_instansi_modal"></h5>
+                            </div>
+                        </div>
+                        <br>
+                        <h5 class="text-hijau">Diberikan Kepada</h5>
+                        <br>
+                        <h1 style="text-transform: uppercase;" id="nama_peserta_modal">~Nama Peserta~</h1>
+                        <br>
+                        <h5 style="font-weight:400" id="alasan_modal"></h5>
+
+                        <div class="d-flex justify-content-around" style="margin-top:30px;" id="footnya">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 
