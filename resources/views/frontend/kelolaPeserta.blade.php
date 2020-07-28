@@ -19,7 +19,7 @@
             <p>Daftar peserta yang terdaftar dalam {{$data["acara"]->name}}. Buat sertifikat dengan cara mencentang
                 kotak
                 disamping kiri nama dan tekan tombol buat di sudut kanan atas tabel. Sertifikat yang telah dibuat dapat
-                diunduh oleh peserta melalui www.domain.com/certificate dan www.ourdomain.com/cerfiticate. Tekan baris
+                diunduh oleh peserta melalui {{config('app.url')}}. Tekan baris
                 dari tabel dibawah untuk melihat preview sertifikat.</p>
             <div class="info tengah">
                 <img src='{{asset("icons/event-24px.svg")}}'>
@@ -41,7 +41,7 @@
                     <h5>Share link</h5>
                     <p>Share link ini agar peserta dapat Mendaftar secara mandiri.</p>
                     <div class="d-flex">
-                        <p id="linkCertifet">www.domain.com/certification/{{substr($data["acara"]->id,0,5)}}...</p>
+                        <p id="linkCertifet">{{config('app.url')}}/certification/{{substr($data["acara"]->id,0,5)}}...</p>
                         <img src="{{asset('icons/content_copy-24px.svg')}}" id="cpy_btn"
                             onclick="copyToClipboard('{{route('form_pendaftaran_event',['id'=>$data['acara']->id])}}')">
                     </div>

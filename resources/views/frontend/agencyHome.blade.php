@@ -20,7 +20,9 @@
                 <p>Email belum diverifikasi.</p>
             </div>
             <div>
-                <a style="text-decoration:none" href="{{route('kirimUlang')}}"><p>Kirim Ulang</p></a>
+                <a style="text-decoration:none" href="{{route('kirimUlang')}}">
+                    <p>Kirim Ulang</p>
+                </a>
             </div>
         </div>
     </div>
@@ -30,24 +32,34 @@
             <h1>Acara</h1>
             <a class="btn btn-outline-dark" id="acaraBaru" href="{{route('createEvent-page')}}">Acara Baru</a>
         </div>
-        <div class="d-flex box">
+        <div class="d-flex justify-content-between box">
+            <div class="input-group" id="list_acara">
+                <input type="text" class="form-control search" onkeyup="search()" id="src_in"
+                    placeholder="Cari Nama Acara">
+            </div>
+        </div>
+        <div class="d-flex box" id="box_list_acara">
             <?php $i=0; ?>
             @foreach ($data["acara"] as $d)
-            <a href="{{route('peserta_acara',['id' => $d->id])}}">
-                <div class="card" id="card-{{$d->id}}">
-                    <h3>{{$d->name}}</h3>
-                    <p>{{\Carbon\Carbon::parse($d->date)->formatLocalized("%A, %d %B %Y") }}</p>
-                    <h3>{{$data["jml_peserta"][$i]}}</h3>
-                    <p>Peserta</p>
-                    <h3>{{$data["jml_dibuat"][$i++]}}</h3>
-                    <p>Sertifikat Dibuat</p>
-                    <div class="edit">
-                        <a href="#" @click="hapusKah('{{$d->id}}')"><img src='{{asset("icons/delete-24px.svg")}}'></a>
-                        <a href="{{route('tampil_edit_acara',['id' => $d->id])}}"><img
-                                src='{{asset("icons/create-24px.svg")}}'></a>
+            <div class="box_acara">
+                <a href="{{route('peserta_acara',['id' => $d->id])}}">
+                    <div class="card" id="card-{{$d->id}}">
+                        <h3 class="nama_acara">{{$d->name}}</h3>
+                        <p>{{\Carbon\Carbon::parse($d->date)->formatLocalized("%A, %d %B %Y") }}</p>
+                        <h3>{{$data["jml_peserta"][$i]}}</h3>
+                        <p>Peserta</p>
+                        <h3>{{$data["jml_dibuat"][$i++]}}</h3>
+                        <p>Sertifikat Dibuat</p>
+                        <div class="edit">
+                            <a href="#" @click="hapusKah('{{$d->id}}')"><img
+                                    src='{{asset("icons/delete-24px.svg")}}'></a>
+                            <a href="{{route('tampil_edit_acara',['id' => $d->id])}}"><img
+                                    src='{{asset("icons/create-24px.svg")}}'></a>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
+
             @endforeach
         </div>
     </articel>
@@ -67,6 +79,29 @@
 <script src="{{asset('js/axios.min.js')}}"></script>
 <script src="{{asset('js/vue.min.js')}}"></script>
 <script>
+    function search() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("src_in");
+    filter = input.value.toUpperCase();
+    box_list = document.getElementById("box_list_acara");
+    box = box_list.getElementsByClassName("box_acara");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < box.length; i++) {
+        td_nama = box[i].getElementsByClassName("nama_acara")[0];
+        if (td_nama) {
+            txtNama = td_nama.innerText.toUpperCase();
+            if (
+                txtNama.toUpperCase().indexOf(filter) > -1
+            ) {
+                box[i].style.display = "";
+            } else {
+                box[i].style.display = "none";
+            }
+        }
+    }
+}
     var app = new Vue({
         el: '#agencyHome',
         data: {
