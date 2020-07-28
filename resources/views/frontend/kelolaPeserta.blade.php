@@ -41,9 +41,12 @@
                     <h5>Share link</h5>
                     <p>Share link ini agar peserta dapat Mendaftar secara mandiri.</p>
                     <div class="d-flex">
-                        <p id="linkCertifet">{{config('app.url')}}/certification/{{substr($data["acara"]->id,0,5)}}...</p>
+                        <p id="linkCertifet">
+                            {{substr(route('form_pendaftaran_event',['id'=>$data['acara']->id]),0,35)}}...
+                        </p>
                         <img src="{{asset('icons/content_copy-24px.svg')}}" id="cpy_btn"
-                            onclick="copyToClipboard('{{route('form_pendaftaran_event',['id'=>$data['acara']->id])}}')">
+                            onclick="copyToClipboard('{{route('form_pendaftaran_event',['id'=>$data['acara']->id])}}')"
+                            data-toggle="tooltip" title="Salin link">
                     </div>
                 </div>
             </div>
