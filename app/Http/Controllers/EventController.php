@@ -280,4 +280,15 @@ class EventController extends Controller
 
         return redirect(route('agencyHome-page'))->with('message', 'Berhasil Merubah Acara');
     }
+
+    public function waktuAbsensi($id, Request $request)
+    {
+        // echo $request->start;
+        // return $request;
+        event::whereId($id)->update([
+            'absent_start' =>Carbon::createFromFormat('d/m/Y H:i',$request->start)->toDateTimeString(),
+            'absent_end' => Carbon::createFromFormat('d/m/Y H:i',$request->end)->toDateTimeString(),
+        ]);
+        return true;
+    }
 }

@@ -4,7 +4,7 @@
             <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 bg-primary-c text-light py-4">
                 <div class="ml-4">
                     <h1 class="display-2"><strong>{{config('app.name')}}</strong></h1>
-                    <p class="text-center">by proximity-labs</p>
+                    <p class="text-center">by proxymity-labs</p>
                     <p class="mb-0">All Amazing illustrations used on this website is taken from</p>
                     <img class="img-fluid" src="{{asset('images/Artboard-footer.png')}}" alt="" width="380">
                 </div>

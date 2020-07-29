@@ -21,6 +21,8 @@ class CreateEventsTable extends Migration
             $table->unsignedBigInteger('user_owner');
             $table->unsignedBigInteger('receipt_id');
             $table->unsignedBigInteger('certificate_id')->unique();
+            $table->dateTime('absent_start')->nullable();
+            $table->dateTime('absent_end')->nullable();
             $table->timestamps();
 
             $table->foreign('user_owner')->on('users')->references('id')->onDelete('cascade');

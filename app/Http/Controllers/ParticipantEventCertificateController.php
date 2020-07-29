@@ -27,6 +27,8 @@ class ParticipantEventCertificateController extends Controller
         $data["khusus"] = $data["sertif"]->specific_properties()->get();
         $data["peserta"] = participant_event_certificate::whereEvent_id($data['acara']->id)->get();
         $data["jml_peserta"] = count($data["peserta"]);
+        $data['absent_start'] = $data["acara"]->absent_start != "" ? DateTime::createFromFormat('Y-m-d H:i:s', $data["acara"]->absent_start)->format('d/m/Y H:i') : "";
+        $data['absent_end'] =  $data["acara"]->absent_end != "" ? DateTime::createFromFormat('Y-m-d H:i:s', $data["acara"]->absent_end)->format('d/m/Y H:i') : "";
         // return $data;
 
         return view("frontend.kelolaPeserta", compact("data"));

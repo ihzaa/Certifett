@@ -59,4 +59,10 @@ class AuthController extends Controller
             return $data;
         }
     }
+
+    public function logoutCustom()
+    {
+        Auth::logout();
+        return redirect(route('landing-page'));
+    }
 }

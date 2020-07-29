@@ -63,6 +63,10 @@ $(".sudah_dibuat").click(function () {
 });
 
 function copyToClipboard(str) {
+    if (!absent_sudah_diisi) {
+        swal("Atur waktu absensi awal dan akhir terlebih dahulu!", "", "error");
+        return;
+    }
     // Create new element
     var el = document.createElement("textarea");
     // Set value (string to be copied)
@@ -108,6 +112,10 @@ function search() {
 }
 
 $("#buatSertif").on("click", function () {
+    if (!absent_sudah_diisi) {
+        swal("Atur waktu absensi awal dan akhir terlebih dahulu!", "", "error");
+        return;
+    }
     if ($("#jml_dicentang").html() == 0) {
         swal("Maaf", "Tidak Peserta Yang Dipilih.", "error");
     } else if ($(".blm_dibuat:checked").length == 0) {
@@ -133,6 +141,10 @@ $("#input-csv").on("change", function () {
 
 let data = [];
 $("#btn-cek-kolom").on("click", function () {
+    if (!absent_sudah_diisi) {
+        swal("Atur waktu absensi awal dan akhir terlebih dahulu!", "", "error");
+        return;
+    }
     $("#body_bawah_modal").show();
     $("#btn-up-csv").show();
     Papa.parse(document.getElementById("input-csv").files[0], {
@@ -159,6 +171,10 @@ $("#btn-cek-kolom").on("click", function () {
 });
 
 $("#btn-up-csv").on("click", function () {
+    if (!absent_sudah_diisi) {
+        swal("Atur waktu absensi awal dan akhir terlebih dahulu!", "", "error");
+        return;
+    }
     if (
         $("input[name='options_nama']:checked").val() &&
         $("input[name='options_email']:checked").val() &&
@@ -310,8 +326,8 @@ $(".btn-edit").on("click", function () {
     $("#modal_edit").modal("show");
 });
 
-function previewSertif(nama,id){
-    $("#id_peserta_prev").html("#"+id);
+function previewSertif(nama, id) {
+    $("#id_peserta_prev").html("#" + id);
     $("#nama_peserta_modal").html(nama);
     $("#modal-preview").modal("show");
 }

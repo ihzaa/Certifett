@@ -3,8 +3,10 @@
 @section('JudulHalaman','Manage Participants')
 
 @section('CssTambahanAfter')
+<link rel="stylesheet" href="{{asset('css/bootstrap-datetimepicker.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/style-yusuf.css')}}">
 <link rel="stylesheet" href="{{asset('css/checkbox-custom.css')}}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 @endsection
 
 @section('header')
@@ -50,6 +52,58 @@
                     </div>
                 </div>
             </div>
+            <div class="d-flex kartu">
+                <div class="card col-12">
+                    <h5>Absensi</h5>
+                    <p class="mt-3 mb-0"><strong>Peserta yang akan mendapat sertifikat adalah peserta yang telah
+                            melakukan absensi</strong></p>
+                    <p class="mt-3 mb-0">Link absensi telah dikirim ke email yang digunakan peserta saat mendaftar.</p>
+                    <p class="mt-1">Peserta yang didaftarkan dengan file .csv juga akan menerima email berisi link
+                        absensi.</p>
+
+                    <h6>Waktu Absensi</h6>
+                    <p class="mt-2">Peserta hanya dapat melakukan absensi sesuai waktu yang ditentukan dibawah.</p>
+                    <div class="row">
+                        <div class='col-md-6'>
+                            <h6 class="ml-2">Waktu Awal</h6>
+                        </div>
+                        <div class='col-md-6'>
+                            <h6 class="ml-2">Waktu Akhir</h6>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class='col-md-6'>
+                            <div class="form-group">
+                                <div class='input-group date'>
+                                    <input type='text' id='datetimepicker6' class="form-control"
+                                        value="{{$data['absent_start']}}" />
+                                    {{-- <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span> --}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-md-6'>
+                            <div class="form-group">
+                                <div class='input-group date'>
+                                    <input type='text' id='datetimepicker7' class="form-control"
+                                        value="{{$data['absent_end']}}" />
+                                    {{-- <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span> --}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mx-auto"><button type="button" class="btn btn-block btn-outline-dark "
+                                id="simpan_tgl">Simpan</button></div>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
         <img class="img-fluid" id="bgImage" src='{{asset("images/Online Review-pana@2x.png")}}'>
     </div>
@@ -249,17 +303,68 @@
 @endsection
 
 @section('JsTambahanAfter')
+<script src="{{asset('js/notify.min.js')}}"></script>
+<script src="{{asset('js/papaparse.min.js')}}"></script>
+<script src="{{asset('js/axios.min.js')}}"></script>
+<script src="{{asset('js/page/kelola-peserta.js')}}">
+</script>
+<script src="{{asset('js/moment-with-locales.min.js')}}"></script>
+<script src="{{asset('js/bootstrap-datetimepicker.min.js')}}"></script>
 <script>
+    @if($data['absent_start'] != "")
+        let absent_sudah_diisi = true;
+    @else
+        let absent_sudah_diisi = false;
+    @endif
     const path = {
         ev : "{{route('tambah_peserta_csv',['id'=>$data['id']])}}",
         ps : "{{route('hapus_peserta')}}",
         psb : "{{route('hapus_peserta_banyak')}}"
     }
-</script>
-<script src="{{asset('js/notify.min.js')}}"></script>
-<script src="{{asset('js/papaparse.min.js')}}"></script>
-<script src="{{asset('js/axios.min.js')}}"></script>
-<script src="{{asset('js/page/kelola-peserta.js')}}">
+    $(function () {
+        $('#datetimepicker6').datetimepicker({
+            format: "DD/MM/YYYY HH:mm",
+        });
+        $('#datetimepicker7').datetimepicker({
+            format: "DD/MM/YYYY HH:mm",
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#datetimepicker6").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+
+    $('#simpan_tgl').on('click',function(){
+        if($('#datetimepicker6').val() != "" && $('#datetimepicker7').val() != ""){
+            $(".se-pre-con").fadeIn();
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                },
+            });
+
+            $.ajax({
+                type:"POST",
+                url:"{{ route('atur_waktu_absensi',['id'=>$data['id']]) }}",
+                dataType: 'json',
+                data: {
+                    start: $('#datetimepicker6').val(),
+                    end: $('#datetimepicker7').val()
+                },
+                success : function(res) {
+                    absent_sudah_diisi = true;
+                    $(".se-pre-con").fadeOut();
+                    swal("Berhasil merubah waktu absensi!",'' , "success");
+                }
+            });
+        }else{
+            swal("Waktu awal dan akhir tidak boleh kosong!",'' , "error");
+        }
+
+    });
 </script>
 @if(Session::get('message'))
 <script>
