@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Mail;
 
 // use illuminate\Support\Facades\Mail;
@@ -28,7 +29,7 @@ class EmailController extends Controller
         Mail::to($email)->send(new EmailVerification($data));
     }
     
-    public function RegisterSuccess($name, $email, $type, $event_id)
+    public function RegisterSuccess($name, $email, $type, $event_id,$id_p)
     {
 
       $event_name = DB::table('events')->where('id', $event_id)->select('name')->get();
@@ -43,7 +44,8 @@ class EmailController extends Controller
             'type' => $type,
             'event_name' => $event_name[0]->name,
             'date' => \Carbon\Carbon::parse($event_date[0]->date)->formatLocalized("%d %B %Y"),
-            'instansi' => $instansi->nama_instansi
+            'instansi' => $instansi->nama_instansi,
+            'link' => route('peserta_absen',['tgl_daftar'=>Crypt::encrypt($id_p)])
         ];
 
         Mail::to($email)->send(new EmailVerification($data));
@@ -88,7 +90,7 @@ class EmailController extends Controller
 
     public function testing()
     {
-      set_time_limit(60);
+      set_time_limit(false);
         $data = participant_event_certificate::where("release_date", "=", Carbon::today())->where('is_send', 0)->get();
         $event = event::pluck('name', 'id');
         $arr_id = array();

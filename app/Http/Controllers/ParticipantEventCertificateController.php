@@ -190,7 +190,7 @@ class ParticipantEventCertificateController extends Controller
             "event_id" => $id
         ]);
         $type = 'register';
-        app('App\Http\Controllers\EmailController')->RegisterSuccess($request->nama, $request->email, $type, $id);
+        app('App\Http\Controllers\EmailController')->RegisterSuccess($request->nama, $request->email, $type, $id,$id_p);
         return back()->with('message', 'Pendaftaran Anda Berhasil');
     }
 

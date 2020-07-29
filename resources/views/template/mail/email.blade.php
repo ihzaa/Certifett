@@ -81,6 +81,12 @@
                 margin: 0 auto !important;
             }
 
+            .btn { 
+                background-color: #64D8CB;
+                border-radius:10px;
+                color:#ffffff;
+            }
+
             footer {
                 background-color: #fafafa;
                 margin-top: 30px;
@@ -113,7 +119,9 @@
         <p align="center">Anda telah terdaftar di event {{ $email_data['event_name']}}</p>
         <p align="center">yang akan diselenggarakan oleh {{ $email_data['instansi']}}</p>
         <p align="center"> pada tanggal {{ $email_data['date'] }}</p>
-
+        <p align="center"> Anda dapat melakukan absensi dengan klik <a class="btn" href="{{ $email_data['link'] }}">disini</a>.</p>
+        <p align="center"> Masa aktif link absensi akan diinfokan lebih lanjut oleh panitia saat acara atau sebelum acara berlangsung.</p>
+        
         @else
         <p align="center">Selamat <span>{{ $email_data['name'] }}</span></p>
         <p align="center">Anda mendapat sertifikat karena telah menyelesaikan event {{ $email_data['event'] }}.</p>
@@ -126,7 +134,7 @@
     </main>
 </body>
 <footer>
-    <p align="center">Hubungi kami di certiffet@gmail.com jika mengalami kendala.</p>
+    <p align="center">Hubungi kami di noreply@sertifikat.lpkipi.org jika mengalami kendala.</p>
 </footer>
 
 </html>
