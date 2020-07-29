@@ -189,6 +189,8 @@ class ParticipantEventCertificateController extends Controller
             "email" => $request->email,
             "event_id" => $id
         ]);
+        $type = 'register';
+        app('App\Http\Controllers\EmailController')->RegisterSuccess($request->nama, $request->email, $type, $id);
         return back()->with('message', 'Pendaftaran Anda Berhasil');
     }
 
