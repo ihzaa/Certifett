@@ -29,6 +29,6 @@ class EmailVerification extends Mailable
      */
     public function build()
     {
-        return $this->from(['address' => 'sertifikatonline0@gmail.com', 'name' => 'Certiffet'])->subject('Certifett!')->view('template.mail.email', ['email_data' => $this->email_data]);
+        return $this->from(['address' => 'noreply@sertifikat.lpkipi.org', 'name' => 'Certiffet'])->subject('Certifett!')->view('template.mail.email', ['email_data' => $this->email_data]);
     }
 }

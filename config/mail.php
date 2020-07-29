@@ -36,8 +36,12 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+            'host' => env('MAIL_HOST', 'sertifikat.lpkipi.org'),
             'port' => env('MAIL_PORT', 465),
+            'from' => [
+                'address' => 'noreply@sertifikat.lpkipi.org',
+                'name' => 'Certiffet',
+            ],
             'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
@@ -84,7 +88,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'sertifikatonline0@gmail.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'noreply@sertifikat.lpkipi.org'),
         'name' => env('MAIL_FROM_NAME', 'Certiffet'),
     ],
 
