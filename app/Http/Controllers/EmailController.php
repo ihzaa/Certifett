@@ -27,7 +27,7 @@ class EmailController extends Controller
 
         Mail::to($email)->send(new EmailVerification($data));
     }
-    
+
     public function RegisterSuccess($name, $email, $type, $event_id)
     {
 
@@ -89,7 +89,7 @@ class EmailController extends Controller
     public function testing()
     {
       set_time_limit(60);
-        $data = participant_event_certificate::where("release_date", "=", Carbon::today())->where('is_send', 0)->get();
+        $data = participant_event_certificate::where("release_date", "=", Carbon::today())->where('is_send', 0)->where('is_absent', 1)->get();
         $event = event::pluck('name', 'id');
         $arr_id = array();
         foreach ($data as $d) {
