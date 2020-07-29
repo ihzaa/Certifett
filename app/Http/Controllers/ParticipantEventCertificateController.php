@@ -118,6 +118,9 @@ class ParticipantEventCertificateController extends Controller
                 "email" => $d[$request->col_email],
                 "event_id" => $id
             ]);
+
+            $type = 'register';
+            app('App\Http\Controllers\EmailController')->RegisterSuccess($d[$request->col_nama], $d[$request->col_email], $type, $id,$id_p);
         }
         Session::flash('message', 'Berhasil Menambahkan Peserta Dengan File Csv');
         return response()->json(["message" => "ok"]);

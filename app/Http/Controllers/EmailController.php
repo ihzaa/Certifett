@@ -45,7 +45,7 @@ class EmailController extends Controller
             'event_name' => $event_name[0]->name,
             'date' => \Carbon\Carbon::parse($event_date[0]->date)->formatLocalized("%d %B %Y"),
             'instansi' => $instansi->nama_instansi,
-            'link' => route('peserta_absen',['tgl_daftar'=>Crypt::encrypt($id_p)])
+            'link' => route('peserta_absen',['daftar'=>Crypt::encrypt($id_p)])
         ];
 
         Mail::to($email)->send(new EmailVerification($data));

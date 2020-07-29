@@ -134,7 +134,7 @@
     </main>
 </body>
 <footer>
-    <p align="center">Hubungi kami di noreply@sertifikat.lpkipi.org jika mengalami kendala.</p>
+    <p align="center">Hubungi kami di sertifikatonline0@gmail.com jika mengalami kendala.</p>
 </footer>
 
 </html>
