@@ -61,3 +61,5 @@ Route::get('/certificate/{id}', 'CertificateController@LihatSertif')->name('liha
 Route::get('testting', 'EmailController@testing');
 Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
+
+Route::get('absensi','ParticipantEventCertificateController@AbsenPeserta')->name('peserta_absen');

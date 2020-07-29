@@ -214,4 +214,9 @@ class ParticipantEventCertificateController extends Controller
         ]);
         return back()->with('message', 'Data Peserta Berhasil Diubah.');
     }
+
+    public function AbsenPeserta(Request $request)
+    {
+        
+    }
 }
