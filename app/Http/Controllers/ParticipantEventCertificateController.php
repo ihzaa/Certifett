@@ -11,6 +11,7 @@ use DateInterval;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Session;
 
 class ParticipantEventCertificateController extends Controller
@@ -217,6 +218,21 @@ class ParticipantEventCertificateController extends Controller
 
     public function AbsenPeserta(Request $request)
     {
-        
+        $id = Crypt::decrypt($request->daftar);
+        $part = participant_event_certificate::find($id);
+        $event = event::find($part->event_id);
+        $start = Carbon::parse($event->absent_start);
+        $end = Carbon::parse($event->absent_end);
+        if (Carbon::now()->between($start, $end)) {
+            if ($part->is_absent == 0) {
+                $part->is_absent = 1;
+                $part->save();
+            } else {
+                return redirect(route('landing-page'))->with('message', 'Absensi hanya dapat dilakukan 1 kali')->with('logo', 'error')->with('title', 'Maaf!');
+            }
+            return redirect(route('landing-page'))->with('message', 'Anda berhasil melakukan absensi pada event ' . $event->name)->with('logo', 'success')->with('title', 'Selamat!');
+        } else {
+            return redirect(route('landing-page'))->with('message', 'Sesi absensi belum dibuka')->with('logo', 'error')->with('title', 'Maaf!');
+        }
     }
 }
