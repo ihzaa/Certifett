@@ -235,7 +235,7 @@ class ParticipantEventCertificateController extends Controller
             }
             return redirect(route('landing-page'))->with('message', 'Anda berhasil melakukan absensi pada event ' . $event->name)->with('logo', 'success')->with('title', 'Selamat!');
         } else {
-            return redirect(route('landing-page'))->with('message', 'Sesi absensi belum dibuka')->with('logo', 'error')->with('title', 'Maaf!');
+            return redirect(route('landing-page'))->with('message', 'Sesi absensi belum dibuka atau sudah terlewat')->with('logo', 'error')->with('title', 'Maaf!');
         }
     }
 }
