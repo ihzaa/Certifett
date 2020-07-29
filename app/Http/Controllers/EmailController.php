@@ -28,15 +28,10 @@ class EmailController extends Controller
 
         Mail::to($email)->send(new EmailVerification($data));
     }
-<<<<<<< HEAD
     
     public function RegisterSuccess($name, $email, $type, $event_id,$id_p)
-=======
-
-    public function RegisterSuccess($name, $email, $type, $event_id)
->>>>>>> 21014e320417b6b2108cea0ad982e7218283129b
     {
-
+      set_time_limit(false);
       $event_name = DB::table('events')->where('id', $event_id)->select('name')->get();
       $event_date = DB::table('events')->where('id', $event_id)->select('date')->get();
       $instansi = DB::table('events')
