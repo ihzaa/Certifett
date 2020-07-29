@@ -220,6 +220,9 @@ class ParticipantEventCertificateController extends Controller
     {
         $id = Crypt::decrypt($request->daftar);
         $part = participant_event_certificate::find($id);
+        if($part == ""){
+            return redirect(route('landing-page'))->with('message', 'Link salah!')->with('logo', 'error')->with('title', 'Maaf!');
+        }
         $event = event::find($part->event_id);
         $start = Carbon::parse($event->absent_start);
         $end = Carbon::parse($event->absent_end);
