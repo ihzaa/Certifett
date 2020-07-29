@@ -3,7 +3,7 @@
         <div class="row border-top border-dark">
             <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 bg-primary-c text-light py-4">
                 <div class="ml-4">
-                    <h1 class="display-2"><strong>certifett</strong></h1>
+                    <h1 class="display-2"><strong>{{config('app.name')}}</strong></h1>
                     <p class="text-center">by proximity-labs</p>
                     <p class="mb-0">All Amazing illustrations used on this website is taken from</p>
                     <img class="img-fluid" src="{{asset('images/Artboard-footer.png')}}" alt="" width="380">
@@ -30,12 +30,12 @@
                     </ul>
                     <h3 class="mt-4">Contact Us</h3>
                     <p class="mt-3"><img src="{{asset("icons/email-24px.png")}}" class="img-fluid mr-2" alt="">
-                        email@gmail.com
+                        {{config('app.mail_address')}}
                     </p>
                     <p><img src="{{asset("icons/call-24px.png")}}" class="img-fluid mr-2" alt=""> 0123456789</p>
                     <br>
                     <p class="text-right mt-auto"><img src="{{asset("icons/copyright-24px.png")}}"
-                            class="img-fluid mr-2" alt="">2020 cerifett.</p>
+                            class="img-fluid mr-2" alt="">2020 {{config('app.name')}}.</p>
                 </div>
             </div>
         </div>

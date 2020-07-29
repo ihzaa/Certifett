@@ -48,7 +48,7 @@ class Kernel extends ConsoleKernel
             participant_event_certificate::whereIn('id', $arr_id)->update([
                 "is_send" => 1
             ]);
-        })->hourly();
+        })->everyMinute();
     }
 
     /**

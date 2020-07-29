@@ -34,9 +34,9 @@
     </div>
     <div class="row" id="WhatIsIt">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 my-auto">
-            <h1>certifett.</h1>
+            <h1>{{config('app.name')}}.</h1>
             <h1>Certificate Factory</h1>
-            <p>certifett adalah layanan untuk mempermudah pembuatan & verikasi sertifikat. Layanan kami dapat digunakan
+            <p>{{config('app.name')}} adalah layanan untuk mempermudah pembuatan & verikasi sertifikat. Layanan kami dapat digunakan
                 oleh sebuah instansi untuk membuat & menyebarkan sertifikat ke peserta acara dengan mudah. Sertifikat
                 yang dibuat melalui certifett dapat diverikasi ketika peserta membutuhkannya sehingga keasliannya
                 terjamin.</p>
@@ -89,7 +89,7 @@
                 </div>
                 <div class="col-11 pl-4">
                     <p>
-                        Peserta dapat mengunduh atau memverifikasi sertifikat melalui certificate.certifett.com atau
+                        Peserta dapat mengunduh atau memverifikasi sertifikat melalui {{config('app.url')}} atau
                         self hosted front-end.
                     </p>
                 </div>

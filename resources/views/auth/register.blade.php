@@ -59,6 +59,7 @@
     swal({
         title: "Sorry...",
         content: ul_el,
+        icon: "error",
     });
 </script>
 

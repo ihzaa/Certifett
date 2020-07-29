@@ -116,6 +116,119 @@
 /* akhir CSS halaman daftar dan login*/
 
 
+/* CSS halaman admin */
+
+#judul {
+    margin-top: 130px;
+    margin-left: 106px;
+    line-height: 60px;
+    text-align: left;
+    font-size: 46px;
+    font-family: Roboto, sans-serif;
+    letter-spacing: 0px;
+    color: #263238;
+    opacity: 1;
+}
+
+#penjelasan {
+    margin-top: 16px;
+    margin-left: 106px;
+    line-height: 26px;
+    width: 937px;
+    text-align: left;
+    font-size: 20px;
+    font-family: Roboto, sans-serif;
+    letter-spacing: 0px;
+    color: #707070;
+    opacity: 1;
+}
+
+
+/* akhir CSS halaman admin */
+
+
+/* CSS halaman Daftar dan Login*/
+
+#judul2 {
+    margin-top: 110px;
+    line-height: 60px;
+    font-size: 46px;
+    letter-spacing: 0px;
+    color: #263238;
+    opacity: 1;
+}
+
+#daftar {
+    margin-top: 58px;
+}
+
+#login {
+    margin-top: 58px;
+}
+
+.auth img {
+    margin: 0 auto;
+    display: block;
+    max-width: 45%;
+    height: auto;
+}
+
+.form-control {
+    margin-bottom: 24px;
+    border: 1px solid #707070;
+    width: 40%;
+    border-radius: 16px;
+    opacity: 1;
+    padding: 16px;
+}
+
+.form-control:focus {
+    border: 1px solid #707070;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(38, 50, 56, 0.075), 0 0 8px rgba(38, 50, 56, 0.6);
+    box-shadow: inset 0 1px 1px rgba(38, 50, 56, 0.075), 0 0 8px rgba(38, 50, 56, 0.6);
+}
+
+.form-group input {
+    font-size: 20px;
+    color: #707070;
+}
+
+.btn-auth {
+    padding: 16px;
+    width: 40%;
+    margin-bottom: 24px;
+    font-size: 26px;
+    font-family: Roboto;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+    border: 2px solid #707070;
+    border-radius: 16px;
+}
+
+#text1 {
+    color: #707070;
+}
+
+#text1 span {
+    color: #263238;
+    font-weight: 500;
+}
+
+#text1 a {
+    text-decoration: none;
+}
+
+#text1 span:hover {
+    cursor: pointer;
+    font-weight: 900;
+}
+
+
+/* akhir CSS halaman daftar dan login*/
+
+
 /* CSS halaman agency home */
 
 #emailVerification {
@@ -165,7 +278,7 @@
     flex-wrap: wrap;
 }
 
-#agencyHome .card:nth-of-type(4n+4) {
+#agencyHome .card:nth-of-type(4n + 4) {
     margin-right: 0 !important;
 }
 
@@ -262,11 +375,20 @@
     background-repeat: no-repeat;
 }
 
+#list_acara .search {
+    margin-top: 37px;
+    width: 100%;
+    border-radius: 16px;
+    padding: 10px 26px;
+    font-size: 20px;
+    background-image: url(../icons/search-24px.svg);
+    background-size: 27px;
+    background-position: 99% 7px;
+    background-repeat: no-repeat;
+}
 
-/* akhir CSS halaman kelola sertifikat*/
 
-
-/* CSS kelola peserta */
+/* CSS halaman agency home */
 
 .kelolaPeserta img {
     width: 37%;
@@ -400,7 +522,7 @@ th img {
 /* akhir CSS table */
 
 @media screen and (max-width: 1200px) {
-    #agencyHome .card:nth-of-type(4n+4) {
+    #agencyHome .card:nth-of-type(4n + 4) {
         margin-right: 23px !important;
     }
 }
@@ -542,6 +664,17 @@ th img {
     .kelolaPeserta img {
         display: none;
     }
+    .colHide {
+        display: none;
+    }
+    /* akhir CSS table */
+    /* CSS kelola peserta */
+    .kelolaPeserta .kartu {
+        flex-direction: column;
+    }
+    .kelolaPeserta img {
+        display: none;
+    }
     .kelolaPeserta p {
         color: #707070;
         font-size: 16px;
@@ -606,3 +739,6 @@ th img {
     }
     /* akhir CSS kelola peserta */
 }
+
+
+/* akhir CSS kelola peserta */

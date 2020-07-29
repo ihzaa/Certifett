@@ -6,6 +6,13 @@
 
 @endsection
 <style>
+    @font-face {
+        font-family: "Verdana" !important;
+        src: url('/assets/webfonts/verdana.ttf') !important;
+    }
+    #sertifikat{
+        font-family: "Verdana" !important;
+    }
     @media screen and (max-width: 800px) {
         .header h1 {
             font-size: 18px;
