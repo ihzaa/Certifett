@@ -94,6 +94,8 @@
     <header>
         @if($email_data['type'] == 'verifikasi')
         <h1 align="center">KONFIRMASI EMAIL CERTIFFET</h1>
+        @elseif($email_data['type'] == 'register')
+        <h1 align="center">PENDAFTARAN BERHASIL</h1>
         @else
         <h1 align="center">SERTIFIKAT {{ $email_data['event']}}</h1>
         @endif
@@ -106,6 +108,12 @@
         <div style="text-align:center">
             <a href="{{route('verify_account', $email_data['api_key'] )}}">Konfirmasi email anda disini</a>
         </div>
+        @elseif($email_data['type'] == 'register')
+        <p align="center">Selamat <span>{{ $email_data['name'] }}</span></p>
+        <p align="center">Anda telah terdaftar di event {{ $email_data['event_name']}}</p>
+        <p align="center">yang akan diselenggarakan oleh {{ $email_data['instansi']}}</p>
+        <p align="center"> pada tanggal {{ $email_data['date'] }}</p>
+
         @else
         <p align="center">Selamat <span>{{ $email_data['name'] }}</span></p>
         <p align="center">Anda mendapat sertifikat karena telah menyelesaikan event {{ $email_data['event'] }}.</p>

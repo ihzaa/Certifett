@@ -31,6 +31,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->call(function () {
+          set_time_limit(false);
             $data = participant_event_certificate::where("release_date", "=", Carbon::today())->where('is_send', 0)->get();
             $event = event::pluck('name', 'id');
             $arr_id = array();
