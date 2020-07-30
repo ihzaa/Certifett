@@ -78,7 +78,7 @@
 @section('JsTambahanAfter')
 @if (Session::get('message'))
 <script>
-    swal("Pendaftaran Berhasil.","","success");
+    swal("{{Session::get('message')}}","","{{Session::get('icon')}}");
 </script>
 @endif
 @endsection

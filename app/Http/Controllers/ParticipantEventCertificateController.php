@@ -81,6 +81,7 @@ class ParticipantEventCertificateController extends Controller
 
     public function TambahPesertaCSV($id, Request $request)
     {
+        set_time_limit(false);
         $data = json_decode($request->data);
         $i = 0;
         $len = count($data[0]);
@@ -118,22 +119,18 @@ class ParticipantEventCertificateController extends Controller
                 $email = strtolower($d[$request->col_email]);
                 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                     // app('App\Http\Controllers\EmailController')->RegisterSuccess($d[$request->col_nama], $email, $type, $id, $id_p);
+                    participant_event_certificate::create([
+                        "id" => $id_p,
+                        "name" => $d[$request->col_nama],
+                        "email" => $email,
+                        "event_id" => $id
+                    ]);
                 } else {
                     continue;
                 }
             } catch (Exception $e) {
                 continue;
             }
-            $temp = participant_event_certificate::find($id_p);
-            do{
-                $temp = participant_event_certificate::find($id_p);
-            }while($temp != "");
-            participant_event_certificate::create([
-                "id" => $id_p,
-                "name" => $d[$request->col_nama],
-                "email" => $email,
-                "event_id" => $id
-            ]);
         }
         Session::flash('message', 'Berhasil Menambahkan Peserta Dengan File Csv');
         return response()->json(["message" => "ok"]);
@@ -154,61 +151,43 @@ class ParticipantEventCertificateController extends Controller
 
     public function TambahPesertaLink($id, Request $request)
     {
-        // $evnt = event::find($id);
-        // $sert = $evnt->certificate()->first();
-        $id_p = "";
-        // if (strlen($sert->nama_instansi) > 2) {
-        //     $id_p .= strtoupper(substr($sert->nama_instansi, 0, 1));
-        // } else {
-        //     $id_p .= strtoupper($sert->nama_instansi);
-        // }
-        // if (strlen($evnt->user_owner) > 3) {
-        //     $id_p .= $evnt->user_owner;
-        // } else {
-        //     $tmp = $evnt->user_owner;
-        //     while (strlen($tmp) < 3) {
-        //         $tmp = "0" . $tmp;
-        //     }
-        //     $id_p .= $tmp;
-        // }
-        if (strlen($id) > 3) {
-            $id_p .= $id;
-        } else {
-            $tmp = $id;
-            while (strlen($tmp) < 3) {
-                $tmp = "0" . $tmp;
+        try {
+            $email = strtolower($request->email);
+            if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $id_p = "";
+                if (strlen($id) > 3) {
+                    $id_p .= $id;
+                } else {
+                    $tmp = $id;
+                    while (strlen($tmp) < 3) {
+                        $tmp = "0" . $tmp;
+                    }
+                    $id_p .= $tmp;
+                }
+                $cnt = participant_event_certificate::where('event_id', $id)->count();
+                $cnt++;
+                if (strlen($cnt) > 4) {
+                    $id_p .= $cnt;
+                } else {
+                    $tmp = $cnt;
+                    while (strlen($tmp) < 4) {
+                        $tmp = "0" . $tmp;
+                    }
+                    $id_p .= $tmp;
+                }
+                participant_event_certificate::create([
+                    "id" => $id_p,
+                    "name" => $request->nama,
+                    "email" => $email,
+                    "event_id" => $id
+                ]);
+                return back()->with('message', 'Pendaftaran Anda Berhasil')->with('icon', 'success');
+            } else {
+                return back()->with('message', 'Email tidak valid')->with('icon', 'error');
             }
-            $id_p .= $tmp;
+        } catch (Exception $e) {
+            return;
         }
-        // if (strlen($sert->id) > 4) {
-        //     $id_p .= $sert->id;
-        // } else {
-        //     $tmp = $sert->id;
-        //     while (strlen($tmp) < 4) {
-        //         $tmp = "0" . $tmp;
-        //     }
-        //     $id_p .= $tmp;
-        // }
-        $cnt = participant_event_certificate::where('event_id', $id)->count();
-        $cnt++;
-        if (strlen($cnt) > 4) {
-            $id_p .= $cnt;
-        } else {
-            $tmp = $cnt;
-            while (strlen($tmp) < 4) {
-                $tmp = "0" . $tmp;
-            }
-            $id_p .= $tmp;
-        }
-        participant_event_certificate::create([
-            "id" => $id_p,
-            "name" => $request->nama,
-            "email" => $request->email,
-            "event_id" => $id
-        ]);
-        $type = 'register';
-        app('App\Http\Controllers\EmailController')->RegisterSuccess($request->nama, $request->email, $type, $id, $id_p);
-        return back()->with('message', 'Pendaftaran Anda Berhasil');
     }
 
     public function TampilHalamanDaftar($id)

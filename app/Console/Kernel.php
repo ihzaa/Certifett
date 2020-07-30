@@ -30,7 +30,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
         $schedule->call(function () {
             set_time_limit(false);
             $data = participant_event_certificate::where("is_absent_send", 0)->take(150)->get();

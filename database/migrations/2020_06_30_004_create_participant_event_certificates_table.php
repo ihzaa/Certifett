@@ -23,6 +23,7 @@ class CreateParticipantEventCertificatesTable extends Migration
             $table->dateTime('valid_until')->nullable();
             $table->text('congrat_word')->nullable();
             $table->boolean("is_send")->default(0);
+            $table->boolean("is_absent_send")->default(0);
             $table->boolean("is_absent")->default(0);
             $table->timestamps();
 
