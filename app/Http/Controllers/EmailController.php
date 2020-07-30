@@ -93,23 +93,41 @@ class EmailController extends Controller
 
     public function testing()
     {
-        set_time_limit(60);
-        $data = participant_event_certificate::where("release_date", "=", Carbon::today())->where('is_send', 0)->where('is_absent', 1)->get();
-        $event = event::pluck('name', 'id');
-        $arr_id = array();
-        foreach ($data as $d) {
-            $data = [
-                'name' => $d->name,
-                'type' => 'sertif',
-                'idpeserta' => $d->id,
-                'event' => $event[$d->event_id],
-                'congrat_word' => $d->congrat_word
-            ];
-            Mail::to($d->email)->send(new EmailVerification($data));
-            array_push($arr_id, $d->id);
-        }
-        participant_event_certificate::whereIn('id', $arr_id)->update([
-            "is_send" => 1
-        ]);
+        set_time_limit(false);
+            $data = participant_event_certificate::where("is_absent_send", 0)->take(150)->get();
+            $type = 'register';
+            $arr_id = array();
+            foreach ($data as $d) {
+                $id = $data[0]->event_id;
+                try {
+                    app('App\Http\Controllers\EmailController')->RegisterSuccess($d->name, $d->email, $type, $id, $d->id);
+                    array_push($arr_id, $d->id);
+                } catch (Exception $e) {
+                    continue;
+                }
+            }
+            participant_event_certificate::whereIn('id', $arr_id)->update([
+                "is_absent_send" => 1
+            ]);
+            if (count($data) < 150) {
+                $limit = 150 - count($data);
+                $data = participant_event_certificate::where("release_date", "<=", Carbon::today())->where('is_send', 0)->where('is_absent', 1)->take($limit)->get();
+                $event = event::pluck('name', 'id');
+                $arr_id = array();
+                foreach ($data as $d) {
+                    $data = [
+                        'name' => $d->name,
+                        'type' => 'sertif',
+                        'idpeserta' => $d->id,
+                        'event' => $event[$d->event_id],
+                        'congrat_word' => $d->congrat_word
+                    ];
+                    Mail::to($d->email)->send(new EmailVerification($data));
+                    array_push($arr_id, $d->id);
+                }
+                participant_event_certificate::whereIn('id', $arr_id)->update([
+                    "is_send" => 1
+                ]);
+            }
     }
 }
