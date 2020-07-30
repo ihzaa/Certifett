@@ -145,14 +145,14 @@
                     <tr>
                         <th scope="row">
                             <label class="check">
-                                <input type="checkbox" @if($d->release_date == "" && $d->is_absent == 0) name="chk[{{$d->id}}]" @else
+                                <input type="checkbox" @if($d->release_date == "" || $d->is_absent == 0) name="chk[{{$d->id}}]" @else
                                 name="udh[{{$d->id}}]" @endif
                                 class="{{$d->release_date != "" ? "sudah_dibuat check_input" : "check_input blm_dibuat"}}">
                                 <span class="check_indicator"></span>
                             </label>
                         </th>
                         <td onclick="previewSertif('{{$d->name}}','{{$d->id}}')" class="clickable">
-                            @if($d->release_date != "")
+                            @if($d->release_date != "" && $d->is_absent != 0)
                             <img src="{{asset('icons/check_circle-24px.svg')}}">
                             @endif
                             <span id="col_nama">{{$d->name}}</span>
