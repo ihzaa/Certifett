@@ -31,7 +31,7 @@ class EmailController extends Controller
     
     public function RegisterSuccess($name, $email, $type, $event_id,$id_p)
     {
-      set_time_limit(false);
+
       $event_name = DB::table('events')->where('id', $event_id)->select('name')->get();
       $event_date = DB::table('events')->where('id', $event_id)->select('date')->get();
       $instansi = DB::table('events')

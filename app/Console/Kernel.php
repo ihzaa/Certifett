@@ -43,7 +43,7 @@ class Kernel extends ConsoleKernel
                     'event' => $event[$d->event_id],
                     'congrat_word' => $d->congrat_word
                 ];
-                Mail::to($d->email)->send(new EmailVerification($data));
+                Mail::to($d->email)->queue(new EmailVerification($data));
                 array_push($arr_id, $d->id);
             }
             participant_event_certificate::whereIn('id', $arr_id)->update([
