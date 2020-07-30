@@ -7,6 +7,7 @@ use App\Models\event;
 use App\Models\participant_event_certificate;
 use App\User;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -28,27 +29,30 @@ class EmailController extends Controller
 
         Mail::to($email)->send(new EmailVerification($data));
     }
-    
-    public function RegisterSuccess($name, $email, $type, $event_id,$id_p)
+
+    public function RegisterSuccess($name, $email, $type, $event_id, $id_p)
     {
-      set_time_limit(false);
-      $event_name = DB::table('events')->where('id', $event_id)->select('name')->get();
-      $event_date = DB::table('events')->where('id', $event_id)->select('date')->get();
-      $instansi = DB::table('events')
-                            ->join('certificates', 'certificates.id', '=', 'events.certificate_id')
-                            ->select('certificates.nama_instansi')
-                            ->first();
-                            // var_dump($event_date[0]->date);
+        set_time_limit(false);
+        $event_name = DB::table('events')->where('id', $event_id)->select('name')->get();
+        $event_date = DB::table('events')->where('id', $event_id)->select('date')->get();
+        $instansi = DB::table('events')
+            ->join('certificates', 'certificates.id', '=', 'events.certificate_id')
+            ->select('certificates.nama_instansi')
+            ->first();
+        // var_dump($event_date[0]->date);
         $data = [
             'name' => $name,
             'type' => $type,
             'event_name' => $event_name[0]->name,
             'date' => \Carbon\Carbon::parse($event_date[0]->date)->formatLocalized("%d %B %Y"),
             'instansi' => $instansi->nama_instansi,
-            'link' => route('peserta_absen',['daftar'=>Crypt::encrypt($id_p)])
+            'link' => route('peserta_absen', ['daftar' => Crypt::encrypt($id_p)])
         ];
-
-        Mail::to($email)->send(new EmailVerification($data));
+        try {
+            Mail::to($email)->send(new EmailVerification($data));
+        } catch (Exception $e) {
+            
+        }
     }
 
     public function CertificateEmail($detail)
@@ -90,7 +94,7 @@ class EmailController extends Controller
 
     public function testing()
     {
-      set_time_limit(60);
+        set_time_limit(60);
         $data = participant_event_certificate::where("release_date", "=", Carbon::today())->where('is_send', 0)->where('is_absent', 1)->get();
         $event = event::pluck('name', 'id');
         $arr_id = array();

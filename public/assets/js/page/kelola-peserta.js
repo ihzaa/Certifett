@@ -197,6 +197,7 @@ $("#btn-up-csv").on("click", function () {
             method: "post",
             url: path.ev,
             data: dataform,
+            timeout: 9999999999999999999999999999999999
         })
             .then((resp) => {
                 if (resp.data.message === "ok") {

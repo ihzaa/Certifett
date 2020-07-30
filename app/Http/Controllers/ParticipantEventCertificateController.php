@@ -9,6 +9,7 @@ use App\User;
 use Carbon\Carbon;
 use DateInterval;
 use DateTime;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -112,15 +113,27 @@ class ParticipantEventCertificateController extends Controller
                 }
                 $id_p .= $tmp;
             }
+            $type = 'register';
+            try {
+                $email = strtolower($d[$request->col_email]);
+                if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    // app('App\Http\Controllers\EmailController')->RegisterSuccess($d[$request->col_nama], $email, $type, $id, $id_p);
+                } else {
+                    continue;
+                }
+            } catch (Exception $e) {
+                continue;
+            }
+            $temp = participant_event_certificate::find($id_p);
+            do{
+                $temp = participant_event_certificate::find($id_p);
+            }while($temp != "");
             participant_event_certificate::create([
                 "id" => $id_p,
                 "name" => $d[$request->col_nama],
-                "email" => $d[$request->col_email],
+                "email" => $email,
                 "event_id" => $id
             ]);
-
-            $type = 'register';
-            app('App\Http\Controllers\EmailController')->RegisterSuccess($d[$request->col_nama], $d[$request->col_email], $type, $id,$id_p);
         }
         Session::flash('message', 'Berhasil Menambahkan Peserta Dengan File Csv');
         return response()->json(["message" => "ok"]);
@@ -194,7 +207,7 @@ class ParticipantEventCertificateController extends Controller
             "event_id" => $id
         ]);
         $type = 'register';
-        app('App\Http\Controllers\EmailController')->RegisterSuccess($request->nama, $request->email, $type, $id,$id_p);
+        app('App\Http\Controllers\EmailController')->RegisterSuccess($request->nama, $request->email, $type, $id, $id_p);
         return back()->with('message', 'Pendaftaran Anda Berhasil');
     }
 
@@ -223,7 +236,7 @@ class ParticipantEventCertificateController extends Controller
     {
         $id = Crypt::decrypt($request->daftar);
         $part = participant_event_certificate::find($id);
-        if($part == ""){
+        if ($part == "") {
             return redirect(route('landing-page'))->with('message', 'Link salah!')->with('logo', 'error')->with('title', 'Maaf!');
         }
         $event = event::find($part->event_id);
