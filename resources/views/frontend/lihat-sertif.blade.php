@@ -56,8 +56,8 @@
 
             <div class="d-flex justify-content-around" style="margin-top:50px;">
                 @foreach ($data['sertif_khusus'] as $d)
-                <div style="max-width:350px" style="margin-botom:0px">
-                    <h6>{{ $d->nama }}</h6>
+                <div style="max-width:400px" style="margin-botom:0px">
+                    <h6 style="font-size:19px;color:black;font-weight:400">{{ $d->nama }}</h6>
                     @if ($d->gambar != null)
                     <img src="{{asset($d->gambar)}}" height="100">
                     <h6 style="text-decoration:underline;font-weight:bold;">{{ $d->data }}</h6>
