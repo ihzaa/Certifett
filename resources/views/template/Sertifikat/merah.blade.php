@@ -1,41 +1,5 @@
-@extends('template.all')
-
-@section('JudulHalaman','Sertifikat')
-
-@section('CssTambahanAfter')
-
-@endsection
-<style>
-    @font-face {
-        font-family: "Verdana" !important;
-        src: url('/assets/webfonts/verdana.ttf') !important;
-    }
-
-    #sertifikat {
-        font-family: "Verdana" !important;
-    }
-
-    @media screen and (max-width: 800px) {
-        .header h1 {
-            font-size: 18px;
-        }
-    }
-</style>
-@section('header')
-@include('template.components.nav-common')
-@endsection
-
-@section('konten')
-<div class="container mt-4">
-    <div class="d-flex justify-content-between header" style="margin-bottom:20px">
-        <h1>Sertifikat Terverifikasi</h1>
-        <button class="btn btn-outline-dark" id="btn_dwnld"><i class="fa fa-download" aria-hidden="true"> Download
-                Sertifikat</i></button>
-    </div>
-    @include('template.Sertifikat.biru')
-    {{-- <div class="m-auto" id="sertifikat"
-        style="width:1122px; height:793px; padding:25px; text-align:center; border: 1px solid #787878;background-image: url({{asset("images/bg.png")}});background-color:
-    white;">
+<div class="m-auto" id="sertifikat"
+    style="width:1122px; height:793px; padding:25px; text-align:center; border: 1px solid #787878;background-image: url({{asset("images/bg.png")}});background-color: white;">
     <div style="margin-top:60px">
         <div class="align-items-center" style="height:60px">
             <div class="float-left" style="margin-left:50px;margin-top:-10px">
@@ -73,11 +37,4 @@
             @endforeach
         </div>
     </div>
-</div> --}}
 </div>
-@endsection
-
-@section('JsTambahanAfter')
-<script src="{{asset('js/dom-to-image.min.js')}}"></script>
-<script src="{{asset('js/page/lihat-sertif.js')}}"></script>
-@endsection

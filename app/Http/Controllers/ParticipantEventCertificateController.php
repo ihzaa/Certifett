@@ -25,8 +25,10 @@ class ParticipantEventCertificateController extends Controller
         if ($data["acara"] == "") {
             return redirect(route('agencyHome-page'));
         }
+        $data['event'] = $data['acara'];
         $data["sertif"] = $data["acara"]->certificate()->first();
         $data["khusus"] = $data["sertif"]->specific_properties()->get();
+        $data['sertif_khusus'] = $data['khusus'];
         $data["peserta"] = participant_event_certificate::whereEvent_id($data['acara']->id)->get();
         $data["jml_peserta"] = count($data["peserta"]);
         $data['absent_start'] = $data["acara"]->absent_start != "" ? DateTime::createFromFormat('Y-m-d H:i:s', $data["acara"]->absent_start)->format('d/m/Y H:i') : "";

@@ -32,7 +32,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function () {
             set_time_limit(false);
-            $data = participant_event_certificate::where("is_absent_send", 0)->take(147)->get();
+            $data = participant_event_certificate::where("is_absent_send", 0)->take(145)->get();
             $type = 'register';
             $arr_id = array();
             foreach ($data as $d) {
@@ -47,8 +47,8 @@ class Kernel extends ConsoleKernel
             participant_event_certificate::whereIn('id', $arr_id)->update([
                 "is_absent_send" => 1
             ]);
-            if (count($data) < 147) {
-                $limit = 147 - count($data);
+            if (count($data) < 145) {
+                $limit = 145 - count($data);
                 $data = participant_event_certificate::where("release_date", "<=", Carbon::today())->where('is_send', 0)->where('is_absent', 1)->take($limit)->get();
                 $event = event::pluck('name', 'id');
                 $arr_id = array();

@@ -7,6 +7,16 @@
 <link rel="stylesheet" href="{{asset('css/style-yusuf.css')}}">
 <link rel="stylesheet" href="{{asset('css/checkbox-custom.css')}}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    @font-face {
+        font-family: "Verdana" !important;
+        src: url('/assets/webfonts/verdana.ttf') !important;
+    }
+
+    #sertifikat {
+        font-family: "Verdana" !important;
+    }
+</style>
 @endsection
 
 @section('header')
@@ -145,7 +155,8 @@
                     <tr>
                         <th scope="row">
                             <label class="check">
-                                <input type="checkbox" @if($d->release_date == "" || $d->is_absent == 0) name="chk[{{$d->id}}]" @else
+                                <input type="checkbox" @if($d->release_date == "" || $d->is_absent == 0)
+                                name="chk[{{$d->id}}]" @else
                                 name="udh[{{$d->id}}]" @endif
                                 class="{{$d->release_date != "" ? "sudah_dibuat check_input" : "check_input blm_dibuat"}}">
                                 <span class="check_indicator"></span>
@@ -250,53 +261,54 @@
 <div id="modal-preview" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-body">
-                <div class="m-auto" id="sertifikat"
+            <div class="modal-body p-0">
+                @include('template.Sertifikat.biru')
+                {{-- <div class="m-auto" id="sertifikat"
                     style="width:1100px; height:fit-content; padding:25px; text-align:center; border: 1px solid #787878;background-color: white;">
                     <p class="text-hijau" style="margin-left:-965px" id="id_peserta_prev"></p>
                     <div style="text-align:center;">
                         <div class="d-flex justify-content-center" style="height:60px">
                             <img src="{{asset($data['sertif']->logo_sertifikat)}}" height="60">
-                            <div
-                                style="font-size:60px; font-weight:400;text-decoration-line: underline; line-height:60px; margin-top:-7px;margin-left:20px;color: #263238;text-transform: uppercase;">
-                                {{$data['sertif']->jenis_sertifikat}}</div>
-                        </div>
+                <div
+                    style="font-size:60px; font-weight:400;text-decoration-line: underline; line-height:60px; margin-top:-7px;margin-left:20px;color: #263238;text-transform: uppercase;">
+                    {{$data['sertif']->jenis_sertifikat}}</div>
+            </div>
 
-                        <br><br>
+            <br><br>
 
-                        <div class="d-flex justify-content-center">
-                            <img src="{{asset($data['sertif']->logo_instansi)}}" height="70">
-                            <div style="text-align:left; margin-left:15px">
-                                <h5 class="text-hijau"> INSTANSI</h5>
-                                <h5>{{$data['sertif']->nama_instansi}}</h5>
-                            </div>
-                        </div>
-                        <br>
-                        <h5 class="text-hijau">Diberikan Kepada</h5>
-                        <br>
-                        <h1 style="text-transform: uppercase;" id="nama_peserta_modal"></h1>
-                        <br>
-                        <h5 style="font-weight:400">{{$data['sertif']->alasan}}</h5>
-
-                        <div class="d-flex justify-content-around" style="margin-top:30px;">
-                            @foreach ($data['khusus'] as $d)
-                            <div>
-                                <h6 class="text-hijau" style="text-transform: uppercase;">{{ $d->nama }}</h6>
-                                @if ($d->gambar != null)
-                                <img src="{{asset($d->gambar)}}" height="100">
-                                <h6 style="text-transform: uppercase;">{{ $d->data }}</h6>
-                                @else
-                                <h6 style="text-transform: uppercase;margin-top: 100px;">{{ $d->data }}</h6>
-                                @endif
-
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
+            <div class="d-flex justify-content-center">
+                <img src="{{asset($data['sertif']->logo_instansi)}}" height="70">
+                <div style="text-align:left; margin-left:15px">
+                    <h5 class="text-hijau"> INSTANSI</h5>
+                    <h5>{{$data['sertif']->nama_instansi}}</h5>
                 </div>
             </div>
+            <br>
+            <h5 class="text-hijau">Diberikan Kepada</h5>
+            <br>
+            <h1 style="text-transform: uppercase;" id="nama_peserta_modal"></h1>
+            <br>
+            <h5 style="font-weight:400">{{$data['sertif']->alasan}}</h5>
+
+            <div class="d-flex justify-content-around" style="margin-top:30px;">
+                @foreach ($data['khusus'] as $d)
+                <div>
+                    <h6 class="text-hijau" style="text-transform: uppercase;">{{ $d->nama }}</h6>
+                    @if ($d->gambar != null)
+                    <img src="{{asset($d->gambar)}}" height="100">
+                    <h6 style="text-transform: uppercase;">{{ $d->data }}</h6>
+                    @else
+                    <h6 style="text-transform: uppercase;margin-top: 100px;">{{ $d->data }}</h6>
+                    @endif
+
+                </div>
+                @endforeach
+            </div>
         </div>
-    </div>
+    </div> --}}
+</div>
+</div>
+</div>
 </div>
 
 

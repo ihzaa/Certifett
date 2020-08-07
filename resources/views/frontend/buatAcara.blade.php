@@ -219,7 +219,8 @@ Karena telah mengikuti acara pelatihan JS 101 yang diselenggarakan oleh Team A">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <div class="m-auto" id="sertifikat"
+                @include('template.Sertifikat.biru_prev')
+                {{-- <div class="m-auto" id="sertifikat"
                     style="width:1100px; height:fit-content; padding:25px; text-align:center; border: 1px solid #787878;background-color: white;">
                     <p class="text-hijau" style="margin-left:-965px" id="id_peserta_prev"></p>
                     <div style="text-align:center;">
@@ -250,7 +251,7 @@ Karena telah mengikuti acara pelatihan JS 101 yang diselenggarakan oleh Team A">
 
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
