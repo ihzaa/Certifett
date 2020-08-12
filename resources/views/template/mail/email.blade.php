@@ -81,7 +81,7 @@
                 margin: 0 auto !important;
             }
 
-            .btn { 
+            .btn {
                 background-color: #64D8CB;
                 border-radius:10px;
                 color:#ffffff;
@@ -121,7 +121,7 @@
         <p align="center"> pada tanggal {{ $email_data['date'] }}</p>
         <p align="center"> Anda dapat melakukan absensi dengan klik <a class="btn" href="{{ $email_data['link'] }}">disini</a>.</p>
         <p align="center"> Masa aktif link absensi akan diinfokan lebih lanjut oleh panitia saat acara atau sebelum acara berlangsung.</p>
-        
+
         @else
         <p align="center">Selamat <span>{{ $email_data['name'] }}</span></p>
         <p align="center">Anda mendapat sertifikat karena telah menyelesaikan event {{ $email_data['event'] }}.</p>
@@ -129,7 +129,9 @@
         <a href="">
             <p align="center">ID SERTIFIKAT : #{{ $email_data['idpeserta'] }}</p>
         </a>
-        <p align="center">Anda dapat mengunduh sertifikat di {{ route('landing-page') }}.</p>
+        <p align="center">Anda dapat mengunduh sertifikat di {{ route('landing-page') }}.*</p>
+        <br>
+        <p align="center" style="font-size: 90%;">*jika sertifikat tidak ditemukan, silahkan tunggu 10-15 menit sebelum mencoba kembali.</p>
         @endif
     </main>
 </body>

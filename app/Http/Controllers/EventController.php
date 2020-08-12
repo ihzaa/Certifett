@@ -132,7 +132,7 @@ class EventController extends Controller
 
         foreach ($data["acara"] as $d) {
             array_push($data["jml_peserta"], participant_event_certificate::whereEvent_id($d->id)->count());
-            array_push($data["jml_dibuat"], participant_event_certificate::whereEvent_id($d->id)->whereNotNull('release_date',)->count());
+            array_push($data["jml_dibuat"], participant_event_certificate::whereEvent_id($d->id)->where('is_send', 1)->count());
         }
 
         // return $data;
@@ -286,8 +286,8 @@ class EventController extends Controller
         // echo $request->start;
         // return $request;
         event::whereId($id)->update([
-            'absent_start' =>Carbon::createFromFormat('d/m/Y H:i',$request->start)->toDateTimeString(),
-            'absent_end' => Carbon::createFromFormat('d/m/Y H:i',$request->end)->toDateTimeString(),
+            'absent_start' => Carbon::createFromFormat('d/m/Y H:i', $request->start)->toDateTimeString(),
+            'absent_end' => Carbon::createFromFormat('d/m/Y H:i', $request->end)->toDateTimeString(),
         ]);
         return true;
     }

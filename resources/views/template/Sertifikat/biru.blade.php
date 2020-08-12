@@ -13,10 +13,12 @@
     opacity: .1;
     width: 100%;
     height: 100%;"></div>
+    @if(!request()->is('*acara*'))
     <div style="
     position: absolute;
     z-index: -1;
     top: 7px;">#{{$data['peserta']->id}}</div>
+    @endif
     <div style="margin-top:40px">
         <div class="align-items-center" style="height:60px">
             <div class="float-left" style="margin-left:60px;margin-top:-15px">
@@ -35,10 +37,10 @@
 
         <h5 style="font-size:23px">Diberikan kepada :</h5>
         <br>
-        <h1 style="text-transform: uppercase;" id="nama_peserta_modal">
+        <h1 id="nama_peserta_modal" class="px-4">
             {{request()->is('*certificate*') ? $data['peserta']->name : ""}}</h1>
         <br>
-        <h5 style="font-size:20px;font-weight:400" class="mb-0">Sebagai peserta webinar
+        <h5 style="font-size:20px;font-weight:400" class="mb-0 px-2">Sebagai peserta webinar
             <strong>{{$data['event']->name}}</strong>
         </h5>
         <h5 style="font-size:20px;font-weight:400" class="">
@@ -49,7 +51,7 @@
                 echo "<p>".$data['sertif']->alasan. ' ' .$arr_tgl[0]. ' '.$arr[(int)$arr_tgl[1]].' '.$arr_tgl[2]."</p>"?>
         </h5>
 
-        <div class="d-flex justify-content-around" style="margin-top:35px;">
+        <div class="d-flex justify-content-around" style="margin-top:25px;">
             @foreach ($data['sertif_khusus'] as $d)
             <div style="max-width:400px" style="margin-botom:0px">
                 <h6 style="font-size:19px;color:black;font-weight:400">{{ $d->nama }}</h6>
