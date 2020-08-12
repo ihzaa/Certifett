@@ -5,6 +5,12 @@
 @section('CssTambahanAfter')
 <link rel="stylesheet" href="{{asset('css/bootstrap-datepicker.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/buat-acara.css')}}">
+<link href="{{asset('css/summernote-lite.min.css')}}" rel="stylesheet">
+<style>
+    #sertifikat p {
+        margin-bottom: 0px !important;
+    }
+</style>
 @endsection
 
 @section('header')
@@ -50,7 +56,7 @@
             </div>
         </div>
         <div class="row mt-4">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <div id="prop_umum" class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                 <h5>Properti Umum</h5>
                 <p class="text-normal">Properti yang umumnya terdapat pada sebuah sertifikat.</p>
                 <div class="form-group">
@@ -115,10 +121,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control border-radius-c" required name="karena" rows="7"
-                        placeholder="Mendapatkan sertifikat karena…
-contoh:
-Karena telah mengikuti acara pelatihan JS 101 yang diselenggarakan oleh Team A">{{$data['sertifikat']->alasan}}</textarea>
+                    <textarea class="form-control border-radius-c summernote" required name="karena"
+                        rows="7">{{$data['sertifikat']->alasan}}</textarea>
                 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -192,12 +196,8 @@ Karena telah mengikuti acara pelatihan JS 101 yang diselenggarakan oleh Team A">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <textarea required class="form-control border-radius-c" name="khusus_properti[]"
-                                            rows="5" placeholder="Data Properti*,
-    contoh:
-
-    Yusuf Ahmad
-NIK. 123 456 789">{{$d->data}}</textarea>
+                                        <textarea required class="form-control border-radius-c summernote"
+                                            name="khusus_properti[]" rows="5">{{$d->data}}</textarea>
                                     </div>
                                 </div>
                                 <input type="hidden" name="khusus_id[]" value="{{$d->id}}">
@@ -230,6 +230,7 @@ NIK. 123 456 789">{{$d->data}}</textarea>
 @section('JsTambahanAfter')
 <script src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
 <script src="{{asset('js/page/edit-acara.js')}}"></script>
+<script src="{{asset('js/summernote-lite.min.js')}}"></script>
 @if ($errors->any())
 <script>
     let arr = new Array();

@@ -16,6 +16,10 @@
     #sertifikat {
         font-family: "Verdana" !important;
     }
+
+    #sertifikat p {
+        margin-bottom: 0px !important;
+    }
 </style>
 @endsection
 

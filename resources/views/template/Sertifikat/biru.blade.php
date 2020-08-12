@@ -13,12 +13,12 @@
     opacity: .1;
     width: 100%;
     height: 100%;"></div>
-    @if(!request()->is('*acara*'))
+    {{-- @if(!request()->is('*acara*'))
     <div style="
     position: absolute;
     z-index: -1;
     top: 7px;">#{{$data['peserta']->id}}</div>
-    @endif
+    @endif --}}
     <div style="margin-top:40px">
         <div class="align-items-center" style="height:60px">
             <div class="float-left" style="margin-left:60px;margin-top:-15px">
@@ -45,10 +45,11 @@
         </h5>
         <h5 style="font-size:20px;font-weight:400" class="">
             <?php
-                $arr = ["","Januari","Februari","Maret","April", "Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
-                $tgl = \Carbon\Carbon::parse($data['event']->date)->format('d n Y');
-                $arr_tgl = explode(" ",$tgl);
-                echo "<p>".$data['sertif']->alasan. ' ' .$arr_tgl[0]. ' '.$arr[(int)$arr_tgl[1]].' '.$arr_tgl[2]."</p>"?>
+                // $arr = ["","Januari","Februari","Maret","April", "Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+                // $tgl = \Carbon\Carbon::parse($data['event']->date)->format('d n Y');
+                // $arr_tgl = explode(" ",$tgl);
+                // . ' ' .$arr_tgl[0]. ' '.$arr[(int)$arr_tgl[1]].' '.$arr_tgl[2]
+                echo "<p>".$data['sertif']->alasan."</p>"?>
         </h5>
 
         <div class="d-flex justify-content-around" style="margin-top:25px;">
@@ -57,9 +58,9 @@
                 <h6 style="font-size:19px;color:black;font-weight:400">{{ $d->nama }}</h6>
                 @if ($d->gambar != null)
                 <img src="{{asset($d->gambar)}}" height="100">
-                <h6 style="font-weight:bold;"><?php echo "<p>$d->data</p>" ?></h6>
+                <h6><?php echo "<p>$d->data</p>" ?></h6>
                 @else
-                <h6 style="text-decoration:underline;font-weight:bold;margin-top: 100px;">{{ $d->data }}</h6>
+                <h6 style="margin-top: 100px;"><?php echo "<p>$d->data</p>" ?></h6>
                 @endif
             </div>
             @endforeach

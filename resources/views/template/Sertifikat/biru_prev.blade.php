@@ -34,12 +34,12 @@
     style="width:1122px; height:793px; padding:25px; text-align:center; border: 1px solid #787878;background-image: url({{asset("images/bg2.jpg")}});background-color: white;">
     <div style="margin-top:60px">
         <div class="align-items-center" style="height:60px">
-            <div class="float-left" style="margin-left:60px;margin-top:-35px">
+            <div class="float-left" style="margin-left:60px;margin-top:-15px">
                 {{-- <img style="height:80px;" src="{{asset("images/image--008.png")}}"> --}}
-                <img id="img-sertif" height="80">
+                <img id="img-sertif" height="100">
             </div>
-            <div class="float-right" style="margin-right:30px;margin-top: -35px;">
-                {{-- <img style="margin-right:20px" id="img-instansi" height="80"> --}}
+            <div class="float-right" style="margin-right:30px;margin-top: -15px;">
+                <img style="margin-right:20px" id="img-instansi" height="100">
                 {{-- <img src="{{asset($data['sertif']->logo_sertifikat)}}" height="60"> --}}
             </div>
         </div>

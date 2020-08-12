@@ -67,6 +67,18 @@ $(document).ready(function () {
         autoclose: true,
         orientation: "bottom",
     });
+    $("#prop_umum .summernote").summernote({
+        placeholder: `Alasan Mendapat Sertifikat*<br>
+contoh:
+Karena telah mengikuti acara ..., yang di selenggarakan pada 20 Juni 2010`,
+        toolbar: [["font", ["bold", "underline"]]],
+        height: 120,
+    });
+    $("#properti-tambahan .summernote").summernote({
+        placeholder: `Data Properti*,<br>contoh:<br>Yusuf Ahmad<br>NIK. 123 456 789`,
+        toolbar: [["font", ["bold", "underline"]]],
+        height: 120,
+    });
 });
 
 let gbr = "/assets/images/add_photo.svg";
@@ -114,11 +126,7 @@ let box_khusus = `<div class="border border-radius-c p-2 mb-4" style="border-col
                             </div>
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control border-radius-c" name="khusus_properti[]" id="karena" rows="5" placeholder="Data Properti*,
-contoh:
-
-Yusuf Ahmad
-NIK. 123 456 789"></textarea>
+                            <textarea class="form-control border-radius-c summernote" name="khusus_properti[]" id="karena" rows="5"></textarea>
                         </div>
                     </div>
                 </div>
@@ -127,6 +135,11 @@ NIK. 123 456 789"></textarea>
 $(document).on("click", "#btn-tambah-properti", function () {
     if ($("#switch_properti_khusus").is(":checked")) {
         $("#properti-tambahan").append(box_khusus);
+        $("#properti-tambahan .summernote").summernote({
+            placeholder: `Data Properti*,<br>contoh:<br>Yusuf Ahmad<br>NIK. 123 456 789`,
+            toolbar: [["font", ["bold", "underline"]]],
+            height: 120,
+        });
     } else {
         swal(
             "Aktifkan Switch Disamping Properti Khusus Untuk Menambahkan",
