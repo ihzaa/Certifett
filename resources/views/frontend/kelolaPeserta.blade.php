@@ -166,11 +166,19 @@
                                 <span class="check_indicator"></span>
                             </label>
                         </th>
-                        <td onclick="previewSertif('{{$d->name}}','{{$d->id}}')" class="clickable">
-                            @if($d->release_date != "" && $d->is_absent != 0)
-                            <img src="{{asset('icons/check_circle-24px.svg')}}">
+                        <td onclick="previewSertif('{{$d->name}}','{{$d->id}}')"
+                            class="clickable d-flex align-items-center">
+                            @if($d->is_absent == 1)
+                            <span class="bg-success px-2 rounded-circle text-light">P</span>
+                            {{-- <img src="{{asset('icons/check_circle-24px.svg')}}"> --}}
+                            @else
+                            <span class="bg-danger px-2 rounded-circle text-light">A</span>
                             @endif
-                            <span id="col_nama">{{$d->name}}</span>
+                            @if($d->release_date != "" && $d->is_absent != 0)
+                            <img src="{{asset('icons/check_circle-24px.svg')}}" class="ml-0">
+                            @endif
+
+                            <span id="col_nama" class="ml-1">{{$d->name}}</span>
                         </td>
                         <td class="colHide clickable" id="col_email"
                             onclick="previewSertif('{{$d->name}}','{{$d->id}}')">
@@ -189,6 +197,20 @@
                     @endif
                 </tbody>
             </table>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+                <img src="{{asset('icons/check_circle-24px.svg')}}"> : Sertifikat Dibuat</div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-12">
+                <span class="bg-success px-2 rounded-circle ml-1 text-light">P</span> : Peserta Melakukan Absensi
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <span class="bg-danger px-2 rounded-circle ml-1 text-light">A</span> : Peserta Tidak Melakukan Absensi
+            </div>
         </div>
     </form>
     <div id="modal_edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title"
