@@ -1,3 +1,4 @@
+let arr_id_peserta = [];
 function checkAll(ele) {
     var checkboxes = document.getElementsByTagName("input");
     if (ele.checked) {
@@ -8,6 +9,15 @@ function checkAll(ele) {
                 // &&
                 // !checkboxes[i].classList.contains("sudah_dibuat")
             ) {
+                let str = checkboxes[i].getAttribute("name");
+                if (str != null) {
+                    arr_id_peserta.push(
+                        str.substring(
+                            str.lastIndexOf("[") + 1,
+                            str.lastIndexOf("]")
+                        )
+                    );
+                }
                 checkboxes[i].checked = true;
                 $("#checkbox_header")
                     .css("background-color", "")
@@ -15,6 +25,7 @@ function checkAll(ele) {
             }
         }
     } else {
+        arr_id_peserta = [];
         $("#jml_dicentang").html(0);
         for (var i = 0; i < checkboxes.length; i++) {
             if (checkboxes[i].type == "checkbox") {
@@ -28,10 +39,20 @@ function checkAll(ele) {
 }
 
 $(".check_input").change(function () {
+    let str = $(this).attr("name");
     if ($(this).is(":checked")) {
         $("#jml_dicentang").html(parseInt($("#jml_dicentang").html()) + 1);
+        arr_id_peserta.push(
+            str.substring(str.lastIndexOf("[") + 1, str.lastIndexOf("]"))
+        );
     } else {
         $("#jml_dicentang").html(parseInt($("#jml_dicentang").html()) - 1);
+        const index = arr_id_peserta.indexOf(
+            str.substring(str.lastIndexOf("[") + 1, str.lastIndexOf("]"))
+        );
+        if (index > -1) {
+            arr_id_peserta.splice(index, 1);
+        }
     }
     if ($(".check_input:checked").length == $(".check_input").length) {
         document.getElementById("check_header").checked = true;
@@ -126,7 +147,25 @@ $("#buatSertif").on("click", function () {
         );
     } else {
         $(".se-pre-con").fadeIn();
-        $("#form_centang").submit();
+        var form = document.createElement("form");
+        var element1 = document.createElement("input");
+        var element2 = document.createElement("input");
+
+        form.method = "POST";
+        form.action = $("#form_centang").attr("action");
+
+        element1.value=arr_id_peserta;
+        element1.name="id_peserta";
+        form.appendChild(element1);
+
+        element2.value= $('meta[name="csrf-token"]').attr("content");
+        element2.name="_token";
+        form.appendChild(element2);
+
+        form.style.display = "none";
+        document.body.appendChild(form);
+        form.submit();
+        // $("#form_centang").submit();
     }
 });
 
@@ -197,7 +236,7 @@ $("#btn-up-csv").on("click", function () {
             method: "post",
             url: path.ev,
             data: dataform,
-            timeout: 9999999999999999999999999999999999
+            timeout: 9999999999999999999999999999999999,
         })
             .then((resp) => {
                 if (resp.data.message === "ok") {

@@ -40,9 +40,11 @@ class ParticipantEventCertificateController extends Controller
 
     public function BuatSertifikatPeserta(Request $request, $id)
     {
+        $arr = explode(",",$request->id_peserta);
+        // return $arr;
         $id_ser = event::find($id)->certificate_id;
-        $arr_keys = array_keys($request->chk);
-        participant_event_certificate::whereIn('id', $arr_keys)->update([
+        // $arr_keys = array_keys($request->chk);
+        participant_event_certificate::whereIn('id', $arr)->update([
             "certificate_id" => $id_ser
         ]);
         $data['id_acara'] = $id;
